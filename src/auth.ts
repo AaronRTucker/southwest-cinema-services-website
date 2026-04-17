@@ -33,7 +33,7 @@ export const { handlers: { GET, POST }, signIn, signOut, auth } = NextAuth({
       return token;
     },
     session({ session, token }) {
-      if (session.user) session.user.role = token.role ?? "CUSTOMER";
+      if (session.user) session.user.role = typeof token.role === "string" ? token.role : "CUSTOMER";
       return session;
     },
   },
