@@ -1,0 +1,11 @@
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - DATABASE_URL=file:/app/data/prod.db
+      - AUTH_SECRET=${AUTH_SECRET}
+    restart: unless-stopped

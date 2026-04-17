@@ -1,0 +1,79 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id        String     @id @default(cuid())
+  email     String     @unique
+  password  String
+  name      String?
+  role      Role       @default(CUSTOMER)
+  locations Location[] @relation("UserLocations")
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+enum Role {
+  ADMIN
+  CUSTOMER
+}
+
+model Location {
+  id        String      @id @default(cuid())
+  name      String
+  address   String?
+  siteId    String?     @unique
+  users     User[]      @relation("UserLocations")
+  equipment Equipment[]
+  pmReports PMReport[]
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+model Equipment {
+  id             String          @id @default(cuid())
+  name           String
+  type           EquipmentType
+  manufacturer   String?
+  model          String?
+  serialNumber   String?
+  locationId     String
+  location       Location        @relation(fields: [locationId], references: [id])
+  serviceRecords ServiceRecord[]
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+}
+
+enum EquipmentType {
+  PROJECTOR
+  SOUND
+  SERVER
+  NETWORK
+  OTHER
+}
+
+model ServiceRecord {
+  id          String    @id @default(cuid())
+  date        DateTime
+  description String
+  technician  String?
+  notes       String?
+  equipmentId String
+  equipment   Equipment @relation(fields: [equipmentId], references: [id])
+  createdAt   DateTime  @default(now())
+}
+
+model PMReport {
+  id         String   @id @default(cuid())
+  date       DateTime
+  summary    String
+  details    String?
+  locationId String
+  location   Location @relation(fields: [locationId], references: [id])
+  createdAt  DateTime @default(now())
+}
