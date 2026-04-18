@@ -1,14 +1,25 @@
 {
   "name": "scs-site-relay",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Southwest Cinema Services - Site relay agent",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "node --watch index.js"
+    "dev": "node --watch index.js",
+    "build:win": "pkg . --target node20-win-x64 --output dist/scs-site-relay.exe"
+  },
+  "pkg": {
+    "assets": [
+      "config.example.json",
+      "drivers/**/*"
+    ],
+    "targets": ["node20-win-x64"]
   },
   "dependencies": {
     "net-snmp": "^3.11.4",
-    "node-fetch": "^3.3.2"
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@yao-pkg/pkg": "^5.12.0"
   }
 }

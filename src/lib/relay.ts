@@ -60,9 +60,14 @@ export interface Projector {
 export interface SiteStatus {
   siteId: string;
   siteName: string;
-  projectors: Projector[];
-  reportedAt: string;
+  projectors?: Projector[];
+  reportedAt?: string;
   receivedAt?: string;
+  online: boolean;
+  lastHeartbeat?: string;
+  connectedAt?: string;
+  disconnectedAt?: string;
+  version?: string;
 }
 
 export interface RelayStatus {
@@ -71,11 +76,17 @@ export interface RelayStatus {
 }
 
 const CENTRAL_RELAY_URL = process.env.CENTRAL_RELAY_URL ?? "http://localhost:4000";
+const RELAY_API_KEY = process.env.RELAY_API_KEY ?? "";
+
+function relayHeaders() {
+  return RELAY_API_KEY ? { "x-api-key": RELAY_API_KEY } : undefined;
+}
 
 export async function getAllSites(): Promise<SiteStatus[]> {
   try {
     const res = await fetch(`${CENTRAL_RELAY_URL}/api/status`, {
-      next: { revalidate: 30 },
+      cache: "no-store",
+      headers: relayHeaders(),
     });
     if (!res.ok) return [];
     const data: RelayStatus = await res.json();
@@ -88,7 +99,8 @@ export async function getAllSites(): Promise<SiteStatus[]> {
 export async function getSite(siteId: string): Promise<SiteStatus | null> {
   try {
     const res = await fetch(`${CENTRAL_RELAY_URL}/api/status/${siteId}`, {
-      next: { revalidate: 30 },
+      cache: "no-store",
+      headers: relayHeaders(),
     });
     if (!res.ok) return null;
     return res.json();

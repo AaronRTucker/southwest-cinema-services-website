@@ -2,76 +2,160 @@
 
 const fs = require("fs");
 const path = require("path");
-const http = require("http");
-const https = require("https");
+const { exec } = require("child_process");
+const WebSocket = require("ws");
 
-// Load config — use config.json if present, else config.example.json
+// ── Config ────────────────────────────────────────────────────────────────────
+
 const configPath = fs.existsSync(path.join(__dirname, "config.json"))
   ? path.join(__dirname, "config.json")
   : path.join(__dirname, "config.example.json");
 
 const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
-const driver = require(`./drivers/${config.driver ?? "mock"}.js`);
 
-const INTERVAL_MS = (config.pollIntervalSeconds ?? 30) * 1000;
+const HEARTBEAT_MS = (config.heartbeatSeconds ?? 30) * 1000;
+const POLL_MS = (config.pollIntervalSeconds ?? 30) * 1000;
+const VERSION = "2.0.0";
 
-function postJSON(url, body) {
-  return new Promise((resolve, reject) => {
-    const data = JSON.stringify(body);
-    const parsed = new URL(url);
-    const lib = parsed.protocol === "https:" ? https : http;
-    const req = lib.request(
-      {
-        hostname: parsed.hostname,
-        port: parsed.port || (parsed.protocol === "https:" ? 443 : 80),
-        path: parsed.pathname,
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Content-Length": Buffer.byteLength(data) },
-        timeout: 10000,
-      },
-      (res) => {
-        let raw = "";
-        res.on("data", (c) => (raw += c));
-        res.on("end", () => resolve({ status: res.statusCode, body: raw }));
+// ── Driver ────────────────────────────────────────────────────────────────────
+
+const driver = (() => {
+  try {
+    return require(`./drivers/${config.driver ?? "mock"}.js`);
+  } catch {
+    console.warn(`Driver "${config.driver}" not found, falling back to mock.`);
+    return require("./drivers/mock.js");
+  }
+})();
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+
+function toWsUrl(httpUrl) {
+  return httpUrl.replace(/^http:\/\//, "ws://").replace(/^https:\/\//, "wss://");
+}
+
+function buildWsUrl() {
+  const base = `${toWsUrl(config.centralRelayUrl)}/ws`;
+  const params = new URLSearchParams({ siteId: config.siteId });
+  if (config.apiKey) params.set("key", config.apiKey);
+  return `${base}?${params}`;
+}
+
+// ── Commands ──────────────────────────────────────────────────────────────────
+
+function pingHost(target) {
+  return new Promise((resolve) => {
+    const isWindows = process.platform === "win32";
+    const cmd = isWindows
+      ? `ping -n 1 -w 2000 ${target}`
+      : `ping -c 1 -W 2 ${target}`;
+
+    exec(cmd, { timeout: 8000 }, (error, stdout) => {
+      const output = (stdout ?? "").trim();
+      if (error && !output) {
+        return resolve({ alive: false, ms: null, output: error.message });
       }
-    );
-    req.on("error", reject);
-    req.on("timeout", () => { req.destroy(); reject(new Error("timeout")); });
-    req.write(data);
-    req.end();
+      const match = output.match(/[Tt]ime[=<](\d+\.?\d*)\s*ms/);
+      const ms = match ? parseFloat(match[1]) : null;
+      resolve({ alive: !error, ms, output });
+    });
   });
 }
 
-async function runPoll() {
-  const ts = new Date().toISOString();
-  console.log(`[${ts}] Polling ${config.projectors.length} projector(s)...`);
+async function handleCommand(msg, ws) {
+  const { commandId, command, params } = msg;
+  let ok = false;
+  let data = null;
+  let error = null;
 
-  let projectors;
   try {
-    projectors = await driver.poll(config.projectors);
+    if (command === "ping") {
+      if (!params?.target) throw new Error("Missing target");
+      data = await pingHost(params.target);
+      ok = true;
+    } else {
+      throw new Error(`Unknown command: ${command}`);
+    }
   } catch (err) {
-    console.error(`[${ts}] Driver error:`, err.message);
-    return;
+    error = err.message;
   }
 
-  const payload = {
-    siteId: config.siteId,
-    siteName: config.siteName,
-    projectors,
-    reportedAt: ts,
-  };
-
-  try {
-    const result = await postJSON(`${config.centralRelayUrl}/api/data`, payload);
-    console.log(`[${ts}] → Central relay: ${result.status}`);
-  } catch (err) {
-    console.error(`[${ts}] Failed to reach central relay:`, err.message);
+  if (ws.readyState === WebSocket.OPEN) {
+    ws.send(JSON.stringify({ type: "result", commandId, ok, data, error }));
   }
 }
 
-console.log(`SCS Site Relay starting — site: ${config.siteName} (${config.siteId})`);
-console.log(`Driver: ${config.driver ?? "mock"} | Interval: ${config.pollIntervalSeconds ?? 30}s`);
+// ── Projector polling ─────────────────────────────────────────────────────────
+
+async function pollAndPush(ws) {
+  if (!config.projectors?.length) return;
+  const ts = new Date().toISOString();
+  try {
+    const projectors = await driver.poll(config.projectors);
+    if (ws.readyState === WebSocket.OPEN) {
+      ws.send(JSON.stringify({ type: "data", siteId: config.siteId, projectors, ts }));
+      console.log(`[${ts}] Pushed ${projectors.length} projector(s)`);
+    }
+  } catch (err) {
+    console.error(`[${ts}] Poll error:`, err.message);
+  }
+}
+
+// ── WebSocket connection ──────────────────────────────────────────────────────
+
+let reconnectDelay = 2000;
+let heartbeatTimer = null;
+let pollTimer = null;
+
+function connect() {
+  const wsUrl = buildWsUrl();
+  console.log(`[${new Date().toISOString()}] Connecting...`);
+  const ws = new WebSocket(wsUrl);
+
+  ws.on("open", () => {
+    reconnectDelay = 2000;
+    console.log(`[${new Date().toISOString()}] Connected to central relay.`);
+
+    ws.send(JSON.stringify({ type: "hello", siteId: config.siteId, siteName: config.siteName, version: VERSION }));
+
+    heartbeatTimer = setInterval(() => {
+      if (ws.readyState === WebSocket.OPEN) {
+        ws.send(JSON.stringify({ type: "heartbeat", siteId: config.siteId, ts: new Date().toISOString() }));
+      }
+    }, HEARTBEAT_MS);
+
+    pollAndPush(ws);
+    pollTimer = setInterval(() => pollAndPush(ws), POLL_MS);
+  });
+
+  ws.on("message", (raw) => {
+    let msg;
+    try { msg = JSON.parse(raw.toString()); } catch { return; }
+    if (msg.type === "command") handleCommand(msg, ws);
+  });
+
+  ws.on("close", (code, reason) => {
+    clearInterval(heartbeatTimer);
+    clearInterval(pollTimer);
+    const r = reason?.toString() || code;
+    console.log(`[${new Date().toISOString()}] Disconnected (${r}). Reconnecting in ${reconnectDelay / 1000}s...`);
+    setTimeout(connect, reconnectDelay);
+    reconnectDelay = Math.min(reconnectDelay * 2, 30000);
+  });
+
+  ws.on("error", (err) => {
+    // close event will fire next and handle reconnect
+    console.error(`[${new Date().toISOString()}] Error:`, err.message);
+  });
+}
+
+// ── Start ─────────────────────────────────────────────────────────────────────
+
+console.log(`SCS Site Relay v${VERSION}`);
+console.log(`Site:          ${config.siteName} (${config.siteId})`);
+console.log(`Driver:        ${config.driver ?? "mock"}`);
+console.log(`Heartbeat:     ${config.heartbeatSeconds ?? 30}s`);
+console.log(`Poll interval: ${config.pollIntervalSeconds ?? 30}s`);
 console.log(`Central relay: ${config.centralRelayUrl}`);
 
-runPoll();
-setInterval(runPoll, INTERVAL_MS);
+connect();

@@ -1,99 +1,28 @@
 "use strict";
 
 const http = require("http");
+const { WebSocketServer, WebSocket } = require("ws");
+const { randomUUID } = require("crypto");
 
 const PORT = process.env.PORT ?? 4000;
 const API_KEY = process.env.RELAY_API_KEY ?? "";
 
-// In-memory store: siteId → latest site payload
+// siteId → latest site data
 const store = new Map();
 
-// Seed with mock data so the dashboard works before any relay connects
-function seedMockData() {
-  const now = new Date().toISOString();
-  const sites = [
-    {
-      siteId: "site-001",
-      siteName: "Westgate Cinema",
-      projectors: mockProjectors("site-001", 3),
-      reportedAt: now,
-    },
-    {
-      siteId: "site-002",
-      siteName: "Northpark Cinemas",
-      projectors: mockProjectors("site-002", 2),
-      reportedAt: now,
-    },
-  ];
-  sites.forEach((s) => store.set(s.siteId, s));
-  console.log(`Seeded ${sites.length} mock sites.`);
-}
+// siteId → active WebSocket
+const connections = new Map();
 
-function mockProjectors(siteId, count) {
-  const MODELS = ["Barco SP4K-25B", "Barco DP4K-32B", "Barco SP4K-15C"];
-  const STATES = ["on", "on", "on", "standby"];
-  const now = new Date().toISOString();
-  return Array.from({ length: count }, (_, i) => {
-    const seed = siteId.charCodeAt(5) * 10 + i;
-    const isOn = STATES[seed % STATES.length] === "on";
-    return {
-      id: `${siteId}-aud-${i + 1}`,
-      name: `Auditorium ${i + 1}`,
-      ip: `192.168.10.${10 + i}`,
-      model: MODELS[seed % MODELS.length],
-      serial: `R9${String(seed * 7 + 100000).padStart(7, "0")}`,
-      firmware: "1.8.13",
-      state: STATES[seed % STATES.length],
-      laserPower: isOn ? 85 + i : 0,
-      lampHours: 1022 + seed * 200,
-      lampHoursWarning: 10000,
-      lampHoursEol: 15000,
-      dowserOpen: isOn,
-      health: {
-        temperatures: [
-          { name: "Front air inlet",          value: 22 + i,      warning: 45,  critical: 55,  unit: "°C", status: "ok" },
-          { name: "FMCB board",               value: 28 + i,      warning: 80,  critical: 85,  unit: "°C", status: "ok" },
-          { name: "CCB CPU",                  value: 39 + i,      warning: 90,  critical: 100, unit: "°C", status: "ok" },
-          { name: "LDM 1 main board",         value: 28 + i,      warning: 52,  critical: 55,  unit: "°C", status: "ok" },
-          { name: "LDM 1 main board heatsink",value: 45 + i,      warning: 95,  critical: 100, unit: "°C", status: "ok" },
-          { name: "Light source cooling inlet",value: 22,         warning: 65,  critical: 75,  unit: "°C", status: "ok" },
-          { name: "ICMP/ICP-D - Environment", value: 47 + i,      warning: 255, critical: 255, unit: "°C", status: "ok" },
-          { name: "Blue DMD front",           value: 37 + i,      warning: 60,  critical: 65,  unit: "°C", status: "ok" },
-          { name: "Green DMD front",          value: 37 + i,      warning: 60,  critical: 65,  unit: "°C", status: "ok" },
-          { name: "Red DMD front",            value: 35 + i,      warning: 60,  critical: 65,  unit: "°C", status: "ok" },
-        ],
-        voltages: [
-          { name: "SMPS +12V",  value: 11.94, nominal: 12.0, tolerance: 0.6,  unit: "V", status: "ok" },
-          { name: "SMPS +24V",  value: 24.12, nominal: 24.0, tolerance: 1.2,  unit: "V", status: "ok" },
-          { name: "FMCB 5V",   value: 5.01,  nominal: 5.0,  tolerance: 0.25, unit: "V", status: "ok" },
-          { name: "FMCB 12V",  value: 11.9,  nominal: 12.0, tolerance: 0.6,  unit: "V", status: "ok" },
-          { name: "LDM 1 12V", value: 12.0,  nominal: 12.0, tolerance: 0.6,  unit: "V", status: "ok" },
-          { name: "LDM 1 24V", value: 24.7,  nominal: 24.0, tolerance: 1.2,  unit: "V", status: "ok" },
-        ],
-        fans: [
-          { name: "Card cage inlet fan 1",         value: 2539, warning: 750,  unit: "RPM", status: "ok" },
-          { name: "Card cage inlet fan 2",         value: 2503, warning: 750,  unit: "RPM", status: "ok" },
-          { name: "LDM 1 fan 1",                   value: 2461, warning: 700,  unit: "RPM", status: "ok" },
-          { name: "LDM 2 fan 1",                   value: 2498, warning: 700,  unit: "RPM", status: "ok" },
-          { name: "Blue formatter fan",            value: 6464, warning: 750,  unit: "RPM", status: "ok" },
-          { name: "SMPS fan",                      value: 6262, warning: 1500, unit: "RPM", status: "ok" },
-          { name: "Light source cooling 1 fan 1",  value: 3680, warning: 1000, unit: "RPM", status: "ok" },
-          { name: "Light source cooling 2 fan 1",  value: 3808, warning: 1000, unit: "RPM", status: "ok" },
-        ],
-        errors: [],
-        warnings: seed % 3 === 0
-          ? [{ type: "W", uid: "L8000a", description: "Illumination CLO unable to maintain desired light output" }]
-          : [],
-      },
-      status: seed % 3 === 0 ? "warning" : "ok",
-      polledAt: now,
-    };
-  });
-}
+// commandId → { resolve, reject, timer }
+const pending = new Map();
 
 function respond(res, status, body) {
   const json = JSON.stringify(body);
-  res.writeHead(status, { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" });
+  res.writeHead(status, {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Headers": "Content-Type, x-api-key",
+  });
   res.end(json);
 }
 
@@ -108,43 +37,150 @@ function readBody(req) {
   });
 }
 
+function checkKey(req) {
+  return !API_KEY || req.headers["x-api-key"] === API_KEY;
+}
+
+function siteIsOnline(siteId) {
+  const ws = connections.get(siteId);
+  return ws?.readyState === WebSocket.OPEN;
+}
+
+// Send a command to a site relay and await its result (up to timeoutMs)
+function sendCommand(siteId, command, params, timeoutMs = 10000) {
+  return new Promise((resolve, reject) => {
+    const ws = connections.get(siteId);
+    if (!ws || ws.readyState !== WebSocket.OPEN) {
+      return reject(new Error("Site relay not connected"));
+    }
+    const commandId = randomUUID();
+    const timer = setTimeout(() => {
+      pending.delete(commandId);
+      reject(new Error("Command timed out"));
+    }, timeoutMs);
+    pending.set(commandId, { resolve, reject, timer });
+    ws.send(JSON.stringify({ type: "command", commandId, command, params }));
+  });
+}
+
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, `http://localhost:${PORT}`);
 
-  // POST /api/data — receive data from a site relay
+  if (req.method === "OPTIONS") {
+    res.writeHead(204, { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET, POST", "Access-Control-Allow-Headers": "Content-Type, x-api-key" });
+    return res.end();
+  }
+
+  // POST /api/data — legacy HTTP push (kept for compatibility)
   if (req.method === "POST" && url.pathname === "/api/data") {
-    if (API_KEY && req.headers["x-api-key"] !== API_KEY) {
-      return respond(res, 401, { error: "Unauthorized" });
-    }
+    if (!checkKey(req)) return respond(res, 401, { error: "Unauthorized" });
     try {
       const payload = await readBody(req);
       if (!payload.siteId) return respond(res, 400, { error: "Missing siteId" });
-      store.set(payload.siteId, { ...payload, receivedAt: new Date().toISOString() });
-      console.log(`[${new Date().toISOString()}] Received data from ${payload.siteName} (${payload.siteId}) — ${payload.projectors?.length ?? 0} projector(s)`);
+      const existing = store.get(payload.siteId) ?? {};
+      store.set(payload.siteId, { ...existing, ...payload, receivedAt: new Date().toISOString() });
+      console.log(`[${new Date().toISOString()}] HTTP data: ${payload.siteName ?? payload.siteId} — ${payload.projectors?.length ?? 0} projector(s)`);
       return respond(res, 200, { ok: true });
     } catch (err) {
       return respond(res, 400, { error: err.message });
     }
   }
 
-  // GET /api/status — return all sites for the website
+  // POST /api/command — send a command to a connected site relay
+  if (req.method === "POST" && url.pathname === "/api/command") {
+    if (!checkKey(req)) return respond(res, 401, { error: "Unauthorized" });
+    try {
+      const { siteId, command, params } = await readBody(req);
+      if (!siteId || !command) return respond(res, 400, { error: "Missing siteId or command" });
+      const data = await sendCommand(siteId, command, params ?? {});
+      return respond(res, 200, { ok: true, data });
+    } catch (err) {
+      return respond(res, 500, { ok: false, error: err.message });
+    }
+  }
+
+  // GET /api/status — all sites
   if (req.method === "GET" && url.pathname === "/api/status") {
-    const sites = Array.from(store.values());
+    const sites = Array.from(store.values()).map((s) => ({
+      ...s,
+      online: siteIsOnline(s.siteId),
+    }));
     return respond(res, 200, { sites, asOf: new Date().toISOString() });
   }
 
-  // GET /api/status/:siteId — single site
+  // GET /api/status/:siteId
   if (req.method === "GET" && url.pathname.startsWith("/api/status/")) {
     const siteId = url.pathname.replace("/api/status/", "");
     const site = store.get(siteId);
     if (!site) return respond(res, 404, { error: "Site not found" });
-    return respond(res, 200, site);
+    return respond(res, 200, { ...site, online: siteIsOnline(siteId) });
   }
 
   respond(res, 404, { error: "Not found" });
 });
 
-seedMockData();
+// WebSocket server on same port, path /ws
+const wss = new WebSocketServer({ server, path: "/ws" });
+
+wss.on("connection", (ws, req) => {
+  const url = new URL(req.url, "http://localhost");
+  const siteId = url.searchParams.get("siteId");
+  const key = url.searchParams.get("key");
+
+  if (API_KEY && key !== API_KEY) { ws.close(1008, "Unauthorized"); return; }
+  if (!siteId) { ws.close(1008, "Missing siteId"); return; }
+
+  // Replace any existing connection for this site
+  const prev = connections.get(siteId);
+  if (prev?.readyState === WebSocket.OPEN) prev.close();
+
+  connections.set(siteId, ws);
+  const existing = store.get(siteId) ?? {};
+  store.set(siteId, { ...existing, siteId, online: true, connectedAt: new Date().toISOString() });
+  console.log(`[${new Date().toISOString()}] Connected: ${siteId}`);
+
+  ws.on("message", (raw) => {
+    let msg;
+    try { msg = JSON.parse(raw.toString()); } catch { return; }
+    const now = new Date().toISOString();
+    const current = store.get(siteId) ?? { siteId };
+
+    switch (msg.type) {
+      case "hello":
+        store.set(siteId, { ...current, siteName: msg.siteName, version: msg.version, online: true });
+        console.log(`[${now}] Hello from ${msg.siteName ?? siteId} v${msg.version ?? "?"}`);
+        break;
+      case "heartbeat":
+        store.set(siteId, { ...current, lastHeartbeat: now });
+        break;
+      case "data":
+        store.set(siteId, { ...current, projectors: msg.projectors, reportedAt: now, receivedAt: now });
+        console.log(`[${now}] Data from ${siteId} — ${msg.projectors?.length ?? 0} projector(s)`);
+        break;
+      case "result": {
+        const p = pending.get(msg.commandId);
+        if (p) {
+          clearTimeout(p.timer);
+          pending.delete(msg.commandId);
+          if (msg.ok) p.resolve(msg.data);
+          else p.reject(new Error(msg.error ?? "Command failed"));
+        }
+        break;
+      }
+    }
+  });
+
+  ws.on("close", () => {
+    connections.delete(siteId);
+    const current = store.get(siteId);
+    if (current) store.set(siteId, { ...current, online: false, disconnectedAt: new Date().toISOString() });
+    console.log(`[${new Date().toISOString()}] Disconnected: ${siteId}`);
+  });
+
+  ws.on("error", (err) => console.error(`[WS error] ${siteId}:`, err.message));
+});
+
 server.listen(PORT, () => {
-  console.log(`SCS Central Relay listening on port ${PORT}`);
+  console.log(`SCS Central Relay on :${PORT} (HTTP + WebSocket)`);
+  if (API_KEY) console.log("API key authentication enabled.");
 });
