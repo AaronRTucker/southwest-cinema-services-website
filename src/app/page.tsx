@@ -8,8 +8,8 @@ import speakerWall from "../../public/images/speaker-wall.png";
 import projectorInternals from "../../public/images/projector-internals.png";
 import barcoProjector from "../../public/images/barco-projector.png";
 import projectionBooth from "../../public/images/projection-booth.png";
-import aaronHeadshot from "../../public/images/aaron-headshot.png";
-import richardHeadshot from "../../public/images/richard-headshot.png";
+import aaronHeadshot from "../../public/images/aaron-headshot-larger.png";
+import richardHeadshot from "../../public/images/richard-headshot-larger.png";
 
 export default function Home() {
   return (
@@ -127,12 +127,12 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-16">
             {[
-              { src: aaronHeadshot, name: "Aaron Tucker", bio: "Barco and Christie certified technician specializing in digital cinema projectors, laser systems, and SNMP-based monitoring." },
-              { src: richardHeadshot, name: "Richard Tucker", bio: "Decades of experience servicing 35mm and digital cinema equipment, with deep expertise in optical alignment and sound systems." },
+              { src: aaronHeadshot, name: "Aaron Tucker", pos: "object-[30%_20%]", bio: "Barco and Christie certified technician specializing in digital cinema projectors, laser systems, and SNMP-based monitoring." },
+              { src: richardHeadshot, name: "Richard Tucker", pos: "object-[45%_15%]", bio: "Decades of experience servicing 35mm and digital cinema equipment, with deep expertise in optical alignment and sound systems." },
             ].map((person) => (
               <div key={person.name} className="flex flex-col items-center gap-4">
-                <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-md">
-                  <Image src={person.src} alt={person.name} fill className="object-cover object-[50%_15%]" placeholder="blur" />
+                <div className="relative w-36 h-36 rounded-full overflow-hidden border-4 border-white shadow-md">
+                  <Image src={person.src} alt={person.name} fill className={`object-cover ${person.pos}`} placeholder="blur" />
                 </div>
                 <div>
                   <div className="font-semibold text-gray-900 text-lg">{person.name}</div>
