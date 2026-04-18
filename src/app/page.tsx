@@ -4,11 +4,11 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Nav */}
-      <header className="bg-gray-900 text-white px-6 py-4 flex items-center justify-between sticky top-0 z-10">
-        <span className="font-semibold text-lg tracking-tight">Southwest Cinema Services</span>
+      <header className="bg-yellow-500 px-6 py-4 flex items-center justify-between sticky top-0 z-10">
+        <span className="font-semibold text-lg tracking-tight text-gray-900">Southwest Cinema Services</span>
         <Link
           href="/login"
-          className="text-sm bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-medium px-4 py-2 rounded transition-colors"
+          className="text-sm bg-gray-900 hover:bg-gray-700 text-white font-medium px-4 py-2 rounded transition-colors"
         >
           Customer Portal
         </Link>
