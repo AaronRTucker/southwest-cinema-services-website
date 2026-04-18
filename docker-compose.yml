@@ -19,7 +19,7 @@ services:
              npx prisma migrate deploy &&
              npm run dev"
     ports:
-      - "8081:3000"
+      - "8082:3000"
     volumes:
       - .:/app
       - node_modules:/app/node_modules
