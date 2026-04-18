@@ -18,7 +18,7 @@ export default function Home() {
       <section className="bg-gray-900 text-white px-6 py-24 text-center">
         <p className="text-yellow-400 text-sm font-semibold uppercase tracking-widest mb-4">Independent Cinema Equipment Specialist</p>
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6 max-w-3xl mx-auto leading-tight">
-          Digital Cinema Equipment You Can Count On
+          Digital Cinema Service You Can Count On
         </h1>
         <p className="text-gray-300 max-w-2xl mx-auto text-lg mb-10 leading-relaxed">
           Installation, service, and proactive monitoring of Barco and Christie digital cinema projectors
@@ -145,10 +145,10 @@ export default function Home() {
             Contact us to discuss service agreements, equipment installations, or to set up your customer portal account.
           </p>
           <a
-            href="mailto:aaron@southwestcinemaservices.com"
+            href="mailto:southwestcinemaservices@gmail.com"
             className="inline-block bg-gray-900 hover:bg-gray-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors"
           >
-            aaron@southwestcinemaservices.com
+            southwestcinemaservices@gmail.com
           </a>
         </div>
       </section>
