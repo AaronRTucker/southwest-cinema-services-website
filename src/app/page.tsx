@@ -17,8 +17,8 @@ export default function Home() {
       {/* Nav */}
       <header className="bg-yellow-500 px-6 py-3 flex items-center justify-between sticky top-0 z-10">
         <div className="flex items-center gap-3">
-          <Image src={logo} alt="Southwest Cinema Services" height={44} className="w-auto mix-blend-multiply" />
-          <span className={`${cinzel.className} text-lg tracking-wide text-gray-900 hidden sm:block`}>Southwest Cinema Services, LLC</span>
+          <Image src={logo} alt="Southwest Cinema Services" height={44} className="w-auto mix-blend-multiply hidden sm:block" />
+          <span className={`${cinzel.className} text-lg tracking-wide text-gray-900`}>Southwest Cinema Services, LLC</span>
         </div>
         <Link
           href="/login"
