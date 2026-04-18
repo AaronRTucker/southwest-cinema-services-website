@@ -1,11 +1,20 @@
 import Link from "next/link";
+import Image from "next/image";
+import logo from "../../public/images/logo.png";
+import speakerWall from "../../public/images/speaker-wall.png";
+import projectorInternals from "../../public/images/projector-internals.png";
+import barcoProjector from "../../public/images/barco-projector.png";
+import projectionBooth from "../../public/images/projection-booth.png";
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Nav */}
-      <header className="bg-yellow-500 px-6 py-4 flex items-center justify-between sticky top-0 z-10">
-        <span className="font-semibold text-lg tracking-tight text-gray-900">Southwest Cinema Services</span>
+      <header className="bg-yellow-500 px-6 py-3 flex items-center justify-between sticky top-0 z-10">
+        <div className="flex items-center gap-3">
+          <Image src={logo} alt="Southwest Cinema Services" height={44} className="w-auto mix-blend-multiply" />
+          <span className="font-semibold text-base tracking-tight text-gray-900 hidden sm:block">Southwest Cinema Services</span>
+        </div>
         <Link
           href="/login"
           className="text-sm bg-gray-900 hover:bg-gray-700 text-white font-medium px-4 py-2 rounded transition-colors"
@@ -36,6 +45,27 @@ export default function Home() {
           >
             Our Services
           </a>
+        </div>
+      </section>
+
+      {/* Photo gallery */}
+      <section className="bg-gray-950 px-6 py-16">
+        <div className="max-w-5xl mx-auto">
+          <p className="text-gray-500 text-xs font-semibold uppercase tracking-widest text-center mb-8">In the Field</p>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+            <div className="relative rounded-xl overflow-hidden aspect-[4/3] col-span-2">
+              <Image src={barcoProjector} alt="Barco digital cinema projector service" fill className="object-cover" placeholder="blur" />
+            </div>
+            <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
+              <Image src={projectorInternals} alt="Projector internal electronics repair" fill className="object-cover" placeholder="blur" />
+            </div>
+            <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
+              <Image src={projectionBooth} alt="35mm projection booth" fill className="object-cover" placeholder="blur" />
+            </div>
+            <div className="relative rounded-xl overflow-hidden aspect-[4/3] col-span-2">
+              <Image src={speakerWall} alt="Dolby Atmos cinema speaker wall installation" fill className="object-cover object-top" placeholder="blur" />
+            </div>
+          </div>
         </div>
       </section>
 
