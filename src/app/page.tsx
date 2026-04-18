@@ -16,7 +16,7 @@ export default function Home() {
       <header className="bg-yellow-500 px-6 py-3 flex items-center justify-between sticky top-0 z-10">
         <div className="flex items-center gap-3">
           <Image src={logo} alt="Southwest Cinema Services" height={44} className="w-auto mix-blend-multiply" />
-          <span className={`${cinzel.className} text-base tracking-wide text-gray-900 hidden sm:block`}>Southwest Cinema Services, LLC</span>
+          <span className={`${cinzel.className} text-lg tracking-wide text-gray-900 hidden sm:block`}>Southwest Cinema Services, LLC</span>
         </div>
         <Link
           href="/login"
@@ -54,7 +54,7 @@ export default function Home() {
       {/* Photo gallery */}
       <section className="bg-gray-950 px-6 py-16">
         <div className="max-w-5xl mx-auto">
-          <p className="text-gray-500 text-xs font-semibold uppercase tracking-widest text-center mb-8">In the Field</p>
+          <p className="text-gray-500 text-xs font-semibold uppercase tracking-widest text-center mb-8">25 Years of Experience in the Field</p>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { src: barcoProjector, alt: "Barco digital cinema projector service", label: "Training" },
