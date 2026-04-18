@@ -16,8 +16,7 @@ export default function Home() {
 
       {/* Hero */}
       <section className="bg-gray-900 text-white px-6 py-24 text-center">
-        <p className="text-yellow-400 text-sm font-semibold uppercase tracking-widest mb-4">Independent Cinema Equipment Specialist</p>
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6 max-w-3xl mx-auto leading-tight">
+<h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6 max-w-3xl mx-auto leading-tight">
           Digital Cinema Service You Can Count On
         </h1>
         <p className="text-gray-300 max-w-2xl mx-auto text-lg mb-10 leading-relaxed">
