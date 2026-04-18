@@ -13,8 +13,23 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Southwest Cinema Services",
-  description: "Professional cinema projector and sound equipment installation and service.",
+  title: "Southwest Cinema Services, LLC",
+  description: "Installation, service, and proactive monitoring of Barco and Christie digital cinema projectors and sound systems across the Southwest.",
+  openGraph: {
+    title: "Southwest Cinema Services, LLC",
+    description: "Installation, service, and proactive monitoring of Barco and Christie digital cinema projectors and sound systems across the Southwest.",
+    url: "https://southwestcinemaservices.com",
+    siteName: "Southwest Cinema Services",
+    images: [
+      {
+        url: "https://southwestcinemaservices.com/images/logo-gemini.png",
+        width: 600,
+        height: 373,
+        alt: "Southwest Cinema Services logo",
+      },
+    ],
+    type: "website",
+  },
 };
 
 export default function RootLayout({
