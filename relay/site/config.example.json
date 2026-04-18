@@ -1,7 +1,7 @@
 {
   "siteId": "site-001",
   "siteName": "Example Cinema - Downtown",
-  "centralRelayUrl": "http://192.168.1.240:4000",
+  "centralRelayUrl": "https://relay.southwestcinemaservices.com",
   "apiKey": "",
   "heartbeatSeconds": 30,
   "pollIntervalSeconds": 30,
