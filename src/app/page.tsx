@@ -1,5 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Cinzel } from "next/font/google";
+
+const cinzel = Cinzel({ subsets: ["latin"], weight: "700" });
 import logo from "../../public/images/logo-gemini.png";
 import speakerWall from "../../public/images/speaker-wall.png";
 import projectorInternals from "../../public/images/projector-internals.png";
@@ -13,7 +16,7 @@ export default function Home() {
       <header className="bg-yellow-500 px-6 py-3 flex items-center justify-between sticky top-0 z-10">
         <div className="flex items-center gap-3">
           <Image src={logo} alt="Southwest Cinema Services" height={44} className="w-auto mix-blend-multiply" />
-          <span className="font-semibold text-base tracking-tight text-gray-900 hidden sm:block">Southwest Cinema Services</span>
+          <span className={`${cinzel.className} text-base tracking-wide text-gray-900 hidden sm:block`}>Southwest Cinema Services, LLC</span>
         </div>
         <Link
           href="/login"
