@@ -1,0 +1,14 @@
+{
+  "name": "scs-site-relay",
+  "version": "1.0.0",
+  "description": "Southwest Cinema Services - Site relay agent",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "net-snmp": "^3.11.4",
+    "node-fetch": "^3.3.2"
+  }
+}

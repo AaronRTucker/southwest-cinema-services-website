@@ -1,0 +1,25 @@
+{
+  "siteId": "site-001",
+  "siteName": "Example Cinema - Downtown",
+  "centralRelayUrl": "http://192.168.1.240:4000",
+  "pollIntervalSeconds": 30,
+  "driver": "mock",
+  "projectors": [
+    {
+      "id": "aud-1",
+      "name": "Auditorium 1",
+      "ip": "192.168.10.10",
+      "restUser": "admin",
+      "restPassword": "Admin1234",
+      "snmpCommunity": "public"
+    },
+    {
+      "id": "aud-2",
+      "name": "Auditorium 2",
+      "ip": "192.168.10.11",
+      "restUser": "admin",
+      "restPassword": "Admin1234",
+      "snmpCommunity": "public"
+    }
+  ]
+}

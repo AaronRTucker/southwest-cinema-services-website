@@ -1,0 +1,11 @@
+{
+  "name": "scs-central-relay",
+  "version": "1.0.0",
+  "description": "Southwest Cinema Services - Central relay server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {}
+}
