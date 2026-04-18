@@ -53,16 +53,16 @@ export default function Home() {
         <div className="max-w-5xl mx-auto">
           <p className="text-gray-500 text-xs font-semibold uppercase tracking-widest text-center mb-8">In the Field</p>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-            <div className="relative rounded-xl overflow-hidden aspect-[4/3] col-span-2">
+            <div className="relative rounded-xl overflow-hidden h-48 sm:h-64 lg:col-span-2">
               <Image src={barcoProjector} alt="Barco digital cinema projector service" fill className="object-cover" placeholder="blur" />
             </div>
-            <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
+            <div className="relative rounded-xl overflow-hidden h-48 sm:h-64">
               <Image src={projectorInternals} alt="Projector internal electronics repair" fill className="object-cover" placeholder="blur" />
             </div>
-            <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
+            <div className="relative rounded-xl overflow-hidden h-48 sm:h-64">
               <Image src={projectionBooth} alt="35mm projection booth" fill className="object-cover" placeholder="blur" />
             </div>
-            <div className="relative rounded-xl overflow-hidden aspect-[4/3] col-span-2">
+            <div className="relative rounded-xl overflow-hidden h-48 sm:h-64 col-span-2">
               <Image src={speakerWall} alt="Dolby Atmos cinema speaker wall installation" fill className="object-cover object-top" placeholder="blur" />
             </div>
           </div>
