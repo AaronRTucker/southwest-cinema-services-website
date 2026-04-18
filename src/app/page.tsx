@@ -131,8 +131,8 @@ export default function Home() {
               { src: richardHeadshot, name: "Richard Tucker", pos: "object-[50%_20%]", bio: "Decades of experience servicing 35mm and digital cinema equipment, with deep expertise in optical alignment and sound systems." },
             ].map((person) => (
               <div key={person.name} className="flex flex-col items-center gap-4">
-                <div className="relative w-36 h-36 rounded-full overflow-hidden border-4 border-white shadow-md">
-                  <Image src={person.src} alt={person.name} fill className={`object-cover ${person.pos}`} placeholder="blur" />
+                <div className="w-36 h-36 rounded-full overflow-hidden border-4 border-white shadow-md flex-shrink-0">
+                  <Image src={person.src} alt={person.name} width={144} height={144} className={`w-full h-full object-cover ${person.pos}`} placeholder="blur" />
                 </div>
                 <div>
                   <div className="font-semibold text-gray-900 text-lg">{person.name}</div>
