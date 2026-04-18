@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+relay/**/node_modules
+relay/**/dist
 /.pnp
 .pnp.*
 .yarn/*
