@@ -17,12 +17,12 @@ export default function Home() {
       {/* Nav */}
       <header className="bg-yellow-500 px-6 py-3 flex items-center justify-between sticky top-0 z-10">
         <div className="flex items-center gap-3">
-          <Image src={logo} alt="Southwest Cinema Services" height={44} className="w-auto mix-blend-multiply hidden sm:block" />
-          <span className={`${cinzel.className} text-lg tracking-wide text-gray-900`}>Southwest Cinema Services, LLC</span>
+          <Image src={logo} alt="Southwest Cinema Services" height={44} className="w-auto mix-blend-multiply" />
+          <span className={`${cinzel.className} text-lg tracking-wide text-gray-900 hidden sm:block`}>Southwest Cinema Services, LLC</span>
         </div>
         <Link
           href="/login"
-          className="text-sm bg-gray-900 hover:bg-gray-700 text-white font-medium px-4 py-2 rounded transition-colors"
+          className="text-sm bg-gray-900 hover:bg-gray-700 text-white font-medium px-4 py-2 rounded transition-colors hidden sm:block"
         >
           Customer Portal
         </Link>
