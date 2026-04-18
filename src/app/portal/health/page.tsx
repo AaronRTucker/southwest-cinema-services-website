@@ -2,6 +2,7 @@ import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import { getAllSites } from "@/lib/relay";
 import Link from "next/link";
+import SignOutButton from "@/components/SignOutButton";
 
 function StatusBadge({ status }: { status: string }) {
   const colors: Record<string, string> = {
@@ -34,7 +35,10 @@ export default async function HealthPage() {
           <span className="text-gray-600">/</span>
           <span className="font-semibold">Equipment Health</span>
         </div>
-        <span className="text-sm text-gray-300">{session.user?.email}</span>
+        <div className="flex items-center gap-4">
+          <span className="text-sm text-gray-300 hidden sm:block">{session.user?.email}</span>
+          <SignOutButton />
+        </div>
       </header>
 
       <main className="max-w-6xl mx-auto px-6 py-8">
