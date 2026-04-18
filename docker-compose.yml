@@ -1,4 +1,17 @@
 services:
+  relay:
+    image: node:24-alpine
+    working_dir: /app
+    command: node index.js
+    volumes:
+      - ./relay/central:/app
+    ports:
+      - "4000:4000"
+    environment:
+      - PORT=4000
+      - RELAY_API_KEY=${RELAY_API_KEY:-}
+    restart: unless-stopped
+
   web:
     build: .
     command: >
@@ -14,7 +27,10 @@ services:
     environment:
       - DATABASE_URL=file:/app/data/prod.db
       - AUTH_SECRET=${AUTH_SECRET}
+      - CENTRAL_RELAY_URL=http://relay:4000
       - NODE_ENV=development
+    depends_on:
+      - relay
     restart: unless-stopped
 
 volumes:
