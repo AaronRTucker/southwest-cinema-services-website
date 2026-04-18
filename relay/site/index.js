@@ -7,9 +7,12 @@ const WebSocket = require("ws");
 
 // ── Config ────────────────────────────────────────────────────────────────────
 
-const configPath = fs.existsSync(path.join(__dirname, "config.json"))
-  ? path.join(__dirname, "config.json")
-  : path.join(__dirname, "config.example.json");
+// When packaged as an exe, __dirname is inside the bundle.
+// Look for config.json next to the executable on disk instead.
+const configDir = process.pkg ? path.dirname(process.execPath) : __dirname;
+const configPath = fs.existsSync(path.join(configDir, "config.json"))
+  ? path.join(configDir, "config.json")
+  : path.join(__dirname, "config.example.json"); // bundled fallback
 
 const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
 
