@@ -2,102 +2,114 @@ import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
-import SignOutButton from "@/components/SignOutButton";
+import PortalHeader from "@/components/PortalHeader";
 
 export default async function LocationsPage() {
   const session = await auth();
   if (!session) redirect("/login");
 
   const isAdmin = session.user.role === "ADMIN";
+  const where = isAdmin ? {} : { users: { some: { id: session.user.id } } };
 
   const locations = await prisma.location.findMany({
-    where: isAdmin ? {} : { users: { some: { id: session.user.id } } },
+    where,
     include: {
-      equipment: { orderBy: { type: "asc" } },
-      _count: { select: { pmReports: true } },
+      _count: { select: { auditoriums: true, serviceRecords: true, pmReports: true } },
+      auditoriums: {
+        take: 1,
+        include: { equipment: { where: { type: "PROJECTOR" }, take: 1 } },
+      },
     },
-    orderBy: { name: "asc" },
+    orderBy: [{ city: "asc" }, { name: "asc" }],
   });
 
-  const typeLabel: Record<string, string> = {
-    PROJECTOR: "Projector",
-    SOUND: "Sound",
-    SERVER: "Server",
-    NETWORK: "Network",
-    OTHER: "Other",
-  };
+  // Group by city
+  const byCity = locations.reduce<Record<string, typeof locations>>((acc, loc) => {
+    const key = loc.city ?? "Other";
+    if (!acc[key]) acc[key] = [];
+    acc[key].push(loc);
+    return acc;
+  }, {});
+
+  const regionOrder = ["San Antonio", "Austin", "Dallas", "Richardson", "Denton", "Irving", "Other"];
+  const sortedCities = Object.keys(byCity).sort(
+    (a, b) => regionOrder.indexOf(a) - regionOrder.indexOf(b)
+  );
+
+  // Group DFW cities under one region label
+  const dfwCities = new Set(["Dallas", "Richardson", "Denton", "Irving"]);
+  const regions: { label: string; locations: typeof locations }[] = [];
+  let dfwAdded = false;
+
+  for (const city of sortedCities) {
+    if (dfwCities.has(city)) {
+      if (!dfwAdded) {
+        const dfwLocs = [...dfwCities].flatMap((c) => byCity[c] ?? []);
+        dfwLocs.sort((a, b) => a.name.localeCompare(b.name));
+        regions.push({ label: "Dallas / Fort Worth", locations: dfwLocs });
+        dfwAdded = true;
+      }
+    } else {
+      regions.push({ label: city, locations: byCity[city] });
+    }
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="bg-gray-900 text-white px-6 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <Link href="/portal" className="text-gray-400 hover:text-white text-sm">← Portal</Link>
-          <span className="text-gray-600">/</span>
-          <span className="font-semibold">Locations</span>
-        </div>
-        <div className="flex items-center gap-4">
-          <span className="text-sm text-gray-300 hidden sm:block">{session.user?.email}</span>
-          <SignOutButton />
-        </div>
-      </header>
+      <PortalHeader title="Locations" email={session.user?.email} backHref="/portal" backLabel="Portal" />
 
       <main className="max-w-5xl mx-auto px-6 py-8">
-        <h1 className="text-2xl font-bold text-gray-900 mb-6">Your Locations</h1>
+        {regions.map((region) => (
+          <div key={region.label} className="mb-10">
+            <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">{region.label}</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {region.locations.map((loc) => {
+                const projector = loc.auditoriums[0]?.equipment[0];
+                const brand = projector?.manufacturer ?? null;
+                const brandColor = brand === "Barco" ? "bg-blue-50 text-blue-700" : brand === "Sony" ? "bg-purple-50 text-purple-700" : "bg-gray-100 text-gray-500";
 
-        {locations.length === 0 ? (
-          <div className="bg-white rounded-xl border border-gray-200 p-10 text-center text-gray-500">
-            No locations on file yet. Contact Southwest Cinema Services to get set up.
-          </div>
-        ) : (
-          <div className="flex flex-col gap-6">
-            {locations.map((loc) => (
-              <div key={loc.id} className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-                <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
-                  <div>
-                    <h2 className="font-semibold text-gray-900">{loc.name}</h2>
-                    {loc.address && <p className="text-xs text-gray-400 mt-0.5">{loc.address}</p>}
-                  </div>
-                  <div className="flex items-center gap-4 text-xs text-gray-500">
-                    <span>{loc.equipment.length} equipment items</span>
-                    <span>{loc._count.pmReports} PM reports</span>
-                    {loc.siteId && (
-                      <Link
-                        href={`/portal/health/${loc.siteId}`}
-                        className="text-yellow-600 hover:text-yellow-500 font-medium"
-                      >
-                        Live health →
-                      </Link>
-                    )}
-                  </div>
-                </div>
-
-                {loc.equipment.length > 0 ? (
-                  <div className="divide-y divide-gray-50">
-                    {loc.equipment.map((eq) => (
-                      <div key={eq.id} className="px-6 py-3 flex items-center gap-4">
-                        <span className="text-xs font-medium bg-gray-100 text-gray-600 rounded px-2 py-0.5 w-20 text-center shrink-0">
-                          {typeLabel[eq.type] ?? eq.type}
-                        </span>
-                        <span className="font-medium text-gray-900 text-sm">{eq.name}</span>
-                        {eq.manufacturer && (
-                          <span className="text-xs text-gray-500">{eq.manufacturer}</span>
-                        )}
-                        {eq.model && (
-                          <span className="text-xs text-gray-400">{eq.model}</span>
-                        )}
-                        {eq.serialNumber && (
-                          <span className="text-xs text-gray-400 font-mono ml-auto">S/N {eq.serialNumber}</span>
-                        )}
+                return (
+                  <Link
+                    key={loc.id}
+                    href={`/portal/locations/${loc.id}`}
+                    className="bg-white rounded-xl border border-gray-200 p-5 hover:shadow-md transition-shadow flex flex-col gap-3"
+                  >
+                    <div className="flex items-start justify-between gap-2">
+                      <div>
+                        <h3 className="font-semibold text-gray-900 text-sm leading-tight">
+                          {loc.name.replace("Alamo Drafthouse ", "")}
+                        </h3>
+                        <p className="text-xs text-gray-400 mt-0.5">{loc.city}, {loc.state}</p>
                       </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="px-6 py-4 text-sm text-gray-400">No equipment records on file.</div>
-                )}
-              </div>
-            ))}
+                      {brand && (
+                        <span className={`text-xs font-medium px-2 py-0.5 rounded shrink-0 ${brandColor}`}>
+                          {brand}
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="flex items-center gap-4 text-xs text-gray-500">
+                      <span>{loc._count.auditoriums} screens</span>
+                      {loc._count.serviceRecords > 0 && (
+                        <span>{loc._count.serviceRecords} service records</span>
+                      )}
+                      {loc._count.pmReports > 0 && (
+                        <span>{loc._count.pmReports} PM reports</span>
+                      )}
+                    </div>
+
+                    {loc.siteId && (
+                      <div className="flex items-center gap-1.5 text-xs text-green-600">
+                        <span className="w-1.5 h-1.5 rounded-full bg-green-500 inline-block animate-pulse" />
+                        Live monitoring active
+                      </div>
+                    )}
+                  </Link>
+                );
+              })}
+            </div>
           </div>
-        )}
+        ))}
       </main>
     </div>
   );
