@@ -1,0 +1,5367 @@
+	BARCO-ME-DCP-MIB-ICMP DEFINITIONS ::= BEGIN
+ 
+		IMPORTS
+		    dcRoot
+                FROM BARCO-ME-REG-MIB
+			MODULE-IDENTITY, OBJECT-IDENTITY, OBJECT-TYPE, 
+			Integer32, Unsigned32, NOTIFICATION-TYPE
+				FROM SNMPv2-SMI
+			MODULE-COMPLIANCE, OBJECT-GROUP, NOTIFICATION-GROUP
+				FROM SNMPv2-CONF
+			TEXTUAL-CONVENTION, DisplayString, DateAndTime
+				FROM SNMPv2-TC
+			TRAP-TYPE
+				FROM RFC-1215;
+
+		-- 1.3.6.1.4.1.12612.220.1
+		rootBmeDcModule	MODULE-IDENTITY
+			LAST-UPDATED "201401281231Z"		-- January 28, 2014 at 12:31 GMT
+			ORGANIZATION
+				"Barco - Media and Entertainment - Digital Cinema (BME-DC)"
+			CONTACT-INFO
+				"Contact:	Customer Support
+				Postal:		BARCO Digital Cinema
+							Noordlaan 5           
+							Industriezone
+							B-8520 KUURNE
+							BELGIUM
+				WEB:		http://www.barco.com/digitalcinema/"
+			DESCRIPTION
+				"This is the root for the BARCO Digital Cinema Projectors(DCP)"
+
+			REVISION "201401281231Z"		-- January 28, 2014 at 12:31 GMT
+			DESCRIPTION
+				"Version 2.05 :
+				   - Added RAID disk temperature information"
+			REVISION "201107011414Z"		-- July 01, 2011 at 14:14 GMT
+			DESCRIPTION
+				"Version 2.04 :
+				   - Added new inputs: DVI-4K, IMB, 3G"
+			REVISION "201101020929Z"		-- January 02, 2011 at 09:29 GMT
+			DESCRIPTION
+				"Version 2.03 :
+				   - Added Maintenance Actions List
+				   - Added Error List"
+
+			REVISION "201007190952Z"		-- July 19, 2010 at 09:52 GMT
+			DESCRIPTION
+				"Version 2.02 :
+				   - Added ProjectorServiceMode Oid
+				   - Added 4K values
+				   - Complete v1 traps backward compatibility"
+
+			REVISION "200906140922Z"		-- June 14, 2009 at 09:22 GMT
+			DESCRIPTION
+				"Version 2.01 : Original 1MIB version (Series1-Series2 compatible)"
+				
+			::= { dcRoot 1 }
+
+		-- 1.3.6.1.4.1.12612.220.2
+		rootBmeDcCom	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the root for the BARCO DCP common definitions"
+			::= { dcRoot 2 }
+
+		-- 1.3.6.1.4.1.12612.220.11
+		dcMIBs			OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the root for all specific BARCO DCP MIBs."
+			::= { dcRoot 11 }
+
+		-- 1.3.6.1.4.1.12612.220.11.1
+		rootBmeDcTiMonMIB	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the root for the BARCO-ME-DC-TI-MON-MIB"
+			::= { dcMIBs 1 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.2
+		rootBmeDcProjMonMIB	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION 
+				"This is the root for the BARCO-ME-DC-PROJ-MON-MIB"
+			::= { dcMIBs 2 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.3
+		rootBmeDcDP100MonMIB	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the root for the BARCO-ME-DC-DP100-MON-MIB"
+			::= { dcMIBs 3 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.4
+		rootBmeDcDPS1S2MonMIB	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the root for the BARCO-ME-DC-DPS1S2-MON-MIB"
+			::= { dcMIBs 4 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5
+		rootBmeDcMediaServerMonMIB	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the root for the BARCO-ME-DC-MEDIASERVER-MON-MIB"
+			::= { dcMIBs 5 }
+
+        -- 1.3.6.1.4.1.12612.220.11.6
+        barcoDcpConfsCompliance OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the root for the MIB compliance definitions of all Barco Digital Cinema Projectors configurations"
+            ::= { dcMIBs 6 }
+            
+-- Textual Conventions		
+
+		Diagnosis ::= TEXTUAL-CONVENTION
+			STATUS	current
+			DESCRIPTION
+				"Reports the current value against its limits.
+				normal: 		value between lower and upper limit.
+				tooHigh:		value exceeds upper limit.
+				tooLow:			value below lower limit.
+				nOK:			value is not OK, without any further specification.
+				warningHigh:	value exceeds warning level.
+				warningLow:		value below warning level
+				sensorNotOK:	measurement hardware is not OK"
+			SYNTAX INTEGER
+				{
+				normal(0),
+				tooHigh(1),
+				tooLow(2),
+				nOK(3),
+				warningHigh(4),
+				warningLow(5),
+				sensorNotOK(6)				
+				}
+
+
+		TemperatureValue ::= TEXTUAL-CONVENTION
+			STATUS	current
+			DESCRIPTION
+				"Reports the temperature boundary value validity.
+				notApplicable: boundary is not applicable for this temperature."
+			SYNTAX Integer32
+				{
+				notApplicable(255)
+				}
+
+
+		VoltageValue ::= TEXTUAL-CONVENTION
+			STATUS	current
+			DESCRIPTION
+				"Reports the voltage boundary value validity.
+				notApplicable: boundary is not applicable for this voltage."
+			SYNTAX Integer32
+				{
+				notApplicable(65535)
+				}
+
+
+		FanSpeedValue ::= TEXTUAL-CONVENTION
+			STATUS	current
+			DESCRIPTION
+				"Reports the fanspeed boundary value validity.
+				notApplicable: boundary is not applicable for this fanspeed."
+			SYNTAX Integer32
+				{
+				notApplicable(65535)
+				}
+
+		TiImageFormat ::= TEXTUAL-CONVENTION
+			STATUS	current
+			DESCRIPTION
+				"Reports the current image format as applied by TI electronics.
+				notApplicable: image format information is not applicable for this property."
+			SYNTAX Integer32
+				{
+				notApplicable(65535)
+				}                
+
+-- Properties
+
+		-- 1.3.6.1.4.1.12612.220.2.2
+		properties	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the general oid for the common properties."
+			::= { rootBmeDcCom 2 }
+
+
+		-- 1.3.6.1.4.1.12612.220.2.2.1
+		eventSeverity	OBJECT-TYPE
+			SYNTAX INTEGER
+				{
+				sevCritical(1),
+				sevMajor(2),
+				sevMinor(3),
+				sevWarning(4),
+				sevInfo(5)
+				}
+			UNITS "enumeration"
+			MAX-ACCESS	accessible-for-notify
+			STATUS	current
+			DESCRIPTION
+				"The classification of the events by severity levels.
+				sevCritical: 	Indicating a serious failure and possible non-function of the device.
+				sevMajor:		Indicating a problem with possible degradation of function.
+				sevMinor:		Indicating a problem without degradation of function.
+				sevWarning:		Indicating a potential problem that is not a real error condition.
+				sevInfo:		Informational message without any alarm condition.
+				This severity will be part of every event message."
+			::= { properties 1 }
+
+
+		-- 1.3.6.1.4.1.12612.220.2.2.2
+		eventDescription	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	accessible-for-notify
+			STATUS	current
+			DESCRIPTION
+				"An event description with the following format:
+				'Severity level: event description'
+				e.g. 'Critical: Temp. DMD Red too high'"
+			::= { properties 2 }
+
+
+		-- 1.3.6.1.4.1.12612.220.2.2.3
+		eventDetail	OBJECT-TYPE
+			SYNTAX OBJECT IDENTIFIER
+			MAX-ACCESS	accessible-for-notify
+			STATUS	current
+			DESCRIPTION
+				"Further event information can be acquired by specified OID"
+			::= { properties 3 }
+
+
+-- Group definitions
+
+		-- 1.3.6.1.4.1.12612.220.2.3
+		comGroups	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the general oid for the groups."
+			::= { rootBmeDcCom 3 }
+
+		-- 1.3.6.1.4.1.12612.220.2.3.1
+		comCommonGroup	OBJECT-GROUP
+			OBJECTS { eventSeverity, eventDescription }
+			STATUS	current
+			DESCRIPTION
+				"Common parameters to describe an event."
+			::= { comGroups 1 }
+
+		-- 1.3.6.1.4.1.12612.220.2.3.2
+		comExtendedGroup	OBJECT-GROUP
+			OBJECTS { eventDetail }
+			STATUS	current
+			DESCRIPTION
+				"Extended parameters to describe an event."
+			::= { comGroups 2 }
+            
+-- END OF BARCO-ME-DC-COM mib
+
+
+		-- 1.3.6.1.4.1.12612.220.11.1.1
+		bmedcTiMonModule	OBJECT-IDENTITY 
+			STATUS	current
+			DESCRIPTION
+				"This is the former module identifiaction item which is now in the common declaration."
+			::= { rootBmeDcTiMonMIB 1 }
+
+
+-- Properties to monitor
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2
+		tiProp2Monitor	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the general oid for the properties to monitor."
+			::= { rootBmeDcTiMonMIB 2 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.1
+		tiTemperatures OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the general oid for the temperatures."
+			::= { tiProp2Monitor 1 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.1.1
+		tiTempInterfaceBoard	OBJECT-TYPE
+			SYNTAX	Integer32
+			UNITS	"degrees Celsius"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the 'Interface board' temperature."
+			::= { tiTemperatures 1 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.2
+		inputSelection	OBJECT-TYPE
+			SYNTAX INTEGER
+				{
+				autoSelect(0),
+				sMPTE292A(1),
+				sMPTE292B(2),
+				sMPTE292Dual(3),
+				dVIAeDID(4),
+				dVIA(5),
+				dVIB(6),
+				dVIDualTwin(7)
+				}
+			UNITS	"enumeration"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"The status of the input selection.
+				autoSelect:
+				 The system will monitor the ports, and select the port 
+				 that has an active input. For the case where more than one
+				 of these ports has an active signal present,
+				 the system will select based on next priority:
+				 1)DVI-A, 2) DVI-B, 3) 292-A, 4) 292-B   
+				sMPTE292A: 		SMPTE 292-A
+				sMPTE292B: 		SMPTE 292-B
+				sMPTE292Dual:   SMPTE 292-Dual
+				dVIAeDID:		DVI-EDID
+				dVIA:			DVI-A
+				dVIB:			DVI-B
+				dVIDualTwin:	DVI-Dual/Twin"
+			::= { tiProp2Monitor 2 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.3
+		testPatterns	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the general oid for test patterns."
+			::= { tiProp2Monitor 3 }
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.3.1
+		testPatternMode OBJECT-TYPE
+			SYNTAX INTEGER
+				{
+				off(0),
+				onNewReplace(1),
+				onNewOverlay(2),
+				alternating(17),
+				fullScreenGreen(32),
+				fullScreenRed(33),
+				fullScreenBlue(34),
+				fullScreenWhite(35),
+				fullScreenBlack(36)
+				}
+			UNITS "enumeration"
+			MAX-ACCESS read-only
+			STATUS current
+			DESCRIPTION
+				"This object states the testpattern mode as follows:
+				0x00	Test Patterns Off  (default)
+				0x01	TGA Test Patterns On (New/Replace)
+				0x02	TGA Test Patterns On (New/Overlay)
+				0x11	Built-in Alternating Test Pattern On - Checkerboard
+				0x20	Full Screen Green - Uncorrected
+				0x21	Full Screen Red - Uncorrected
+				0x22	Full Screen Blue - Uncorrected
+				0x23	Full Screen White - Uncorrected
+				0x24	Full Screen Black - Uncorrected
+                Important remark: ONLY FOR DP90/DP100/DP3000 "
+			::= { testPatterns 1 }
+
+		
+		-- 1.3.6.1.4.1.12612.220.11.1.2.3.2
+		testPatternSelection OBJECT-TYPE
+			SYNTAX DisplayString
+			MAX-ACCESS read-only
+			STATUS current
+			DESCRIPTION
+				"Indicates the active testpattern in case of testPatternMode 1 or 2
+				
+				The TI provided test patterns use the following naming convention:
+				[1]-[2]-[3].tga
+				
+				Where:
+				[1] = RGB
+				[2] = 12bit
+				[3] = 'name of test pattern'
+				
+				Example: RGB-12bit-Color Bars.tga
+                Important remark: ONLY FOR DP90/DP100/DP3000 "
+			::= { testPatterns 2 }
+            
+		-- 1.3.6.1.4.1.12612.220.11.1.2.3.3
+		testPatternName	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"Indicates the name of the active testpattern
+                 Important remark: NOT FOR DP90/DP100/DP3000 !"
+
+			::= { testPatterns 3 }
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.5
+		imageFormat OBJECT-IDENTITY
+			STATUS current
+			DESCRIPTION 
+				"This is the general oid for image format properties.
+                 Important remark: ONLY FOR DP90/DP100/DP3000 "
+			::= { tiProp2Monitor 5 }
+		
+		                                  
+		-- 1.3.6.1.4.1.12612.220.11.1.2.5.1
+		imageWidth OBJECT-TYPE
+			SYNTAX Integer32
+			UNITS "pixels"
+			MAX-ACCESS read-only
+			STATUS current
+			DESCRIPTION
+				"Indicates the width of the image of interest that is 
+				to be captured from the active data of the input data stream.
+                Important remark: ONLY FOR DP90/DP100/DP3000 "
+			::= { imageFormat 1 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.5.2
+		imageHeight OBJECT-TYPE
+			SYNTAX Integer32
+			UNITS "pixels"
+			MAX-ACCESS read-only
+			STATUS current
+			DESCRIPTION
+				"Indicates the height of the image of interest that is 
+				to be captured from the active data of the input data stream.
+                Important remark: ONLY FOR DP90/DP100/DP3000 "
+			::= { imageFormat 2 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.5.3
+		imageAspectRatio OBJECT-TYPE
+			SYNTAX Integer32
+			MAX-ACCESS read-only
+			STATUS current
+			DESCRIPTION
+				"Indicates the aspect ratio of the image of interest that is 
+				to be captured from the active data of the input data stream.
+				The aspect ratio has been multiplied by 100 in order to avoid a
+				floating point value.
+				in practice: 	0 	Automatic (Square Pixels)
+								125 (5:4)
+								133 (4:3)
+								150 (3:2)
+								177	(16:9 HDTV)
+								185	(Flat)
+								239 (Scope)
+                Important remark: ONLY FOR DP90/DP100/DP3000 "
+			::= { imageFormat 3 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.6
+		processingPath OBJECT-TYPE
+			SYNTAX INTEGER
+				{
+				cinemaProcessingDefault(0),
+				nonCinema(1),
+				cinemaProcessing(2)
+				}
+			UNITS "enumeration"
+			MAX-ACCESS read-only
+			STATUS current
+			DESCRIPTION
+				"0x00	Cinema Processing  (default)
+				 0x01	Non Cinema Processing
+				 0x02	Cinema Processing
+				Note: In a future release, it is expected that 0x02 
+				will become Auto-Select, a function that will automatically 
+				select the appropriate processing path.
+                Important remark: ONLY FOR DP90/DP100/DP3000 "
+			::= { tiProp2Monitor 6 }
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.7
+		imageOutput OBJECT-IDENTITY
+			STATUS current
+			DESCRIPTION 
+				"This is the general oid for image output properties."
+			::= { tiProp2Monitor 7 }
+		
+		                                  
+		-- 1.3.6.1.4.1.12612.220.11.1.2.7.1
+		anamorphicFactor OBJECT-TYPE
+			SYNTAX Integer32
+			MAX-ACCESS read-only
+			STATUS current
+			DESCRIPTION
+				"Indicates the anamorphic factor of the projection lens. (ex. 1.5)
+				This factor has been multiplied by 100 in order to avoid a
+				floating point value.
+				Important remark: ONLY FOR DP90/DP100/DP3000 "
+			::= { imageOutput 1 }
+            
+		-- 1.3.6.1.4.1.12612.220.11.1.2.8
+		dmdNativeSize	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the general oid for the native DMD properties."
+			::= { tiProp2Monitor 8 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.8.1
+		dmdWidth	OBJECT-TYPE
+			SYNTAX	Integer32
+			UNITS	"pixels"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"Indicates the width of the DMD."
+			::= { dmdNativeSize 1 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.8.2
+		dmdHeight	OBJECT-TYPE
+			SYNTAX	Integer32
+			UNITS	"pixels"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"Indicates the height of the DMD."
+			::= { dmdNativeSize 2 }
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.9
+   		dp100TiVersionTable OBJECT-TYPE
+    		SYNTAX SEQUENCE OF DP100TIVersionEntry
+    		MAX-ACCESS  not-accessible
+    		STATUS      current
+    		DESCRIPTION
+            	"A table with all software and firmware versions.
+                Important remark: ONLY FOR DP90/DP100/DP3000 "
+            ::= { tiProp2Monitor 9 }
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.9.1
+		dp100TiVersionEntry OBJECT-TYPE
+		    SYNTAX      DP100TIVersionEntry
+		    MAX-ACCESS  not-accessible
+		    STATUS      current
+		    DESCRIPTION
+		        "An entry with version info for a specific software or firmware component.
+                Important remark: ONLY FOR DP90/DP100/DP3000 "
+		    INDEX   { dp100TiVersionIndex }
+		    ::= { dp100TiVersionTable 1 }
+
+		DP100TIVersionEntry ::=
+		    SEQUENCE {
+		        dp100TiVersionIndex     	Integer32,
+		        dp100TiVersionNumber		OCTET STRING
+		    }
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.9.1.1
+		dp100TiVersionIndex OBJECT-TYPE
+		    SYNTAX      Integer32 (0..65535)
+		    MAX-ACCESS  not-accessible
+		    STATUS      current
+		    DESCRIPTION
+		        "Indentifies the software or firmware component.
+				0x00 Interface Board : ARM Boot Application Version
+				0x01 Interface Board : ARM Main Application Version
+				0x03 Interface Board : FPGA Version
+				0x04 Interface Board : PIC Version
+				0x10 Processor Board : DSP Boot Application Version
+				0x11 Processor Board : DSP Main Application Version
+				0x12 Processor Board : DSP Diagnostic Application Version
+				0x13 Processor Board : FPGA Version
+				0x20 E2 Formatter Board : Hitachi Version
+				0x21 E2 Formatter Board : FPGA Version
+				0x22 E2 Formatter Board : PROM Version
+				0x30 Formatter Interface Board : TI Main Application Code Version
+				0x31 Formatter Interface Board : TI FPGA Code Version
+				0x32 Formatter Interface Board : TI Boot Application Code Version
+				0x34 Formatter Interface Board : OEM De-gamma Table Version
+				0x35 Formatter Interface Board : TI Sequence Data Version
+				0x40 Red Modular Formatter Board : TI Boot Application Version
+				0x41 Red Modular Formatter Board : TI Configuration Version
+				0x42 Red Modular Formatter Board : De-gamma Version
+				0x43 Red Modular Formatter Board : TI Main Application Version
+				0x44 Red Modular Formatter Board : TI Sequence Version
+				0x45 Green Modular Formatter Board : TI Boot Application Version
+				0x46 Green Modular Formatter Board : TI Configuration Version
+				0x47 Green Modular Formatter Board : De-gamma Version
+				0x48 Green Modular Formatter Board : TI Main Application Version
+				0x49 Green Modular Formatter Board : TI Sequence Version
+				0x4a Blue Modular Formatter Board : TI Boot Application Version
+				0x4b Blue Modular Formatter Board : TI Configuration Version
+				0x4c Blue Modular Formatter Board : De-gamma Version
+				0x4d Blue Modular Formatter Board : TI Main Application Version
+				0x4e Blue Modular Formatter Board : TI Sequence Version
+                Important remark: ONLY FOR DP90/DP100/DP3000 "
+		    ::= { dp100TiVersionEntry 1 }
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.9.1.2
+		dp100TiVersionNumber OBJECT-TYPE
+		    SYNTAX      OCTET STRING (SIZE (4))
+		    MAX-ACCESS  read-only
+		    STATUS      current
+		    DESCRIPTION
+		        "Specifies the version number of the software or firmware component.
+					1	Major 
+					2	Minor
+					3	Build (msb)
+					4	Build (lsb)
+					Version information will be of the form Major.Minor (Build)
+					e.g. 1.08 (24) ~> Major 1 Minor 8 and build 24
+				In case the build octets equal zero then you should leave them
+				out of consideration.
+                Important remark: ONLY FOR DP90/DP100/DP3000 "
+		    ::= { dp100TiVersionEntry 2 }
+            
+		-- 1.3.6.1.4.1.12612.220.11.1.2.11
+		tiSystemStatus	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the general oid for the system states."
+			::= { tiProp2Monitor 11 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.11.1
+		s1SummaryStatus	OBJECT-TYPE
+			SYNTAX  BITS	{
+                            unused0(0),
+                            unused1(1),    
+							procBoardFPGALoadFail(2),
+							intBoardFPGALoadFail(3),
+							dSPFail(4),
+							aRMFail(5),
+							powerUpSelfTestFail(6),
+							systemFail(7)
+							}
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"Indicates the series1 summary state.
+				procBoardFPGALoadFail:	Processor Board FPGA Load Fail
+				intBoardFPGALoadFail:	Interface Board FPGA Load Fail
+				dSPFail:				DSP Fail
+				aRMFail:				ARM Fail
+				powerUpSelfTestFail:	Power-up Self Test Fail
+				systemFail:				SystemFail
+                
+                note: Value 0 (no bits set) means no error.
+                
+                remark: All Series1 projectors only"
+                
+			::= { tiSystemStatus 1 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.11.2
+		interfaceBoardStatus	OBJECT-TYPE
+			SYNTAX  BITS	{
+                            unused0(0),
+                            unused1(1),            
+							fPGARegWriteReadFail(2),
+							fPGADoneFail(3),
+							fPGANoLoadJumperNotInstalledFail(4),
+							fPGAInitzFail(5),
+							fPGACodeNotValid(6),
+							diagnosticsNotPerformed(7),
+							flashProtectionFail(8),
+							formatterBoardFail(9),
+							fileSystemFail(10),
+							synchronousSerialPortFail(11),
+							ethernetFail(12),
+							i2CFail(13),
+							uART1Fail(14),
+							uART0Fail(15) 
+							}
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"Indicates the detailed status of the series1 interface board.
+				fPGARegWriteReadFail:				FPGA Register Write/Read Fail
+				fPGADoneFail:						FPGA Done Fail
+				fPGANoLoadJumperNotInstalledFail:	FPGA No Load Jumper Not Installed Fail
+				fPGAInitzFail:						FPGA INITZ Fail
+				fPGACodeNotValid:					FPGA Code Not Valid
+				diagnosticsNotPerformed:			Diagnostic Not Performed
+				flashProtectionFail:				Flash Protection Fail
+				formatterBoardFail:					Formatter Board Fail
+				fileSystemFail:						File System Fail
+				synchronousSerialPortFail:			Synchronous Serial Port Fail
+				ethernetFail:						Ethernet Fail
+				i2CFail:							I2C Fail
+				uART1Fail:							UART 1 Fail
+				uART0Fail:							UART 0 Fail
+
+                note: Value 0 (no bits set) means no error.
+                
+                remark: All Series1 projectors only"
+                
+			::= { tiSystemStatus 2 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.11.3
+		processorBoardStatus	OBJECT-TYPE
+			SYNTAX  BITS	{
+                            unused0(0),
+                            unused1(1),    
+							fPGARegWriteReadFail(2),
+							fPGADoneFail(3),
+							mcBSPXRDYFail(4),
+							fPGAInitzFail(5),
+							fPGACodeNotValid(6),
+							diagnosticsNotPerformed(7),
+							flashProtectionFail(8),
+							resizerFIFOChipFail(9),
+							resizerFIRChipFail(10),
+							overlayFramestoreSDRAMFail(11),
+							cLUTSRAMFail(12),
+							serialIDChipFail(13)
+							}
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"Indicates the detailed status of the series1 processor board.
+				fPGARegWriteReadFail:				FPGA Register Write/Read Fail
+				fPGADoneFail:						FPGA Done Fail
+				mcBSPXRDYFail:						McBSP XRDY
+				fPGAInitzFail:						FPGA INITZ Fail
+				fPGACodeNotValid:					FPGA Code Not Valid
+				diagnosticsNotPerformed:			Diagnostic Not Performed
+				flashProtectionFail:				Flash Protection Fail
+				resizerFIFOChipFail:				Resizer FIFO Chip Fail
+				resizerFIRChipFail:					Resizer FIR Chip Fail
+				overlayFramestoreSDRAMFail:			Overlay Framestore SDRAM Fail
+				cLUTSRAMFail:						CLUT SRAM Fail
+				serialIDChipFail:					Serial ID Chip Fail
+
+                note: Value 0 (no bits set) means no error.
+                
+                remark: All Series1 projectors only"
+                
+			::= { tiSystemStatus 3 }
+                                    
+                                    
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.11.4
+		s2GeneralStatus OBJECT-TYPE
+			SYNTAX BITS
+			    {
+			    reserved0(0),
+			    reserved1(1),
+			    reserved2(2),
+			    reserved3(3),
+				loadReleasePackageError(4),
+				installReleasePackageError(5),
+				seltTestError(6),
+                systemError(7)
+				}
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the TI series2 general status.
+				Possible values:
+				- systemError
+				- seltTestError
+				- installReleasePackageError
+				- loadReleasePackageError
+				
+                Note: Value 0 (no bits set) means no error."
+            ::= { tiSystemStatus 4 }
+
+                           
+		-- 1.3.6.1.4.1.12612.220.11.1.2.12
+		tiPackageVersion	OBJECT-TYPE
+			SYNTAX OCTET STRING (SIZE (14))
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the package version number representing the 
+				TI software and firmware for this projector.
+				The version number complies with the following format:
+					Major.Minor.Build
+				In case the build octets equal zero, then you should leave them
+				out of consideration."
+			::= { tiProp2Monitor 12 }
+                              
+		-- 1.3.6.1.4.1.12612.220.11.1.2.13
+		versionS2Table	OBJECT-TYPE
+			SYNTAX SEQUENCE OF	VersionS2Entry
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"A table with all series2 software and firmware versions."
+			::= { tiProp2Monitor 13 }
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.13.1
+		versionS2Entry	OBJECT-TYPE
+			SYNTAX	VersionS2Entry
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"An entry with version info for a specific software or firmware component."
+			INDEX	{ versionIndexS2 }
+			::= { versionS2Table 1 }
+
+		VersionS2Entry ::=
+			SEQUENCE {
+				versionIndexS2	Unsigned32,
+				versionNameS2   DisplayString,
+				versionNumberS2	DisplayString
+			}
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.13.1.1
+		versionIndexS2	OBJECT-TYPE
+			SYNTAX	Unsigned32 (0..65535)
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"Indentifies the software or firmware component."
+			::= { versionS2Entry 1 }
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.13.1.2
+		versionNameS2	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"Name related to the software version."
+			::= { versionS2Entry 2 }
+			
+		-- 1.3.6.1.4.1.12612.220.11.1.2.13.1.3
+		versionNumberS2	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"Specifies the version number of the software or firmware component.
+				 Version information will be of the form 
+				    Major.Minor (Build)
+				 e.g. 1.08 (24) ~> Major 1 Minor 8 and build 24
+				 In case the build octets equal zero then you should leave them
+				 out of consideration."
+			::= { versionS2Entry 3 }
+ 
+ 
+ 		-- 1.3.6.1.4.1.12612.220.11.1.2.14
+		s1SystemConfiguration	OBJECT-IDENTITY
+			STATUS 	current
+			DESCRIPTION
+				"This is the general oid for the Series1 System configuration."
+			::= { tiProp2Monitor 14 }
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.14.1
+		interfaceBoardType	OBJECT-TYPE
+			SYNTAX INTEGER
+				{
+				series0(0),
+				series1(1),
+				series1Gennum(2),
+				series1TPME(3),
+				series1HDCPena(4),
+				series1HDCPenaSecur(5),
+				series1DVIsecur(6)
+				}
+			UNITS	"enumeration"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+			"The TI interface board type:
+			   series0              = Series 0
+			   series1              = Series 1
+			   series1-Gennum       = Series 1 (Gennum-based SMPTE292 deserializer)
+			   series1-TPME         = Series 1 (Trusted Platform Module Enabled)
+			   series1-HDCPena      = Series 1 (HDCP Enabled)
+			   series1-HDCPenaSecur = Series 1 (HDCP Enabled w/ Security Enclosure)
+			   series1-DVIsecur     = Series 1 (DVI w/ Security Enclosure)
+			"
+			::= { s1SystemConfiguration 1 }   
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.14.2
+		processorBoardType	OBJECT-TYPE
+			SYNTAX INTEGER
+				{
+				series0(0),
+				series1(1)
+				}
+			UNITS	"enumeration"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"The TI processor board type"
+			::= { s1SystemConfiguration 2 } 
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.14.3
+		formatterInterfaceBoardType	OBJECT-TYPE
+			SYNTAX INTEGER
+				{
+				none(0),
+				fib(1),
+				efib(2),
+				ffib(3)
+				}
+			UNITS	"enumeration"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"The TI formatter interface board type:
+				   None (E2 Formatter)
+				   FIB
+				   EFIB
+				   FFIB
+				"
+			::= { s1SystemConfiguration 3 }   
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.14.4
+		formatterBoardType	OBJECT-TYPE
+			SYNTAX INTEGER
+				{
+				formatterE2(0),
+				ddp1000(1),
+				ddp1010(2),
+				ddp1011(3),
+				lx25-LvdsSatBoard(4),
+				lx25-DdrSatBoard(5)
+				}
+			UNITS	"enumeration"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"The TI formatter boards type:
+				 formatterE2      = E2 Formatter
+				 ddp1000          = DDP1000 Based Modular Formatter
+				 ddp1010          = DDP1010 Based Modular Formatter
+				 ddp1011          = DDP1011 Based Modular Formatter
+				 lx25-LvdsSatBoard = LX25/RLDRAM based LVDS Satellite Boards
+				 lx25-DdrSatBoard  = LX25/RLDRAM based DDR  Satellite Boards
+				"
+			::= { s1SystemConfiguration 4 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.14.5
+		dmdType	OBJECT-TYPE
+			SYNTAX INTEGER
+				{
+				  dc2K-1-2-DDR(0),
+				  sxga-0-9-DDR(1),
+				  dc2K-0-98-2xLVDS(7),
+				  sxga-1-1-DDR(8)
+				}
+			UNITS	"enumeration"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"The DMD type:      
+				  dc2K-1-2-DDR     = 2K DigitalCinema 1.20 inch DMD (DDR)
+				  sxga-0-9-DDR     = SXGA 0.9 inch DMD (DDR)   
+				  dc2K-0-98-2xLVDS = 2K DigitalCinema 0.98 inch DMD (2xLVDS)
+				  sxga-1-1-DDR     = SXGA 1.1 inch DMD (DDR)
+                "
+			::= { s1SystemConfiguration 5 }
+
+ 		-- 1.3.6.1.4.1.12612.220.11.1.2.15
+		s2SytemConfiguration	OBJECT-IDENTITY
+			STATUS 	current
+			DESCRIPTION
+				"This is the general oid for the Series2 System configuration."
+			::= { tiProp2Monitor 15 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.15.1
+		s2BoardTypeICP	OBJECT-TYPE
+			SYNTAX INTEGER
+				{
+				dc2Kseries2ICP10(64),
+				dc2K4Kseries2ICP10(65),
+				dc2K4Kseries2ICP15(66)
+				}
+			UNITS	"enumeration"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"The ICP board type:
+				 dc2Kseries2ICP10   = Series2 ICP Board 2K-only  hardware version 1.0 (8MB FMT Flash)
+				 dc2K4Kseries2ICP10 = Series2 ICP Board 4K-Ready hardware version 1.0 (16MB FMT Flash)
+				 dc2K4Kseries2ICP15 = Series2 ICP Board 4K-Ready hardware version 1.5 (16MB FMT Flash) "
+
+			::= { s2SytemConfiguration 1 }   
+			
+		-- 1.3.6.1.4.1.12612.220.11.1.2.15.2
+		s2RedSatelliteType	OBJECT-TYPE
+			SYNTAX INTEGER
+				{
+				lvdsX2(16),
+				ddr2K(32),
+				ddr4K(64)
+				}
+			UNITS	"enumeration"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"The Red Satellite type:
+				 lvdsX2 = 2xLVDS satellite
+				 ddr2K  = 2K DDR satellite
+				 ddr4K  = 2K DDR satellite"
+			::= { s2SytemConfiguration 2 }
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.15.3
+		s2GreenSatelliteType	OBJECT-TYPE
+			SYNTAX INTEGER
+				{
+				lvdsX2(1),
+				ddr2K(2),
+				ddr4K(4)
+				}
+			UNITS	"enumeration"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"The Green Satellite type:
+				 lvdsX2 = 2xLVDS satellite
+				 ddr2K  = 2K DDR satellite
+				 ddr4K  = 2K DDR satellite"
+			::= { s2SytemConfiguration 3 }
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.15.4
+		s2BlueSatelliteType	OBJECT-TYPE
+			SYNTAX INTEGER
+				{
+				lvdsX2(1),
+				ddr2K(2),
+				ddr4K(4)
+				}
+			UNITS	"enumeration"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"The Blue Satellite type:
+				 lvdsX2 = 2xLVDS satellite
+				 ddr2K  = 2K DDR satellite
+				 ddr4K  = 2K DDR satellite"
+			::= { s2SytemConfiguration 4 }
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.15.5
+		s2DmdType	OBJECT-TYPE
+			SYNTAX INTEGER
+				{
+				dc2K098(0),
+				dc2K120(1),
+				dc4K138(2)
+				}
+			UNITS	"enumeration"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"The DMDs type:
+				 dc2K098 = 2K DigitalCinema 0.98 inch DMD (2xLVDS)
+				 dc2K120 = 2K DigitalCinema 1.20 inch DMD (DDR)
+				 dc4K138 = 4K DigitalCinema 1.38 inch DMD (DDR)"
+			::= { s2SytemConfiguration 5 }
+ 
+		-- 1.3.6.1.4.1.12612.220.11.2.16
+		tiSerialNumber	OBJECT-TYPE
+			SYNTAX OCTET STRING (SIZE (10))
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the TI serial number :
+				 - InterfaceBoard serial number (Series1)
+				 - ICP Board serial number      (Series2)"
+			::= { tiProp2Monitor 16 }
+ 
+		-- 1.3.6.1.4.1.12612.220.11.1.2.17
+		certificateTable	OBJECT-TYPE
+			SYNTAX SEQUENCE OF CertificateEntry
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"A table with all series2 certificates."
+			::= { tiProp2Monitor 17 }
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.17.1
+		certificateEntry	OBJECT-TYPE
+			SYNTAX	CertificateEntry
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"An entry with version info for a specific software or firmware component."
+			INDEX	{ certificateIndex }
+			::= { certificateTable 1 }
+
+		CertificateEntry ::=
+			SEQUENCE {
+				certificateIndex    Unsigned32,
+				certificateName     DisplayString,
+				certificateNumber   OCTET STRING
+			}
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.17.1.1
+		certificateIndex	OBJECT-TYPE
+			SYNTAX	Unsigned32 (0..10)
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"cerficate index"
+			::= { certificateEntry 1 }
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.17.1.2
+		certificateName	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"Name of the retrieved certificate."
+			::= { certificateEntry 2 }
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.17.1.3
+		certificateNumber	OBJECT-TYPE
+			SYNTAX	OCTET STRING (SIZE (4096))
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"Specifies the certificate number itself."
+			::= { certificateEntry 3 }
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.18
+		enigmaVersion	OBJECT-TYPE
+			SYNTAX  DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the Enigma version number."
+			::= { tiProp2Monitor 18 }
+
+		-- 1.3.6.1.4.1.12612.220.11.1.2.19
+		enigmaSerialNumber	OBJECT-TYPE
+			SYNTAX OCTET STRING (SIZE (10))
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the TI Link Decryptor (Enigma) serial number"
+			::= { tiProp2Monitor 19 }
+
+-- Notifications
+
+		-- 1.3.6.1.4.1.12612.220.11.1.3
+		barcoMeDcTiNotifications	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION 
+				"This is the general oid for BME-DC TI notifications."
+			::= { rootBmeDcTiMonMIB 3 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.1.3.0
+		tiNotificationPrefix	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION 
+				"This is the prefix used to have easy event mapping
+				between notification oid values (SNMPv2 and SNMPv3) and
+				specific trap numbers (SNMPv1). "
+			::= { barcoMeDcTiNotifications 0 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.1.3.0.1
+		tiSystemFail	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a critical severity and is sent the moment of detecting 
+				a failure in the summary status.
+				The trap will be resent every time the projector is switched on."
+			::= { tiNotificationPrefix 1 }
+
+-- Trap defines
+-- In order to be backwards compatible, also SNMPv1 traps are foreseen.
+
+		trapTiSystemFail	TRAP-TYPE
+			ENTERPRISE	tiSystemFail
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a critical severity and is sent the moment of detecting
+				a failure in the summary status.
+				The trap will be resent every time the projector is switched on."
+			REFERENCE	"[specific-trap]"
+			::= 1
+
+
+-- Group definitions
+		-- 1.3.6.1.4.1.12612.220.11.1.4
+		tiGroups	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the general oid for the groups."
+			::= { rootBmeDcTiMonMIB 4 }
+
+		-- 1.3.6.1.4.1.12612.220.11.1.4.1
+		tiDp100SpecificGroup	OBJECT-GROUP
+			OBJECTS	{ testPatternMode, testPatternSelection, processingPath, dp100TiVersionNumber, 
+                      imageWidth, imageHeight, imageAspectRatio, anamorphicFactor } 
+			STATUS	current
+			DESCRIPTION
+				"A collection of all properties specific to DP90/DP100/DP3000 projectors."
+			::= { tiGroups 1 }
+            
+		-- 1.3.6.1.4.1.12612.220.11.1.4.2
+		tiS1CommonGroup	OBJECT-GROUP
+			OBJECTS	{ inputSelection, tiTempInterfaceBoard, s1SummaryStatus, interfaceBoardStatus, processorBoardStatus }      
+			STATUS	current
+			DESCRIPTION
+				"A collection of common Series1 specific TI properties."
+			::= { tiGroups 2 }
+
+		-- 1.3.6.1.4.1.12612.220.11.1.4.3
+		tiCommonTestPatternGroup	OBJECT-GROUP
+			OBJECTS	{ testPatternName }
+			STATUS	current
+			DESCRIPTION 
+				"Common test pattern properties."
+			::= { tiGroups 3 }
+
+		-- 1.3.6.1.4.1.12612.220.11.1.4.4
+		tiDmdNativeSizeGroup	OBJECT-GROUP
+			OBJECTS	{ dmdWidth, dmdHeight }
+			STATUS	current
+			DESCRIPTION 
+				"A collection of DMD native size properties."
+			::= { tiGroups 4 }
+
+		-- 1.3.6.1.4.1.12612.220.11.1.4.5
+		tiSystemIdentificationGroup	OBJECT-GROUP
+			OBJECTS	{ tiPackageVersion, tiSerialNumber, certificateName, certificateNumber }
+			STATUS	current
+			DESCRIPTION
+				"A collection of system identifications."
+			::= { tiGroups 5 }
+
+		-- 1.3.6.1.4.1.12612.220.11.1.4.6            
+        tiS1ConfigGroup	OBJECT-GROUP
+            OBJECTS	{ interfaceBoardType, processorBoardType, formatterInterfaceBoardType, 
+                      formatterBoardType, dmdType }
+			STATUS	current
+			DESCRIPTION
+				"A collection of Series1 specific configuration items."
+			::= { tiGroups 6 }
+
+		-- 1.3.6.1.4.1.12612.220.11.1.4.7
+        tiS2ConfigGroup	OBJECT-GROUP
+			OBJECTS { enigmaVersion, enigmaSerialNumber, versionNumberS2, versionNameS2, s2DmdType, s2BoardTypeICP, 
+			          s2RedSatelliteType, s2GreenSatelliteType, s2BlueSatelliteType, s2GeneralStatus  }
+			STATUS	current
+			DESCRIPTION
+				"A collection of Series2 specific configuration items."
+			::= { tiGroups 7 }
+
+		-- 1.3.6.1.4.1.12612.220.11.1.4.8
+		tiNotificationGroup	NOTIFICATION-GROUP
+			NOTIFICATIONS	{ tiSystemFail }
+			STATUS	current
+			DESCRIPTION
+				"The notifications of events relating to TI."
+			::= { tiGroups 8 }
+
+		-- 1.3.6.1.4.1.12612.220.11.1.4.9
+		tiTrapGroup	NOTIFICATION-GROUP
+			NOTIFICATIONS	{ trapTiSystemFail }
+			STATUS	current
+			DESCRIPTION
+				"The traps for events relating to TI."
+			::= { tiGroups 9 }
+           
+-- END OF BARCO-ME-DC-TI-MON-MIB mib
+
+		-- 1.3.6.1.4.1.12612.220.11.2.1
+		bmedcProjMonModule OBJECT-IDENTITY
+            STATUS	current
+			DESCRIPTION 
+				"This is the former module identifiaction item which is now in the common declaration."
+			::= { rootBmeDcProjMonMIB 1 }
+
+
+-- Properties to monitor
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2
+		projProp2Monitor	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the general oid for the properties to monitor."
+			::= { rootBmeDcProjMonMIB 2 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.1
+		projSerialNumber	OBJECT-TYPE
+			SYNTAX OCTET STRING (SIZE (10))
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the serial number of the projector."
+			::= { projProp2Monitor 1 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.2
+		status OBJECT-TYPE
+			SYNTAX BITS 
+			    {
+                unused(0),                
+                lampOn(1),
+                alternativeContent(2),
+                videoMute(5),
+                text(6),
+				on(7)
+				}
+			MAX-ACCESS read-only
+			STATUS current
+			DESCRIPTION
+				"This is the projector (system) status.
+				lampOn:				Lamp on (only valid if proj. on)
+				alternativeContent: Alternative content (only valid if proj. on)
+				videoMute:			Video mute on (only valid if proj. on)
+				text:           	Text on (only valid if proj. on)
+				on: 				Projector on
+                
+                Important remark: ONLY FOR DP90/DP100/DP3000 "
+			::= { projProp2Monitor 2 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.3
+		projRunTime			OBJECT-TYPE
+			SYNTAX	Unsigned32 
+			UNITS	"hours"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the projector runtime."
+			::= { projProp2Monitor 3 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.4
+		lampProperties	OBJECT-IDENTITY
+			STATUS 	current
+			DESCRIPTION
+				"This is the general oid for the lamp properties."
+			::= { projProp2Monitor 4 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.4.1
+		lampSerialNumber	OBJECT-TYPE
+			SYNTAX OCTET STRING (SIZE (10))
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the serial number of the lamp."
+			::= { lampProperties 1 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.4.2
+		lampArticleNumber	OBJECT-TYPE
+			SYNTAX OCTET STRING (SIZE (8))
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the Barco article number of the lamp."
+			::= { lampProperties 2 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.4.3
+		lampStatus	OBJECT-TYPE
+			SYNTAX BITS
+				{
+                unused(0),
+				on(7)
+				}
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the lamp status.
+				on: Lamp on"
+			::= { lampProperties 3 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.4.4
+		lampMode	OBJECT-TYPE
+			SYNTAX BITS
+				{
+                unused(0),
+				cloON(7)
+				}
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the lamp mode.
+				cloON: Constant Light Output active"
+			::= { lampProperties 4 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.4.5
+		lampStrikes	OBJECT-TYPE
+			SYNTAX	Integer32
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the number of times the lamp has been switched on."
+			::= { lampProperties 5 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.4.6
+		lampPower	OBJECT-TYPE
+			SYNTAX	Integer32 
+			UNITS	"Watts"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the actual lamp power."
+			::= { lampProperties 6 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.4.7
+		lampCurrent	OBJECT-TYPE
+			SYNTAX	Integer32
+			UNITS	"Ampere"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the actual lamp current."
+			::= { lampProperties 7 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.4.8
+		lampRunTimeTable	OBJECT-TYPE
+			SYNTAX SEQUENCE OF LampRunTimeEntry
+			MAX-ACCESS	not-accessible
+ 			STATUS		current
+			DESCRIPTION
+				"A table with lamp run time entries."
+			::= { lampProperties 8 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.4.8.1
+		lampRunTimeEntry	OBJECT-TYPE
+		    SYNTAX	LampRunTimeEntry
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"A lamp run time entry."
+			INDEX	{ lampRunTimeIndex }
+			::= { lampRunTimeTable 1 }
+
+		LampRunTimeEntry ::=
+			SEQUENCE {
+				lampRunTimeIndex      Unsigned32,
+				lampRunTime           Unsigned32,
+				lampRunTimeIndexName  DisplayString
+			}
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.4.8.1.1
+		lampRunTimeIndex	OBJECT-TYPE
+			SYNTAX		Unsigned32 (0..65535)
+			MAX-ACCESS	not-accessible
+			STATUS		current
+			DESCRIPTION
+				"Indentifies the lamp run time entry.
+				0	The current lamp run time.
+				1	The maximum lamp run time.
+					This is the maximum guaranteed run time for the lamp.
+				2	The run time when the message menu, indicating the remaining
+					lamp run time, first occurs. This message menu is displayed
+					for 1 minute and is repeated every 30 minutes.
+				3	The run time when the warning menu, indicating the end of life
+					of the lamp, first occurs. This warning menu is displayed on
+					the screen and is repeated every 30 minutes.
+				4	The run time when the lamp will switched off automatically.
+					This is necessary for security reasons."
+			::= { lampRunTimeEntry 1 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.4.8.1.2
+		lampRunTime	OBJECT-TYPE
+		    SYNTAX		Unsigned32
+			UNITS		"hours"
+			MAX-ACCESS	read-only
+			STATUS		current
+			DESCRIPTION
+				"Desired lamp run time entry."
+			::= { lampRunTimeEntry 2 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.4.8.1.3
+		lampRunTimeIndexName	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the current measured lamp runtime name."
+			::= { lampRunTimeEntry 3 }
+			
+		-- 1.3.6.1.4.1.12612.220.11.2.2.4.9
+		lampOutput	OBJECT-TYPE
+			SYNTAX	Integer32
+			UNITS	"1/100 of Foot Lambert"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the actual lamp output."
+			::= { lampProperties 9 }
+        
+        -- 1.3.6.1.4.1.12612.220.11.2.2.4.10
+        lampErrorStatus OBJECT-TYPE
+			SYNTAX BITS
+			    {
+                unused(0),
+			    errorLampOffByProjector(4),
+			    errorLampNoStrike(5),
+			    errorDowserNotOpen(6),
+			    lampOK(7)
+				}
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the lamp activity status."
+			::= { lampProperties 10 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.5
+		dowserPosition	OBJECT-TYPE
+			SYNTAX INTEGER
+				{
+				closed(0),
+				open(1),
+				undetermined(2)
+				}
+			UNITS	"enumeration"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"The actual dowser (shutter) position."
+			::= { projProp2Monitor 5 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.6
+   		s1VersionTable OBJECT-TYPE
+    		SYNTAX SEQUENCE OF S1VersionEntry
+    		MAX-ACCESS  not-accessible
+    		STATUS      current
+    		DESCRIPTION
+            	"A table with all software and firmware versions.
+                Important remark: ONLY FOR DP90/DP100/DP3000 "
+            ::= { projProp2Monitor 6 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.6.1
+		s1VersionEntry OBJECT-TYPE
+		    SYNTAX      S1VersionEntry
+		    MAX-ACCESS  not-accessible
+		    STATUS      current
+		    DESCRIPTION
+		        "An entry with version info for a specific software or firmware component."
+		    INDEX   { s1VersionIndex }
+		    ::= { s1VersionTable 1 }
+
+		S1VersionEntry ::=
+		    SEQUENCE {
+		        s1VersionIndex     	Integer32,
+		        s1VersionNumber		OCTET STRING
+		    }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.6.1.1
+		s1VersionIndex OBJECT-TYPE
+		    SYNTAX      Integer32 (0..65535)
+		    MAX-ACCESS  not-accessible
+		    STATUS      current
+		    DESCRIPTION
+		        "Indentifies the software or firmware component.
+				0	Main Program
+				2	Lamp Module
+				4	BARCO Lamp Power Supply with address 0x20
+				150	BARCO Lamp Power Supply Eeprom with address 0x20
+				6	BARCO Lamp Power Supply with address 0x22
+				152	BARCO Lamp Power Supply Eeprom with address 0x22
+				8	BARCO Lamp Power Supply with address 0x28
+				154	BARCO Lamp Power Supply Eeprom with address 0x28
+				10	SMPS
+				12	Lens
+				14	FPGA CPU Board
+                Important remark: ONLY FOR DP90/DP100/DP3000 "
+		    ::= { s1VersionEntry 1 }
+		    
+		-- 1.3.6.1.4.1.12612.220.11.2.2.6.1.2
+		s1VersionNumber OBJECT-TYPE
+		    SYNTAX      OCTET STRING (SIZE (4))
+		    MAX-ACCESS  read-only
+		    STATUS      current
+		    DESCRIPTION
+		        "Specifies the version number of the software or firmware component.
+					1	Major 
+					2	Minor
+					3	Build (msb)
+					4	Build (lsb)
+					Version information will be of the form Major.Minor (Build)
+					e.g. 1.08 (24) ~> Major 1 Minor 8 and build 24
+				In case the build octets equal zero then you should leave them
+				out of consideration.
+                Important remark: ONLY FOR DP90/DP100/DP3000 "
+		    ::= { s1VersionEntry 2 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.8
+		barcoPackageVersion	OBJECT-TYPE
+			SYNTAX OCTET STRING (SIZE (14))
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the general package version number representing all 
+				Barco software and firmware for this projector.
+				The version number complies with the following format:
+					Major.Minor.Build
+				In case the build octets equal zero, then you should leave them
+				out of consideration."
+			::= { projProp2Monitor 8 }
+
+
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.9
+		portRuntimes	OBJECT-IDENTITY
+			STATUS 	current
+			DESCRIPTION
+				"This is the general oid for the port runtimes."
+			::= { projProp2Monitor 9 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.9.1
+		dviPortRuntime	OBJECT-TYPE
+		    SYNTAX		Unsigned32
+			UNITS		"seconds"
+			MAX-ACCESS	read-only
+			STATUS		current
+			DESCRIPTION
+				"This is the DVI port runtime."
+			::= { portRuntimes 1 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.9.2
+		hdsdiPortRuntime	OBJECT-TYPE
+		    SYNTAX		Unsigned32
+			UNITS		"seconds"
+			MAX-ACCESS	read-only
+			STATUS		current
+			DESCRIPTION
+				"This is the the HD-SDI port runtime."
+			::= { portRuntimes 2 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.10
+		projDiagnostics	OBJECT-IDENTITY
+			STATUS 	current
+			DESCRIPTION
+				"This is the general oid for the projector diagnostics."
+			::= { projProp2Monitor 10 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.10.1
+		projWarnings	OBJECT-TYPE
+		    SYNTAX		Unsigned32
+			MAX-ACCESS	read-only
+			STATUS		current
+			DESCRIPTION
+				"This is the number of projector warnings."
+			::= { projDiagnostics 1 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.10.2
+		projErrors  	OBJECT-TYPE
+		    SYNTAX		Unsigned32
+			MAX-ACCESS	read-only
+			STATUS		current
+			DESCRIPTION
+				"This is the number of projector errors."
+			::= { projDiagnostics 2 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.10.3
+		projNotif  	OBJECT-TYPE
+		    SYNTAX		Unsigned32
+			MAX-ACCESS	read-only
+			STATUS		current
+			DESCRIPTION
+				"This is the number of projector notifications."
+			::= { projDiagnostics 3 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.10.4
+		projS2ProjErrorListTable	OBJECT-TYPE
+			SYNTAX SEQUENCE OF ProjS2ProjErrorListEntry
+			MAX-ACCESS not-accessible
+			STATUS current
+			DESCRIPTION
+				"A table of the errors/warnings/notifications active on this projector."
+			::= { projDiagnostics 4 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.10.4.1
+		projS2ProjErrorListEntry	OBJECT-TYPE
+			SYNTAX      ProjS2ProjErrorListEntry
+			MAX-ACCESS	not-accessible
+			STATUS	    current
+			DESCRIPTION
+				"A projector error/warning/notif list entry."
+			INDEX	{ projS2ProjErrorListIndex }
+			::= { projS2ProjErrorListTable 1 }
+
+		ProjS2ProjErrorListEntry ::=
+		    SEQUENCE {
+				projS2ProjErrorListIndex		Unsigned32,
+				projS2ProjErrorListType			DisplayString,
+				projS2ProjErrorListUID 			DisplayString,
+				projS2ProjErrorListDescription 	DisplayString   }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.10.4.1.1
+		projS2ProjErrorListIndex	OBJECT-TYPE
+			SYNTAX	Unsigned32 (1..20)
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"Indentifies the error/warning/notification (a maximum of 20 messages can be listed).
+				1	message 1
+				2	message 2
+				3	message 3
+				..	message ..
+				n	message n
+				..	message ..
+				20	message 20"
+			::= { projS2ProjErrorListEntry 1 }
+			
+		-- 1.3.6.1.4.1.12612.220.11.2.2.10.4.1.2
+		projS2ProjErrorListType	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the type of the projector message in the list:
+				  E = Error
+				  W = Warning
+				  N = Notification
+				"
+			::= { projS2ProjErrorListEntry 2 }
+			                                                   
+		-- 1.3.6.1.4.1.12612.220.11.2.2.10.4.1.3
+		projS2ProjErrorListUID	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the UID (Unique IDentifier) of the projector message in the list."
+			::= { projS2ProjErrorListEntry 3 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.10.4.1.4
+		projS2ProjErrorListDescription	OBJECT-TYPE
+			SYNTAX	DisplayString
+			UNITS		"projector runtime seconds"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the complete description of the projector message in the list."
+			::= { projS2ProjErrorListEntry 4 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.11
+        projS2PowerMode OBJECT-TYPE
+			SYNTAX INTEGER
+			    {
+				projectorStandby(0),
+				projectorOn(1)
+				}
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the projector (system) status (Series2 only).
+				 0 : Projector is in STANDBY
+                 1 : Projector is ON"
+			::= { projProp2Monitor 11 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.12
+		projHardwareIdentification	OBJECT-IDENTITY
+			STATUS 	current
+			DESCRIPTION
+				"This is the general oid for the projector hardware identification."
+			::= { projProp2Monitor 12 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.12.1
+		projType	OBJECT-TYPE
+		    SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the projector type description (DP###)."
+			::= { projHardwareIdentification 1 }
+
+ 		-- 1.3.6.1.4.1.12612.220.11.2.2.12.2
+        projIdentifier OBJECT-TYPE
+			SYNTAX	Integer32
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the unique projector identifier (unique integer)."
+			::= { projHardwareIdentification 2 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.12.3
+		projHardwareTable	OBJECT-TYPE
+			SYNTAX SEQUENCE OF ProjHardwareEntry
+			MAX-ACCESS not-accessible
+			STATUS current
+			DESCRIPTION
+				"A table with hardware list entries (Series2 only)."
+			::= { projHardwareIdentification 3 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.12.3.1
+		projHardwareEntry	OBJECT-TYPE
+			SYNTAX	ProjHardwareEntry
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"A harware list entry."
+			INDEX	{ projHardwareIndex }
+			::= { projHardwareTable 1 }
+
+		ProjHardwareEntry ::=
+		    SEQUENCE {
+				projHardwareIndex		Unsigned32,
+				projHardwareName		DisplayString,
+				projHardwareRevision	DisplayString,
+				projHardwareSN  		DisplayString,
+				projHardwareProdDate	DisplayString   }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.12.3.1.1
+		projHardwareIndex	OBJECT-TYPE
+			SYNTAX	Unsigned32 (0..19)
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"Indentifies the hardware part (a maximum of 20 parts can be listed).
+				0	harware part 1
+				2	harware part 2
+				3	harware part 3
+				..	harware part ..
+				n	harware part n
+				..	harware part ..
+				19	harware part 20"
+			::= { projHardwareEntry 1 }
+			
+	    -- 1.3.6.1.4.1.12612.220.11.2.2.12.3.1.2
+		projHardwareName	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the name of the hardware in the list."
+			::= { projHardwareEntry 2 }
+			
+		-- 1.3.6.1.4.1.12612.220.11.2.2.12.3.1.3
+		projHardwareRevision OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the revision of the listed hardware parts."
+			::= { projHardwareEntry 3 }
+     
+        -- 1.3.6.1.4.1.12612.220.11.2.2.12.3.1.4
+		projHardwareSN OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the Serial Number of the listed hardware parts."
+			::= { projHardwareEntry 4 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.12.3.1.5
+		projHardwareProdDate OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the production date of the listed hardware parts."
+			::= { projHardwareEntry 5 }
+     
+		-- 1.3.6.1.4.1.12612.220.11.2.2.13
+		projLensType	OBJECT-TYPE
+		    SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"String displaying the full lens type
+				 - Lens Article Number (R#######) 
+				 - Lens Name"
+			::= { projProp2Monitor 13 }     
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.14
+        projS2ServiceMode OBJECT-TYPE
+			SYNTAX INTEGER
+			    {
+				projectorInNormalMode(0),
+				projectorInServiceMode(1)
+				}
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the projector Service Mode state (Series2 only).\
+				 In ServiceMode, Snmp values are not refreshed anymore and all traps are disabled.
+				 0 : Projector is in Normal  Mode
+                 1 : Projector is in Service Mode (for maintenance...)"
+			::= { projProp2Monitor 14 }     
+                             
+		-- 1.3.6.1.4.1.12612.220.11.2.2.15
+		projS2MaintenanceActionsTable	OBJECT-TYPE
+			SYNTAX SEQUENCE OF ProjS2MaintenanceActionsEntry
+			MAX-ACCESS not-accessible
+			STATUS current
+			DESCRIPTION
+				"A table of the maintenance actions to be performed on this projector."
+			::= { projProp2Monitor 15 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.15.1
+		projS2MaintenanceActionsEntry	OBJECT-TYPE
+			SYNTAX      ProjS2MaintenanceActionsEntry
+			MAX-ACCESS	not-accessible
+			STATUS	    current
+			DESCRIPTION
+				"A maintenance actions list entry."
+			INDEX	{ projS2MaintenanceActionsIndex }
+			::= { projS2MaintenanceActionsTable 1 }
+
+		ProjS2MaintenanceActionsEntry ::=
+		    SEQUENCE {
+				projS2MaintenanceActionsIndex		Unsigned32,
+				projS2MaintenanceActionsName		DisplayString,
+				projS2MaintenanceActionsEnabled 	DisplayString,
+				projS2MaintenanceActionsPeriod 		DisplayString,
+				projS2MaintenanceActionsLastExec	DisplayString,				
+				projS2MaintenanceActionsNextExec	DisplayString,
+				projS2MaintenanceActionsRemaining	DisplayString,
+				projS2MaintenanceActionsUID     	DisplayString   }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.15.1.1
+		projS2MaintenanceActionsIndex	OBJECT-TYPE
+			SYNTAX	Unsigned32 (0..65535)
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"Indentifies the maintenance action (a maximum of 20 actions can be listed).
+				1	maintenance action 1
+				2	maintenance action 2
+				3	maintenance action 3
+				..	maintenance action ..
+				n	maintenance action n
+				..	maintenance action ..
+				20	maintenance action 20"
+			::= { projS2MaintenanceActionsEntry 1 }
+			
+		-- 1.3.6.1.4.1.12612.220.11.2.2.15.3.1.2
+		projS2MaintenanceActionsName	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the description of the projector maintenance action in the list."
+			::= { projS2MaintenanceActionsEntry 2 }
+			                                                   
+		-- 1.3.6.1.4.1.12612.220.11.2.2.15.3.1.3
+		projS2MaintenanceActionsEnabled	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the status (enabled/disabled) of the projector maintenance action in the list."
+			::= { projS2MaintenanceActionsEntry 3 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.15.3.1.4
+		projS2MaintenanceActionsPeriod	OBJECT-TYPE
+			SYNTAX	DisplayString
+			UNITS		"projector runtime seconds"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the period of the projector maintenance action in the list."
+			::= { projS2MaintenanceActionsEntry 4 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.15.3.1.5
+		projS2MaintenanceActionsLastExec	OBJECT-TYPE
+			SYNTAX	DisplayString
+			UNITS		"projector runtime seconds"
+			MAX-ACCESS	read-only
+			STATUS	current 
+			DESCRIPTION
+				"This is the last execution time (in projector runtime) of the projector maintenance action in the list."
+			::= { projS2MaintenanceActionsEntry 5 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.15.3.1.6
+		projS2MaintenanceActionsNextExec	OBJECT-TYPE
+			SYNTAX	DisplayString
+			UNITS		"projector runtime seconds"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the next execution time (in projector runtime) of the projector maintenance action in the list."
+			::= { projS2MaintenanceActionsEntry 6 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.2.15.3.1.7
+		projS2MaintenanceActionsRemaining	OBJECT-TYPE
+			SYNTAX	DisplayString
+			UNITS		"projector runtime seconds"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the remaining time (in projector runtime) of the projector maintenance action in the list (before performing it again)."
+			::= { projS2MaintenanceActionsEntry 7 }
+			
+		-- 1.3.6.1.4.1.12612.220.11.2.2.15.3.1.8
+		projS2MaintenanceActionsUID	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the maintenance action unique identifier (UID)."
+			::= { projS2MaintenanceActionsEntry 8 }
+
+-- Notifications
+
+		-- 1.3.6.1.4.1.12612.220.11.2.3
+		barcoMeDcProjNotifications	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the general oid for Barco projector notifications."
+			::= { rootBmeDcProjMonMIB 3 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.2.3.0
+		projNotificationPrefix	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the prefix used to have easy event mapping
+				between notification oid values (SNMPv2 and SNMPv3) and
+				specific trap numbers (SNMPv1)."
+			::= { barcoMeDcProjNotifications 0 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.2.3.0.2
+		waterCoolingFail NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a critical severity and is sent the moment of detecting
+				a failure in the cooling system.
+				The trap will be resent every time the error occurs and then 
+				with a user-defined (config. file) interval as long as the error remains."
+			::= { projNotificationPrefix 2 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.2.3.0.3
+		securityFailure	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription }
+			STATUS	current
+			DESCRIPTION
+				"This has a critical severity and is sent the moment of detecting
+				 - an unauthorized access to the card cage (also called 'Elcabox').
+				 - a TI security failure
+				 - a broken board mariage
+				The trap will be resent every time the error occurs and then 
+				with a user-defined (config. file) interval as long as the error remains."
+			::= { projNotificationPrefix 3 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.2.3.0.4
+		lampRunTimeWarning	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a warning severity (non-critical) and is sent the moment
+				of exceeding the run time mentioned in the lampRunTime table by index 2.
+				This time corresponds with the maximum run time minus a certain amount of time.
+				The trap will be resent every time the lamp is switched on
+				and at the latest until the lampRunTimeAlarm occurs	with a user-defined (config. file) 
+				interval as long as the error remains."
+			::= { projNotificationPrefix 4 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.2.3.0.5
+		lampRunTimeAlarm	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a non-critical severity and is sent the moment of exceeding
+				the run time mentioned in the lampRunTime table by index 3.
+				This time corresponds with the maximum run time minus a very limited
+				amount of time which is default 0h.
+				i.e. By default the alarm is triggered the moment that the lamp run time
+				reaches its maximum.
+				The trap will be resent with a user-defined (config. file) interval."
+			::= { projNotificationPrefix 5 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.3.0.6
+		lampOffByProjector	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a critical severity and is sent the moment the projector
+				had to turn off the lamp due to an unexpected event.
+				The trap will be resent with a user-defined (config. file) interval."
+			::= { projNotificationPrefix 6 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.3.0.7
+		lampNoStrike	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a critical severity and is sent the moment the lamp
+				is detected not to have striked. This means the lamp should be On but
+				is actually Off.
+				The trap will be resent with a user-defined (config. file) interval."
+			::= { projNotificationPrefix 7 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.3.0.8
+		dowserNotOpen	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a critical severity and is sent the moment the dowser
+				is detected not to have opened correctly. This means the dowser should be Open but
+				is actually Closed or Half-Closed.
+				The trap will be resent with a user-defined (config. file) interval."
+			::= { projNotificationPrefix 8 }
+               
+		-- 1.3.6.1.4.1.12612.220.11.2.3.0.9
+		globalFailure	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a critical severity and is sent the moment :
+				- the projector	had to turn off the lamp due to an unexpected event
+				- or the lamp is detected not to have striked
+				- or the dowser	is detected not to have opened correctly
+				- or ...
+				The trap will be resent with a user-defined (config. file) interval."
+			::= { projNotificationPrefix 9 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.3.0.10
+		globalError	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a critical severity and is sent the moment a new error has occurred
+                (increase of the error count).
+                The trap will be resent at a user configurable pace."
+			::= { projNotificationPrefix 10 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.3.0.11
+		globalWarning	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a non-critical severity and is sent the moment a new warning has occurred
+                (increase of the warning count).
+                The trap will be resent at a user configurable pace."
+			::= { projNotificationPrefix 11 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.3.0.12
+		globalNotif	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a non-critical severity and is sent the moment a new notification has occurred
+                (increase of the notifications count).
+                The trap will be resent at a user configurable pace."
+			::= { projNotificationPrefix 12 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.3.0.13
+		communicationWarning	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a non-critical severity and is sent the moment a communication has occurred
+                between the snmpagent and the main projector program.
+                The trap will be resent at a user configurable pace."
+			::= { projNotificationPrefix 13 }
+
+-- Trap defines
+-- In order to be backwards compatible, also SNMPv1 traps are foreseen.
+
+		trapWaterCoolingFail	TRAP-TYPE
+			ENTERPRISE	waterCoolingFail
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a critical severity and is sent the moment of detecting
+				a failure in the cooling system.
+				The trap will be resent every time the error occurs and then 
+				with a user-defined (config. file) interval as long as the error remains."                                    
+
+			REFERENCE	"[specific-trap]"
+			::= 2
+
+
+		trapSecurityFailure	TRAP-TYPE
+			ENTERPRISE	securityFailure
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This has a critical severity and is sent the moment of
+				detecting an unauthorized access to the card cage.
+				The trap will be resent every time the projector is switched on	and then 
+				with a user-defined (config. file) interval as long as the error remains."
+			REFERENCE	"[specific-trap]"
+			::= 3
+
+
+		trapLampRunTimeWarning	TRAP-TYPE
+			ENTERPRISE	lampRunTimeWarning
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a warning severity (non-critical) and is sent the moment
+				of exceeding the run time mentioned in the lampRunTime table by index 2.
+				This time corresponds with the maximum run time minus a certain amount of time.
+				Details could be found by getting the eventDetail object.
+				The trap will be resent every time the lamp is switched on
+				and at the latest until the lampRunTimeAlarm occurs
+				with a user-defined (config. file) interval as long as the error remains."
+			REFERENCE	"[specific-trap]"
+			::= 4
+
+
+		trapLampRunTimeAlarm	TRAP-TYPE
+			ENTERPRISE	lampRunTimeAlarm
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a non-critical severity and is sent the moment of exceeding
+				the run time mentioned in the lampRunTime table by index 3.
+				This time corresponds with the maximum run time minus a very limited
+				amount of time which is default 0h.
+				i.e. By default the alarm is triggered the moment that the lamp run time
+				reaches its maximum.
+				Details could be found by getting the eventDetail object.
+				This trap will be resent every time the error occurs and then 
+				with a user-defined (config. file) interval as long as the error remains."
+            REFERENCE	"[specific-trap]"
+			::= 5
+
+		trapLampOffByProjector	TRAP-TYPE
+			ENTERPRISE	lampOffByProjector
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a critical severity and is sent the moment
+				the projector had to turn off the lamp due to an unexpected event.
+                Detailed description of the event cause can
+				be found by getting the eventDetail object.
+				The trap will be resent every time the error occurs and then 
+				with a user-defined (config. file) interval as long as the error remains."
+            REFERENCE	"[specific-trap]"
+			::= 6
+
+		trapLampNoStrike	TRAP-TYPE
+			ENTERPRISE	lampNoStrike
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a critical severity and is sent the moment 
+				the lamp is detected not to have striked.
+                Detailed description of the event cause can
+				be found by getting the eventDetail object.
+				The trap will be resent every time the error occurs and then 
+				with a user-defined (config. file) interval as long as the error remains."
+            REFERENCE	"[specific-trap]"
+			::= 7
+
+		trapDowserNotOpen	TRAP-TYPE
+			ENTERPRISE	dowserNotOpen
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a critical severity and is sent the moment 
+				the dowser	is detected not to have opened correctly.
+				Detailed description of the event cause can
+				be found by getting the eventDetail object.
+				The trap will be resent every time the error occurs and then 
+				with a user-defined (config. file) interval as long as the error remains."
+            REFERENCE	"[specific-trap]"
+			::= 8
+               
+		trapGlobalFailure	TRAP-TYPE
+			ENTERPRISE	globalFailure
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a critical severity and is sent the moment :
+				- the projector	had to turn off the lamp due to an unexpected event
+				- or the lamp is detected not to have striked
+				- or the dowser	is detected not to have opened correctly
+				- or ...
+				This is a global trap. Detailed description of the event cause can
+				be found by getting the eventDetail object.
+				The trap will be resent every time the error occurs and then 
+				with a user-defined (config. file) interval as long as the error remains."
+            REFERENCE	"[specific-trap]"
+			::= 9
+              
+		trapGlobalError	TRAP-TYPE
+			ENTERPRISE	globalError
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+                "This trap has a critical severity and is sent the moment a new error has occurred
+                 (increase of the error count).
+                 The trap will be resent at a user configurable pace."
+			REFERENCE	"[specific-trap]"
+			::= 10
+
+		trapGlobalWarning	TRAP-TYPE
+			ENTERPRISE	globalWarning
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a non-critical severity and is sent the moment a new warning has occurred
+                (increase of the warning count).
+                The trap will be resent at a user configurable pace."
+   			REFERENCE	"[specific-trap]"
+			::= 11
+
+		trapGlobalNotif	TRAP-TYPE
+			ENTERPRISE	globalNotif
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a non-critical severity and is sent the moment a new notification has occurred
+                (increase of the notifications count).
+                The trap will be resent at a user configurable pace."
+   			REFERENCE	"[specific-trap]"
+			::= 12
+
+		trapCommunicationWarning	TRAP-TYPE
+			ENTERPRISE	communicationWarning
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a non-critical severity and is sent the moment a communication has occurred
+                between the snmpagent and the main projector program.
+                The trap will be resent at a user configurable pace."
+   			REFERENCE	"[specific-trap]"
+			::= 13
+			
+-- Group definitions
+
+		-- 1.3.6.1.4.1.12612.220.11.2.4
+		projGroups	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the general oid for the groups."
+			::= { rootBmeDcProjMonMIB 4 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.4.1
+		projDp100SpecificGroup	OBJECT-GROUP
+			OBJECTS	{ status, s1VersionNumber }
+			STATUS	current
+			DESCRIPTION
+				"A collection of all properties specific to DP90/DP100/DP3000 projectors."
+			::= { projGroups 1 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.4.2
+		projCommonGroup	OBJECT-GROUP
+			OBJECTS	{  projSerialNumber, projRunTime, dowserPosition  }
+			STATUS	current
+			DESCRIPTION
+				"A collection of common projector properties."
+			::= { projGroups 2 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.4.3
+		projCommonLampGroup	OBJECT-GROUP
+			OBJECTS	{ lampSerialNumber, lampArticleNumber, lampStatus,
+					  lampMode, lampStrikes, lampPower, lampCurrent, lampRunTime }
+			STATUS	current
+			DESCRIPTION
+				"A collection of common lamp properties."
+			::= { projGroups 3 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.4.4
+		projExtendedLampGroup	OBJECT-GROUP
+			OBJECTS	{ lampRunTimeIndexName, lampOutput, lampErrorStatus }
+			STATUS	current
+			DESCRIPTION
+				"A collection of extended lamp properties."
+			::= { projGroups 4 }
+            
+		-- 1.3.6.1.4.1.12612.220.11.2.4.5
+		projPortRunTimesGroup	OBJECT-GROUP
+			OBJECTS	{ dviPortRuntime, hdsdiPortRuntime }
+			STATUS	current
+			DESCRIPTION
+				"A collection of runtime counters for input ports."
+			::= { projGroups 5 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.4.6
+		projS2ProjectorModesGroup	OBJECT-GROUP
+			OBJECTS	{ projS2PowerMode, projS2ServiceMode }
+			STATUS	current
+			DESCRIPTION
+				"Series2 specific power status group."
+			::= { projGroups 6 }
+            
+		-- 1.3.6.1.4.1.12612.220.11.2.4.7
+		projDetailedDiagnosticsGroup	OBJECT-GROUP
+			OBJECTS	{ projWarnings, projErrors, projNotif, projS2ProjErrorListType,
+			          projS2ProjErrorListUID, projS2ProjErrorListDescription }
+			STATUS	current
+			DESCRIPTION
+				"A collection of detailed projector diagnosis items."
+			::= { projGroups 7 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.4.8
+		projIdentificationGroup	OBJECT-GROUP
+			OBJECTS	{ projType, projIdentifier, barcoPackageVersion, projLensType }
+			STATUS	current
+			DESCRIPTION
+				"A collection of projector identification items."
+			::= { projGroups 8 }
+           
+		-- 1.3.6.1.4.1.12612.220.11.2.4.9
+		projS2HardwareIdentificationGroup	OBJECT-GROUP
+			OBJECTS	{ projHardwareName, projHardwareRevision }
+			STATUS	current
+			DESCRIPTION
+				"A collection of Series2 extended projector identification items."
+			::= { projGroups 9 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.4.10
+		projS2MaintenanceGroup	OBJECT-GROUP
+			OBJECTS	{ projS2MaintenanceActionsName, projS2MaintenanceActionsEnabled, projS2MaintenanceActionsPeriod, projS2MaintenanceActionsLastExec,
+			          projS2MaintenanceActionsNextExec, projS2MaintenanceActionsRemaining, projS2MaintenanceActionsUID }
+			STATUS	current
+			DESCRIPTION
+				"A collection of detailed projector maintenance items."
+			::= { projGroups 10 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.4.11
+		projNotificationGroup	NOTIFICATION-GROUP
+			NOTIFICATIONS	{ waterCoolingFail, securityFailure, lampRunTimeWarning, lampRunTimeAlarm,
+			                  lampOffByProjector, lampNoStrike, dowserNotOpen, globalFailure,
+			                  globalError, globalWarning, globalNotif, communicationWarning } 
+			STATUS	current
+			DESCRIPTION
+				"The collection of all general Barco projector notifications."
+			::= { projGroups 11 }
+
+		-- 1.3.6.1.4.1.12612.220.11.2.4.12
+		projTrapGroup	NOTIFICATION-GROUP
+			NOTIFICATIONS	{ trapWaterCoolingFail, trapSecurityFailure, trapLampRunTimeWarning, trapLampRunTimeAlarm,
+			                  trapLampOffByProjector, trapLampNoStrike, trapDowserNotOpen, trapGlobalFailure,
+			                  trapGlobalError, trapGlobalWarning, trapGlobalNotif, trapCommunicationWarning } 
+			STATUS	current
+			DESCRIPTION
+				"The collection of all general Barco projector traps."
+			::= { projGroups 12 }
+
+-- END OF BARCO-ME-DC-PROJ-MON-MIB mib
+
+		-- 1.3.6.1.4.1.12612.220.11.3.1
+		bmedcDP100MonModule	OBJECT-IDENTITY
+		    STATUS	current
+            DESCRIPTION 
+				"This is the former module identifiaction item which is now in the common declaration."
+			::= { rootBmeDcDP100MonMIB 1 }
+
+-- Properties to monitor
+	
+		-- 1.3.6.1.4.1.12612.220.11.3.2
+		dp100Prop2Monitor OBJECT-IDENTITY
+			STATUS current
+			DESCRIPTION 
+				"This is the general oid for the properties to monitor."
+			::= { rootBmeDcDP100MonMIB 2 }
+
+		
+		-- 1.3.6.1.4.1.12612.220.11.3.2.1
+		dp100DiagnosisProperties OBJECT-IDENTITY
+			STATUS current
+			DESCRIPTION 
+				"This is the general oid for the diagnosis properties."
+			::= { dp100Prop2Monitor 1 }
+
+		
+		-- 1.3.6.1.4.1.12612.220.11.3.2.1.1
+   		dp100TemperatureTable OBJECT-TYPE
+    		SYNTAX SEQUENCE OF DP100TemperatureEntry
+    		MAX-ACCESS  not-accessible
+    		STATUS      current
+    		DESCRIPTION
+            	"A table with temperature entries."
+            ::= { dp100DiagnosisProperties 1 }
+
+		-- 1.3.6.1.4.1.12612.220.11.3.2.1.1.1
+		dp100TemperatureEntry OBJECT-TYPE
+		    SYNTAX      DP100TemperatureEntry
+		    MAX-ACCESS  not-accessible
+		    STATUS      current
+		    DESCRIPTION
+		        "A temperature diagnosis entry."
+		    INDEX   { dp100TemperatureIndex }
+		    ::= { dp100TemperatureTable 1 }
+
+		DP100TemperatureEntry ::=
+		    SEQUENCE {
+		        dp100TemperatureIndex   	 Integer32,
+		        dp100Temperature			 Integer32,
+		        dp100TemperatureDiagnosis    Diagnosis
+		    }
+
+		-- 1.3.6.1.4.1.12612.220.11.3.2.1.1.1.1
+		dp100TemperatureIndex OBJECT-TYPE
+		    SYNTAX      Integer32 (0..65535)
+		    MAX-ACCESS  not-accessible
+		    STATUS      current
+		    DESCRIPTION
+		        "Indentifies the temperature diagnosis entry.
+				0	Temp. DMD Red
+				1	Temp. DMD Green
+				2	Temp. DMD Blue
+				3	Temp. Ambient
+				4	Temp. Lamp House
+				5	Temp. Card Cage (Elcabox).
+				6	Temp. Heatsink SMPS 1 Sec.
+				7	Temp. Heatsink SMPS 2 Sec.
+				8	Temp. Rack
+				9	Temp. Heatsink PFC
+				10	Temp. Heatsink SMPS 1 Prim.
+				11	Temp. Heatsink SMPS 2 Prim."
+		    ::= { dp100TemperatureEntry 1 }
+
+		-- 1.3.6.1.4.1.12612.220.11.3.2.1.1.1.2
+		dp100Temperature OBJECT-TYPE
+			SYNTAX Integer32
+			UNITS "degrees Celsius"
+			MAX-ACCESS read-only
+			STATUS current
+			DESCRIPTION
+				"This is the current temperature."
+			::= { dp100TemperatureEntry 2 }
+			
+		-- 1.3.6.1.4.1.12612.220.11.3.2.1.1.1.3
+		dp100TemperatureDiagnosis OBJECT-TYPE
+			SYNTAX Diagnosis
+			MAX-ACCESS read-only
+			STATUS current
+			DESCRIPTION
+				"Diagnosis current temperature against its limits."
+			::= { dp100TemperatureEntry 3 }
+			
+		    		    
+		-- 1.3.6.1.4.1.12612.220.11.3.2.1.2
+   		dp100VoltageTable OBJECT-TYPE
+    		SYNTAX SEQUENCE OF DP100VoltageEntry
+    		MAX-ACCESS  not-accessible
+    		STATUS      current
+    		DESCRIPTION
+            	"A table with voltage entries."
+            ::= { dp100DiagnosisProperties 2 }
+
+		-- 1.3.6.1.4.1.12612.220.11.3.2.1.2.1
+		dp100VoltageEntry OBJECT-TYPE
+		    SYNTAX      DP100VoltageEntry
+		    MAX-ACCESS  not-accessible
+		    STATUS      current
+		    DESCRIPTION
+		        "A voltage diagnosis entry."
+		    INDEX   { dp100VoltageIndex }
+		    ::= { dp100VoltageTable 1 }
+
+		DP100VoltageEntry ::=
+		    SEQUENCE {
+		        dp100VoltageIndex   	Integer32,
+		        dp100Voltage			Integer32,
+		        dp100VoltageDiagnosis	Diagnosis
+		    }
+
+		-- 1.3.6.1.4.1.12612.220.11.3.2.1.2.1.1
+		dp100VoltageIndex OBJECT-TYPE
+		    SYNTAX      Integer32 (0..65535)
+		    MAX-ACCESS  not-accessible
+		    STATUS      current
+		    DESCRIPTION
+		        "Indentifies the voltage diagnosis entry.
+				10	Voltage ++5V
+				12	Voltage ++12V
+				14	Voltage +3.3V
+				16	Voltage +5V
+				18	Voltage +12V
+				20	Voltage +24V Elek.
+				22	Voltage +12V D320
+				24	Voltage +TEC
+				26	Voltage +Fan0
+				28	Voltage +Fan1
+				30	Voltage +Fan2
+				32	Voltage +Fan3"
+		    ::= { dp100VoltageEntry 1 }
+
+		-- 1.3.6.1.4.1.12612.220.11.3.2.1.2.1.2
+		dp100Voltage OBJECT-TYPE
+			SYNTAX Integer32
+			UNITS "mV (millivolt)"
+			MAX-ACCESS read-only
+			STATUS current
+			DESCRIPTION
+				"This is the current voltage."
+			::= { dp100VoltageEntry 2 }
+					    
+		-- 1.3.6.1.4.1.12612.220.11.3.2.1.2.1.3
+		dp100VoltageDiagnosis OBJECT-TYPE
+			SYNTAX Diagnosis
+			MAX-ACCESS read-only
+			STATUS current
+			DESCRIPTION
+				"Diagnosis current voltage against its limits."
+			::= { dp100VoltageEntry 3 }
+			
+		    		    
+		-- 1.3.6.1.4.1.12612.220.11.3.2.1.3
+   		dp100FanSpeedTable OBJECT-TYPE
+    		SYNTAX SEQUENCE OF DP100FanSpeedEntry
+    		MAX-ACCESS  not-accessible
+    		STATUS      current
+    		DESCRIPTION
+            	"A table with fan speed entries."
+            ::= { dp100DiagnosisProperties 3 }
+
+		-- 1.3.6.1.4.1.12612.220.11.3.2.1.3.1
+		dp100FanSpeedEntry OBJECT-TYPE
+		    SYNTAX      DP100FanSpeedEntry
+		    MAX-ACCESS  not-accessible
+		    STATUS      current
+		    DESCRIPTION
+		        "A fan speed diagnosis entry."
+		    INDEX   { dp100FanSpeedIndex }
+		    ::= { dp100FanSpeedTable 1 }
+
+		DP100FanSpeedEntry ::=
+		    SEQUENCE {
+		        dp100FanSpeedIndex		Integer32,
+		        dp100FanSpeed			Integer32,
+		        dp100FanSpeedDiagnosis	Diagnosis
+		    }
+
+		-- 1.3.6.1.4.1.12612.220.11.3.2.1.3.1.1
+		dp100FanSpeedIndex OBJECT-TYPE
+		    SYNTAX      Integer32 (0..65535)
+		    MAX-ACCESS  not-accessible
+		    STATUS      current
+		    DESCRIPTION
+		        "Indentifies the fan speed diagnosis entry.
+				34	Fan 1 Elcabox 
+				36	Fan 2 Elcabox
+				38	Fan 3 Elcabox
+				40	Fan 4 Elcabox
+				42	Fan Cold Mirror Top
+				44	Fan Cold Mirror Bottom
+				48	Fan Start Pulse Generator
+				50	Fan Lamp Top
+				52	Fan Lamp Anode
+				54	Fan Lamp Cathode
+				56	Fan Sealing"
+		    ::= { dp100FanSpeedEntry 1 }
+
+		-- 1.3.6.1.4.1.12612.220.11.3.2.1.3.1.2
+		dp100FanSpeed OBJECT-TYPE
+			SYNTAX Integer32
+			UNITS "RPM (rounds per minute)"
+			MAX-ACCESS read-only
+			STATUS current
+			DESCRIPTION
+				"This is the current fan speed."
+			::= { dp100FanSpeedEntry 2 }			
+		    
+		-- 1.3.6.1.4.1.12612.220.11.3.2.1.3.1.3
+		dp100FanSpeedDiagnosis OBJECT-TYPE
+			SYNTAX Diagnosis
+			MAX-ACCESS read-only
+			STATUS current
+			DESCRIPTION
+				"Diagnosis current fan speed against its limits."
+			::= { dp100FanSpeedEntry 3 }
+			
+		    		    
+		-- 1.3.6.1.4.1.12612.220.11.3.2.2
+   		dp100PresetTable OBJECT-TYPE
+    		SYNTAX SEQUENCE OF DP100PresetEntry
+    		MAX-ACCESS  not-accessible
+    		STATUS      current
+    		DESCRIPTION
+            	"A table with preset entries."
+            ::= { dp100Prop2Monitor 2 }
+
+		-- 1.3.6.1.4.1.12612.220.11.3.2.2.1
+		dp100PresetEntry OBJECT-TYPE
+		    SYNTAX      DP100PresetEntry
+		    MAX-ACCESS  not-accessible
+		    STATUS      current
+		    DESCRIPTION
+		        "A preset entry."
+		    INDEX   { dp100PresetIndex }
+		    ::= { dp100PresetTable 1 }
+
+		DP100PresetEntry ::=
+		    SEQUENCE {
+		        dp100PresetIndex	Integer32,
+		        dp100PresetName		DisplayString
+		    }
+
+		-- 1.3.6.1.4.1.12612.220.11.3.2.2.1.1
+		dp100PresetIndex OBJECT-TYPE
+		    SYNTAX      Integer32 (0..65535)
+		    MAX-ACCESS  not-accessible
+		    STATUS      current
+		    DESCRIPTION
+		        "Indentifies the preset entry.
+		        Presets also called 'Macros' are numbered starting from 1.
+		        When asking for a preset number outside the limits, then the preset
+		        of the exceeding number will be returned."
+		    ::= { dp100PresetEntry 1 }
+
+		-- 1.3.6.1.4.1.12612.220.11.3.2.2.1.2
+		dp100PresetName OBJECT-TYPE
+			SYNTAX DisplayString
+			MAX-ACCESS read-only
+			STATUS current
+			DESCRIPTION
+				"This is the preset name."
+			::= { dp100PresetEntry 2 }			
+		    
+		    
+		-- 1.3.6.1.4.1.12612.220.11.3.2.3
+		dp100PresetActive OBJECT-TYPE
+			SYNTAX DisplayString
+			MAX-ACCESS read-only
+			STATUS current
+			DESCRIPTION
+				"The name of the active preset."
+			::= { dp100Prop2Monitor 3 }
+
+		    
+		-- 1.3.6.1.4.1.12612.220.11.3.2.4
+		dp100LensStatus OBJECT-TYPE
+			SYNTAX INTEGER
+				{
+				none(0),
+				off(1),
+				on(2),
+				shiftOut(3),
+				shifIn(4),
+				pintOut(5),
+				pintIn(6),
+				rotateDown(7),
+				rotateSide(8),
+				unknown(255)
+				}
+			UNITS "enumeration"
+			MAX-ACCESS read-only
+			STATUS current
+			DESCRIPTION
+				"The actual lens status.
+				none: status is undefined
+				off: without anamorphic lens in front of standard lens
+				shiftOut: anamorphic lens is shifting out
+				shiftIn: anamorphic lens is shifting in
+				pinOut: locking pin is moving out
+				pinIn: locking pin is moving in
+				rotateDown: anamorphic lens is moving to front of standard lens
+				rotateSide: anamorphic lens is moving away from front of standard lens
+				unknown: no status available"
+			::= { dp100Prop2Monitor 4 }
+
+		    
+		-- 1.3.6.1.4.1.12612.220.11.3.2.5
+   		dp100VersionTable OBJECT-TYPE
+    		SYNTAX SEQUENCE OF DP100VersionEntry
+    		MAX-ACCESS  not-accessible
+    		STATUS      current
+    		DESCRIPTION
+            	"A table with all software and firmware versions."
+            ::= { dp100Prop2Monitor 5 }
+
+		-- 1.3.6.1.4.1.12612.220.11.3.2.5.1
+		dp100VersionEntry OBJECT-TYPE
+		    SYNTAX      DP100VersionEntry
+		    MAX-ACCESS  not-accessible
+		    STATUS      current
+		    DESCRIPTION
+		        "An entry with version info for a specific software or firmware component."
+		    INDEX   { dp100VersionIndex }
+		    ::= { dp100VersionTable 1 }
+
+		DP100VersionEntry ::=
+		    SEQUENCE {
+		        dp100VersionIndex     	Integer32,
+		        dp100VersionNumber		OCTET STRING
+		    }
+
+		-- 1.3.6.1.4.1.12612.220.11.3.2.5.1.1
+		dp100VersionIndex OBJECT-TYPE
+		    SYNTAX      Integer32 (0..65535)
+		    MAX-ACCESS  not-accessible
+		    STATUS      current
+		    DESCRIPTION
+		        "Indentifies the software or firmware component.
+				16	Input 1 FPGA Scaler
+				18	Input 2 FPGA Scaler
+				20	Input 3 FPGA Scaler
+				22	Input 4 FPGA Scaler
+				24	Input 1 FPGA Overlayengine
+				26	Input 2 FPGA Overlayengine
+				28	Input 3 FPGA Overlayengine
+				30	Input 4 FPGA Overlayengine
+				32	Input 1 FPGA Featuremodule
+				34	Input 2 FPGA Featuremodule
+				36	Input 3 FPGA Featuremodule
+				38	Input 4 FPGA Featuremodule
+				40	FPGA Sync generator
+				42	FPGA Displayinterface
+				44	Input 1 FPGA 1 Inputmodule
+				46	Input 1 FPGA 2 Inputmodule
+				48	Input 2 FPGA 1 Inputmodule
+				50	Input 2 FPGA 2 Inputmodule
+				52	Input 3 FPGA 1 Inputmodule
+				54	Input 3 FPGA 2 Inputmodule
+				56	Input 4 FPGA 1 Inputmodule
+				58	Input 4 FPGA 2 Inputmodule
+				60	Device Driver Irq10
+				62	Device Driver Irq12
+				64	Jtag Mux
+				66	Lens anamorphic
+				68	Font
+				138 DVI-Input 1 Eeprom
+				140 DVI-Input 2 Eeprom
+				142 DVI-Input 3 Eeprom
+				144 DVI-Input 4 Eeprom
+				146 Touchpanel
+				148 Touchpanel Menus
+				156 Light Sensor
+				160 Listener Program
+				162	CLO Program
+				164	Snmp Agent Program"
+		    ::= { dp100VersionEntry 1 }
+		    
+		-- 1.3.6.1.4.1.12612.220.11.3.2.5.1.2
+		dp100VersionNumber OBJECT-TYPE
+		    SYNTAX      OCTET STRING (SIZE (4))
+		    MAX-ACCESS  read-only
+		    STATUS      current
+		    DESCRIPTION
+		        "Specifies the version number of the software or firmware component.
+					1	Build (lsb)
+					2	Build (msb)
+					3	Minor
+					4	Major 
+					Version information will be of the form Major.Minor (Build)
+					e.g. 1.08 (24) ~> Major 1 Minor 8 and build 24
+				In case the build octets equal zero then you should leave them
+				out of consideration."
+		    ::= { dp100VersionEntry 2 }
+
+-- Notifications
+
+		-- 1.3.6.1.4.1.12612.220.11.3.3
+		barcoMeDcDP100Notifications OBJECT-IDENTITY
+			STATUS current
+			DESCRIPTION 
+				"This is the general oid for Barco DP100 notifications."
+			::= { rootBmeDcDP100MonMIB 3 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.3.3.0
+		dp100NotificationPrefix OBJECT-IDENTITY
+			STATUS current
+			DESCRIPTION 
+				"This is the prefix used to have easy event mapping
+				between notification oid values (SNMPv2 and SNMPv3) and 
+				specific trap numbers (SNMPv1)."
+			::= { barcoMeDcDP100Notifications 0 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.3.3.0.6
+		dp100TemperatureFail NOTIFICATION-TYPE
+		    OBJECTS     { eventSeverity, eventDescription, eventDetail }
+		    STATUS      current
+		    DESCRIPTION
+		        "This trap has a critical severity and is sent the moment of 
+		        exceeding one of the temperature boundaries.
+		        Details could be found by getting the eventDetail object.
+		        The trap will be resent every time the projector is switched on."
+		    ::= { dp100NotificationPrefix 6 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.3.3.0.7
+		dp100VoltageFail NOTIFICATION-TYPE
+		    OBJECTS     { eventSeverity, eventDescription, eventDetail }
+		    STATUS      current
+		    DESCRIPTION
+		        "This has a critical severity and is sent the moment of 
+		        exceeding one of the voltage boundaries.  
+		        Details could be found by getting the eventDetail object.
+		        The trap will be resent every time the projector is switched on."
+		    ::= { dp100NotificationPrefix 7 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.3.3.0.8
+		dp100FanSpeedFail NOTIFICATION-TYPE
+		    OBJECTS     { eventSeverity, eventDescription, eventDetail }
+		    STATUS      current
+		    DESCRIPTION
+		        "This trap has a major severity and is sent the moment of 
+		        exceeding one of the fan speed boundaries.  
+		        Details could be found by getting the eventDetail object.
+		        The trap will be resent every time the projector is switched on."
+		    ::= { dp100NotificationPrefix 8 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.3.3.0.9
+		dp100ExhaustFail NOTIFICATION-TYPE
+		    OBJECTS     { eventSeverity, eventDescription }
+		    STATUS      current
+		    DESCRIPTION
+		        "This trap has a major severity and is sent the moment that the exhaust is not free.
+		        The trap will be resent every time the projector is switched on."
+		    ::= { dp100NotificationPrefix 9 }
+
+
+-- Trap defines
+-- In order to be backwards compatible, also SNMPv1 traps are foreseen.
+
+		trapDp100TemperatureFail    TRAP-TYPE
+	        ENTERPRISE      dp100TemperatureFail
+	        VARIABLES       { eventSeverity, eventDescription, eventDetail }
+	        DESCRIPTION     
+      	        "This trap has a critical severity and is sent the moment of 
+		        exceeding one of the temperature boundaries.
+		        Details could be found by getting the eventDetail object.
+		        The trap will be resent every time the projector is switched on."
+	        REFERENCE       "[specific-trap]"
+	        ::= 6    
+		
+
+		trapDp100VoltageFail    TRAP-TYPE
+	        ENTERPRISE      dp100VoltageFail
+	        VARIABLES       { eventSeverity, eventDescription, eventDetail }
+	        DESCRIPTION     
+      	        "This has a critical severity and is sent the moment of 
+		        exceeding one of the voltage boundaries.  
+		        Details could be found by getting the eventDetail object.
+		        The trap will be resent every time the projector is switched on."
+	        REFERENCE       "[specific-trap]"
+	        ::= 7    
+		
+
+		trapDp100FanSpeedFail    TRAP-TYPE
+	        ENTERPRISE      dp100FanSpeedFail
+	        VARIABLES       { eventSeverity, eventDescription, eventDetail }
+	        DESCRIPTION     
+      	        "This has a major severity and is sent the moment of 
+		        exceeding one of the fan speed boundaries.  
+		        Details could be found by getting the eventDetail object.
+		        The trap will be resent every time the projector is switched on."
+	        REFERENCE       "[specific-trap]"
+	        ::= 8    
+		
+
+		trapDp100ExhaustFail    TRAP-TYPE
+	        ENTERPRISE      dp100ExhaustFail
+	        VARIABLES       { eventSeverity, eventDescription }
+	        DESCRIPTION     
+      	        "This trap has a major severity and is sent the moment that the exhaust is not free.
+		        The trap will be resent every time the projector is switched on."
+	        REFERENCE       "[specific-trap]"
+	        ::= 9
+
+		
+-- Group definitions
+		
+		-- 1.3.6.1.4.1.12612.220.11.3.4
+		dp100Groups OBJECT-IDENTITY
+			STATUS current
+			DESCRIPTION 
+				"This is the general oid for the groups."
+			::= { rootBmeDcDP100MonMIB 4 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.3.4.1
+		dp100CommonGroup OBJECT-GROUP
+			OBJECTS { dp100PresetName, dp100PresetActive,
+                      dp100LensStatus, dp100VersionNumber }
+			STATUS current
+			DESCRIPTION 
+				"A collection of all prop2monitor properties without a dedicated parent oid."
+			::= { dp100Groups 1 }
+			
+
+		-- 1.3.6.1.4.1.12612.220.11.3.4.2
+		dp100DiagnosisGroup OBJECT-GROUP
+			OBJECTS { dp100Temperature, dp100TemperatureDiagnosis, 
+                      dp100Voltage,     dp100VoltageDiagnosis, 
+                      dp100FanSpeed,    dp100FanSpeedDiagnosis }
+			STATUS current
+			DESCRIPTION 
+				"A collection of all diagnosis properties"
+			::= { dp100Groups 2 }			
+
+
+		-- 1.3.6.1.4.1.12612.220.11.3.4.3
+		dp100NotificationGroup NOTIFICATION-GROUP
+		    NOTIFICATIONS { dp100TemperatureFail, dp100VoltageFail, dp100FanSpeedFail, dp100ExhaustFail }
+		    STATUS        current
+		    DESCRIPTION
+	            "The collection of all DP100 notifications."
+		    ::= { dp100Groups 3 }
+            
+		-- 1.3.6.1.4.1.12612.220.11.3.4.4
+		dp100TrapGroup NOTIFICATION-GROUP
+		    NOTIFICATIONS { trapDp100TemperatureFail, trapDp100VoltageFail, trapDp100FanSpeedFail, trapDp100ExhaustFail }
+		    STATUS        current
+		    DESCRIPTION
+	            "The collection of all DP100 traps."
+		    ::= { dp100Groups 4 }
+            
+-- END OF BARCO-ME-DC-DP100-MON-MIB mib
+            
+            
+		-- 1.3.6.1.4.1.12612.220.11.4.1
+		bmedcDPS1S2MonModule	OBJECT-IDENTITY
+		    STATUS	current
+            DESCRIPTION 
+				"S1S2 mono-version. This is the former module identifiaction item which is now in the common declaration."
+
+			::= { rootBmeDcDPS1S2MonMIB 1 }
+		
+	
+-- Properties to monitor
+	
+		-- 1.3.6.1.4.1.12612.220.11.4.2
+		dpProp2Monitor	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the general oid for the properties to monitor."
+			::= { rootBmeDcDPS1S2MonMIB 2 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1
+		dpDiagnosisProperties	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the general oid for the diagnosis properties."
+			::= { dpProp2Monitor 1 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1.1
+		temperatureTable	OBJECT-TYPE
+			SYNTAX SEQUENCE OF	TemperatureEntry
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"A table with temperature entries."
+			::= { dpDiagnosisProperties 1 }
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1.1.1
+		temperatureEntry	OBJECT-TYPE
+			SYNTAX	TemperatureEntry
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"A temperature diagnosis entry."
+			INDEX	{ temperatureIndex }
+			::= { temperatureTable 1 }
+
+		TemperatureEntry ::=
+		    SEQUENCE {
+				temperatureIndex		Unsigned32,
+				temperature			    TemperatureValue,
+				temperatureMin		    TemperatureValue,
+				temperatureMax		    TemperatureValue,
+				temperatureMinWarning	TemperatureValue,
+				temperatureMaxWarning	TemperatureValue,																
+				temperatureDiagnosis	Diagnosis,
+				temperatureName		    DisplayString
+		    }
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1.1.1.1
+			temperatureIndex	OBJECT-TYPE
+			SYNTAX	Unsigned32 (0..65535)
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"Indentifies the temperature diagnosis entry."
+			::= { temperatureEntry 1 }
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1.1.1.2
+		temperature	OBJECT-TYPE
+			SYNTAX	TemperatureValue
+			UNITS	"degrees Celsius"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the current temperature."
+			::= { temperatureEntry 2 }
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1.1.1.3
+		temperatureMin	OBJECT-TYPE
+			SYNTAX	TemperatureValue
+			UNITS	"degrees Celsius"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the minimum boundary temperature."
+			::= { temperatureEntry 3 }
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1.1.1.4
+		temperatureMax	OBJECT-TYPE
+			SYNTAX	TemperatureValue
+			UNITS	"degrees Celsius"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the maximum boundary temperature."
+			::= { temperatureEntry 4 }
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1.1.1.5
+		temperatureMinWarning	OBJECT-TYPE
+			SYNTAX	TemperatureValue
+			UNITS	"degrees Celsius"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the minimum warning boundary temperature."
+			::= { temperatureEntry 5 }
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1.1.1.6
+		temperatureMaxWarning	OBJECT-TYPE
+			SYNTAX	TemperatureValue
+			UNITS	"degrees Celsius"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the maximum warning boundary temperature."
+			::= { temperatureEntry 6 }
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1.1.1.7
+		temperatureDiagnosis	OBJECT-TYPE
+			SYNTAX	Diagnosis
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"Diagnosis current temperature against its boundaries."
+			::= { temperatureEntry 7 }
+			
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1.1.1.8
+		temperatureName	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the current measured temperature name."
+			::= { temperatureEntry 8 }
+			
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1.2
+		voltageTable	OBJECT-TYPE
+			SYNTAX SEQUENCE OF	VoltageEntry
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"A table with voltage entries."
+			::= { dpDiagnosisProperties 2 }
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1.2.1
+		voltageEntry	OBJECT-TYPE
+			SYNTAX	VoltageEntry
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"A voltage diagnosis entry."
+			INDEX	{ voltageIndex }
+			::= { voltageTable 1 }
+
+		VoltageEntry ::=
+			SEQUENCE {
+				voltageIndex	  Unsigned32,
+				voltage			  VoltageValue,
+				voltageMin		  VoltageValue,
+				voltageMax		  VoltageValue,
+				voltageMinWarning VoltageValue,
+				voltageMaxWarning VoltageValue,												
+				voltageDiagnosis  Diagnosis,
+				voltageName   	  DisplayString
+			}
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1.2.1.1
+		voltageIndex	OBJECT-TYPE
+			SYNTAX	Unsigned32 (0..65535)
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"Indentifies the voltage diagnosis entry."
+			::= { voltageEntry 1 }
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1.2.1.2
+		voltage	OBJECT-TYPE
+			SYNTAX	VoltageValue
+			UNITS	"mV (millivolt)"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the current voltage."
+			::= { voltageEntry 2 }
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1.2.1.3
+		voltageMin	OBJECT-TYPE
+			SYNTAX	VoltageValue
+			UNITS	"mV (millivolt)"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the minimum boundary voltage."
+			::= { voltageEntry 3 }
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1.2.1.4
+		voltageMax	OBJECT-TYPE
+			SYNTAX	VoltageValue
+			UNITS	"mV (millivolt)"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the maximum boundary voltage."
+			::= { voltageEntry 4 }
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1.2.1.5
+		voltageMinWarning	OBJECT-TYPE
+			SYNTAX	VoltageValue
+			UNITS	"mV (millivolt)"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the minimum warning boundary voltage."
+			::= { voltageEntry 5 }
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1.2.1.6
+		voltageMaxWarning	OBJECT-TYPE
+			SYNTAX	VoltageValue
+			UNITS	"mV (millivolt)"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the maximum warning boundary voltage."
+			::= { voltageEntry 6 }
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1.2.1.7
+		voltageDiagnosis	OBJECT-TYPE
+			SYNTAX	Diagnosis
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"Diagnosis current voltage against its boundaries."
+			::= { voltageEntry 7 }
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1.2.1.8
+		voltageName	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the current measured voltage name."
+			::= { voltageEntry 8 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1.3
+		fanSpeedTable	OBJECT-TYPE
+			SYNTAX SEQUENCE OF	FanSpeedEntry
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"A table with fan speed entries."
+			::= { dpDiagnosisProperties 3 }
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1.3.1
+		fanSpeedEntry	OBJECT-TYPE
+			SYNTAX	FanSpeedEntry
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"A fan speed diagnosis entry."
+			INDEX	{ fanSpeedIndex }
+			::= { fanSpeedTable 1 }
+
+		FanSpeedEntry ::=
+		    SEQUENCE {
+				fanSpeedIndex	    Unsigned32,
+				fanSpeed		   	FanSpeedValue,
+				fanSpeedMin			FanSpeedValue,
+				fanSpeedMax			FanSpeedValue,
+				fanSpeedMinWarning	FanSpeedValue,
+				fanSpeedMaxWarning	FanSpeedValue,
+				fanSpeedDiagnosis	Diagnosis,
+				fanSpeedName  		DisplayString
+			}
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1.3.1.1
+		fanSpeedIndex	OBJECT-TYPE
+			SYNTAX	Unsigned32 (0..65535)
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"Indentifies the fan speed diagnosis entry."	
+			::= { fanSpeedEntry 1 }
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1.3.1.2
+		fanSpeed	OBJECT-TYPE
+			SYNTAX	FanSpeedValue
+			UNITS	"RPM (rounds per minute)"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the current fan speed."
+			::= { fanSpeedEntry 2 }
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1.3.1.3
+		fanSpeedMin	OBJECT-TYPE
+			SYNTAX	FanSpeedValue
+			UNITS	"RPM (rounds per minute)"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the minimum boundary fanspeed."
+			::= { fanSpeedEntry 3 }
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1.3.1.4
+		fanSpeedMax	OBJECT-TYPE
+			SYNTAX	FanSpeedValue
+			UNITS	"RPM (rounds per minute)"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the maximum boundary fanspeed."
+			::= { fanSpeedEntry 4 }
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1.3.1.5
+		fanSpeedMinWarning	OBJECT-TYPE
+			SYNTAX	FanSpeedValue
+			UNITS	"RPM (rounds per minute)"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the minimum warning boundary fanspeed."
+			::= { fanSpeedEntry 5 }
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1.3.1.6
+		fanSpeedMaxWarning	OBJECT-TYPE
+			SYNTAX	FanSpeedValue
+			UNITS	"RPM (rounds per minute)"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the maximum warning boundary fanspeed."
+			::= { fanSpeedEntry 6 }
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1.3.1.7
+		fanSpeedDiagnosis	OBJECT-TYPE
+			SYNTAX	Diagnosis
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"Diagnosis current fanspeed against its limits."
+			::= { fanSpeedEntry 7 }
+			
+		-- 1.3.6.1.4.1.12612.220.11.4.2.1.3.1.8
+		fanSpeedName	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the current measured fan speed name."
+			::= { fanSpeedEntry 8 }
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.3
+		presetActive	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"The name of the active preset."
+			::= { dpProp2Monitor 3 }
+
+		-- 1.3.6.1.4.1.12612.220.11.4.2.5
+		s2Inputs	OBJECT-IDENTITY
+			STATUS 	current
+			DESCRIPTION
+				"This is the general oid for the inputs properties (Series2 only)."
+			::= { dpProp2Monitor 5 }
+             
+		-- 1.3.6.1.4.1.12612.220.11.4.2.5.1
+		s2InputSelected	OBJECT-TYPE
+			SYNTAX INTEGER
+				{
+				undetermined(0),
+				sMPTE292A(1),
+				sMPTE292B(2),
+				sMPTE292Dual(3),
+				dVIA(4),
+				dVIB(5),
+				dVIDualTwin(6),
+				sMPTE2923D(7),
+				dVI3D(8),
+				internalMediaBlock(9),
+				dVI4K(10),
+				sMPTE424A(11),
+				sMPTE424B(12),
+				sMPTE4243D(13)
+				}
+			UNITS	"enumeration"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"The status of the input selection.
+				sMPTE292A:      SMPTE 292-A
+				sMPTE292B:      SMPTE 292-B
+				sMPTE292Dual:   SMPTE 292-Dual
+				dVIA:           DVI-A
+				dVIB:           DVI-B
+				dVIDualTwin:    DVI-Dual/Twin
+				sMPTE2923D:     SMPTE 292 3D
+				dVI3D:          DVI 3D
+				internalMediaBlock :  Internal Media Block (IMB)
+				dVI4K:          DVI 4K (using horizontal spanning)      
+				sMPTE424A:      SMPTE 424-A  (3G)
+				sMPTE424B:      SMPTE 424-B  (3G)
+				sMPTE4243D:     SMPTE 424-3D (3G)
+				"
+			::= { s2Inputs 1 }
+			
+		-- 1.3.6.1.4.1.12612.220.11.4.2.5.2
+		s2InputFileSelected	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the name of the input file selected (Series2 only)."
+			::= { s2Inputs 2 }
+
+-- Notifications
+
+		-- 1.3.6.1.4.1.12612.220.11.4.3
+		barcoMeDcDPS1S2Notifications	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the general oid for Barco DP2000 notifications (Series2 only)."
+			::= { rootBmeDcDPS1S2MonMIB 3 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.4.3.0
+		dpNotificationPrefix	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the prefix used to have easy event mapping
+				between notification oid values (SNMPv2 and SNMPv3) and
+				specific trap numbers (SNMPv1)."
+			::= { barcoMeDcDPS1S2Notifications 0 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.4.3.0.6
+		temperatureFail	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription, eventDetail }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a critical severity and is sent the moment of
+				exceeding one of the temperature boundaries.
+				Details could be found by getting the eventDetail object.
+				The trap will be resent every time the projector is switched on."
+			::= { dpNotificationPrefix 6 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.4.3.0.7
+		voltageFail	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription, eventDetail }
+			STATUS	current
+			DESCRIPTION
+				"This has a critical severity and is sent the moment of
+				exceeding one of the voltage boundaries.
+				Details could be found by getting the eventDetail object.
+				The trap will be resent every time the projector is switched on."
+			::= { dpNotificationPrefix 7 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.4.3.0.8
+		fanSpeedFail	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription, eventDetail }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a major severity and is sent the moment of
+				exceeding one of the fan speed boundaries.
+				Details could be found by getting the eventDetail object.
+				The trap will be resent every time the projector is switched on."
+			::= { dpNotificationPrefix 8 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.4.3.0.10
+		temperatureWarning	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription, eventDetail }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment of
+				exceeding one of the temperature boundaries.
+				Details could be found by getting the eventDetail object.
+				The trap will be resent every time the projector is switched on."
+			::= { dpNotificationPrefix 10 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.4.3.0.11
+		voltageWarning	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription, eventDetail }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment of
+				exceeding one of the voltage boundaries.
+				Details could be found by getting the eventDetail object.
+				The trap will be resent every time the projector is switched on."
+			::= { dpNotificationPrefix 11 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.4.3.0.12
+		fanSpeedWarning	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription, eventDetail }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment of
+				exceeding one of the fanspeed boundaries.
+				Details could be found by getting the eventDetail object.
+				The trap will be resent every time the projector is switched on."
+			::= { dpNotificationPrefix 12 }
+
+
+-- Trap defines
+-- In order to be backwards compatible, also SNMPv1 traps are foreseen.
+
+		trapTemperatureFail	TRAP-TYPE
+			ENTERPRISE	temperatureFail
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a critical severity and is sent the moment of
+				exceeding one of the temperature boundaries.
+				Details could be found by getting the eventDetail object.
+				The trap will be resent every time the projector is switched on."
+	        REFERENCE	"[specific-trap]"
+			::= 6
+
+
+		trapVoltageFail	TRAP-TYPE
+			ENTERPRISE	voltageFail
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This has a critical severity and is sent the moment of
+				exceeding one of the voltage boundaries.
+				Details could be found by getting the eventDetail object.
+				The trap will be resent every time the projector is switched on."
+			REFERENCE	"[specific-trap]"
+			::= 7
+
+
+		trapFanSpeedFail	TRAP-TYPE
+			ENTERPRISE	fanSpeedFail
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This has a major severity and is sent the moment of
+				exceeding one of the fan speed boundaries.
+				Details could be found by getting the eventDetail object.
+				The trap will be resent every time the projector is switched on."
+			REFERENCE	"[specific-trap]"
+			::= 8
+
+
+		trapTemperatureWarning	TRAP-TYPE
+			ENTERPRISE	temperatureWarning
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment of
+				exceeding one of the temperature warning boundaries.
+				Details could be found by getting the eventDetail object.
+				The trap will be resent every time the projector is switched on."
+	        REFERENCE	"[specific-trap]"
+			::= 10
+
+
+		trapVoltageWarning	TRAP-TYPE
+			ENTERPRISE	voltageWarning
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment of
+				exceeding one of the voltage warning boundaries.
+				Details could be found by getting the eventDetail object.
+				The trap will be resent every time the projector is switched on."
+	        REFERENCE	"[specific-trap]"
+			::= 11
+
+
+		trapFanSpeedWarning	TRAP-TYPE
+			ENTERPRISE	fanSpeedWarning
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment of
+				exceeding one of the fanspeed warning boundaries.
+				Details could be found by getting the eventDetail object.
+				The trap will be resent every time the projector is switched on."
+	        REFERENCE	"[specific-trap]"
+			::= 12
+
+
+-- Group definitions
+
+		-- 1.3.6.1.4.1.12612.220.11.4.4
+		dpGroups	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION 
+				"This is the general oid for the groups."
+			::= { rootBmeDcDPS1S2MonMIB 4 }
+
+		-- 1.3.6.1.4.1.12612.220.11.4.4.1
+		dpPresetGroup	OBJECT-GROUP
+			OBJECTS	{ presetActive }
+			STATUS	current
+			DESCRIPTION 
+				"A collection of all preset information."
+			::= { dpGroups 1 }
+
+		-- 1.3.6.1.4.1.12612.220.11.4.4.2
+		dpS2InputGroup	OBJECT-GROUP
+			OBJECTS	{ s2InputSelected, s2InputFileSelected }
+			STATUS	current
+			DESCRIPTION 
+				"A collection of all Series2 input information."
+			::= { dpGroups 2 }
+            
+		-- 1.3.6.1.4.1.12612.220.11.4.4.3
+		dpDiagnosisGroup	OBJECT-GROUP
+			OBJECTS	{ temperature, temperatureMin, temperatureMax, temperatureMinWarning, temperatureMaxWarning, temperatureDiagnosis, temperatureName,
+			          voltage, voltageMin, voltageMax, voltageMinWarning, voltageMaxWarning, voltageDiagnosis, voltageName,
+			          fanSpeed, fanSpeedMin, fanSpeedMax, fanSpeedMinWarning, fanSpeedMaxWarning, fanSpeedDiagnosis, fanSpeedName
+                    }
+			STATUS	current
+			DESCRIPTION
+				"A collection of all DP diagnosis properties"
+			::= { dpGroups 3 }
+
+		-- 1.3.6.1.4.1.12612.220.11.4.4.4
+		dpNotificationGroup	NOTIFICATION-GROUP
+			NOTIFICATIONS	{ temperatureFail, voltageFail, fanSpeedFail,
+			                  temperatureWarning, voltageWarning, fanSpeedWarning }
+			STATUS	current
+			DESCRIPTION
+				"The collection of all DPS1S2 notifications."
+			::= { dpGroups 4 }
+
+		-- 1.3.6.1.4.1.12612.220.11.4.4.5
+		dpTrapGroup	NOTIFICATION-GROUP
+			NOTIFICATIONS	{ trapTemperatureFail, trapVoltageFail, trapFanSpeedFail,
+			          trapTemperatureWarning, trapVoltageWarning, trapFanSpeedWarning }
+			STATUS	current
+			DESCRIPTION
+				"The collection of all DPS1S2 traps."
+			::= { dpGroups 5 }
+			
+-- END OF BARCO-ME-DC-DPS1S2-MON-MIB mib
+
+		-- 1.3.6.1.4.1.12612.220.11.5.1
+		bmedcMediaServerMonModule	OBJECT-IDENTITY
+		    STATUS	current
+            DESCRIPTION 
+				"This is the former module identifiaction item which is now in the common declaration."
+			::= { rootBmeDcMediaServerMonMIB 1 }
+		
+	
+-- Properties to monitor
+   
+		-- 1.3.6.1.4.1.12612.220.11.5.2
+		icmpProp2Monitor	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the general oid for the properties to monitor."
+			::= { rootBmeDcMediaServerMonMIB 2 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.1
+		icmpHostName	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the name of the media server."
+			::= { icmpProp2Monitor 1 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.2
+		icmpSerialNumber	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the serial number of the media server."
+			::= { icmpProp2Monitor 2 }
+                                                
+		-- 1.3.6.1.4.1.12612.220.11.5.2.3
+		icmpState	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the current state of the media server.
+				Possible values: 
+				 - 'Starting'
+				 - 'Running'
+				 - 'Update in progress'
+				 - 'Shutting down'"
+			::= { icmpProp2Monitor 3 }
+                                           
+		-- 1.3.6.1.4.1.12612.220.11.5.2.4
+		icmpMediaBlockCertifID	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the certificate ID of the mediablock."
+			::= { icmpProp2Monitor 4 }
+                                           
+		-- 1.3.6.1.4.1.12612.220.11.5.2.5
+		icmpSoftwareVersion	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the installed software version of the media server."
+			::= { icmpProp2Monitor 5 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.6
+		icmpLicenseTable	OBJECT-TYPE
+			SYNTAX SEQUENCE OF IcmpLicenseEntry
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"A table with all ICMP licenses."
+			::= { icmpProp2Monitor 6 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.6.1
+		icmpLicenseEntry	OBJECT-TYPE
+			SYNTAX	IcmpLicenseEntry
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"An entry with version info for a specific software or firmware component."
+			INDEX	{ icmpLicenseIndex }
+			::= { icmpLicenseTable 1 }
+
+		IcmpLicenseEntry ::=
+			SEQUENCE {
+				icmpLicenseIndex            Unsigned32,
+				icmpLicenseName             DisplayString,
+				icmpLicenseNotValidBefore   DateAndTime,
+				icmpLicenseNotValidAfter    DateAndTime 
+			}
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.6.1.1
+		icmpLicenseIndex	OBJECT-TYPE
+			SYNTAX	Unsigned32 (0..10)
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"ICMP license index"
+			::= { icmpLicenseEntry 1 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.6.1.2
+		icmpLicenseName	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"Name of the retrieved license."
+			::= { icmpLicenseEntry 2 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.6.1.3
+		icmpLicenseNotValidBefore	OBJECT-TYPE
+			SYNTAX	DateAndTime
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"Specifies the date before which the license is not valid."
+			::= { icmpLicenseEntry 3 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.6.1.4
+		icmpLicenseNotValidAfter	OBJECT-TYPE
+			SYNTAX	DateAndTime
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"Specifies the date after which the license is not valid."
+			::= { icmpLicenseEntry 4 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.7
+		icmpSensorTables	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the node that gathers the sensor tables."
+			::= { icmpProp2Monitor 7 }
+                                               
+		-- 1.3.6.1.4.1.12612.220.11.5.2.7.1
+		icmpTemperatureTable	OBJECT-TYPE
+			SYNTAX SEQUENCE OF	IcmpTemperatureEntry
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"A table with temperature entries from the ICMP."
+			::= { icmpSensorTables 1 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.7.1.1
+		icmpTemperatureEntry	OBJECT-TYPE
+			SYNTAX	IcmpTemperatureEntry
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"A temperature diagnosis entry"
+			INDEX	{ icmpTemperatureIndex }
+			::= { icmpTemperatureTable 1 }
+
+		IcmpTemperatureEntry ::=
+		    SEQUENCE {
+				icmpTemperatureIndex       Unsigned32,
+				icmpTemperatureName        DisplayString,
+				icmpTemperature            TemperatureValue,
+				icmpTemperatureDiagnosis	Diagnosis
+			}
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.7.1.1.1
+		icmpTemperatureIndex	OBJECT-TYPE
+			SYNTAX	Unsigned32 (0..65535)
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"Indentifies the temperature diagnosis entry."	
+			::= { icmpTemperatureEntry 1 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.7.1.1.2
+		icmpTemperatureName	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the current measured temperature name."
+			::= { icmpTemperatureEntry 2 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.7.1.1.3
+		icmpTemperature	OBJECT-TYPE
+			SYNTAX	TemperatureValue
+			UNITS	"Degrees Celcius"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the current temperature."
+			::= { icmpTemperatureEntry 3 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.7.1.1.4
+		icmpTemperatureDiagnosis	OBJECT-TYPE
+			SYNTAX	Diagnosis
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"Diagnosis current Temperature against its limits."
+			::= { icmpTemperatureEntry 4 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.7.2
+		icmpVoltageTable	OBJECT-TYPE
+			SYNTAX SEQUENCE OF	IcmpVoltageEntry
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"A table with voltage entries from the media server."
+			::= { icmpSensorTables 2 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.7.2.1
+		icmpVoltageEntry	OBJECT-TYPE
+			SYNTAX	IcmpVoltageEntry
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"A voltage diagnosis entry"
+			INDEX	{ icmpVoltageIndex }
+			::= { icmpVoltageTable 1 }
+
+		IcmpVoltageEntry ::=
+		    SEQUENCE {
+				icmpVoltageIndex		Unsigned32,
+				icmpVoltageName			DisplayString,
+				icmpVoltage				VoltageValue,
+				icmpVoltageDiagnosis	Diagnosis
+			}
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.7.2.1.1
+		icmpVoltageIndex	OBJECT-TYPE
+			SYNTAX	Unsigned32 (0..65535)
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"Indentifies the voltage diagnosis entry."	
+			::= { icmpVoltageEntry 1 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.7.2.1.2
+		icmpVoltageName	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the current measured voltage name."
+			::= { icmpVoltageEntry 2 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.7.2.1.3
+		icmpVoltage	OBJECT-TYPE
+			SYNTAX	VoltageValue
+			UNITS	"mV"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the current voltage."
+			::= { icmpVoltageEntry 3 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.7.2.1.4
+		icmpVoltageDiagnosis	OBJECT-TYPE
+			SYNTAX	Diagnosis
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"Diagnosis current voltage against its limits."
+			::= { icmpVoltageEntry 4 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.7.3
+		icmpFanSpeedTable	OBJECT-TYPE
+			SYNTAX SEQUENCE OF	IcmpFanSpeedEntry
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"A table with fan speed entries from the media server."
+			::= { icmpSensorTables 3 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.7.3.1
+		icmpFanSpeedEntry	OBJECT-TYPE
+			SYNTAX	IcmpFanSpeedEntry
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"A fan speed diagnosis entry :
+				[1] CPU Fan
+				[2] System Fan 
+				"
+			INDEX	{ icmpFanSpeedIndex }
+			::= { icmpFanSpeedTable 1 }
+
+		IcmpFanSpeedEntry ::=
+		    SEQUENCE {
+				icmpFanSpeedIndex		Unsigned32,
+				icmpFanSpeedName		DisplayString,
+				icmpFanSpeed			FanSpeedValue,
+				icmpFanSpeedDiagnosis	Diagnosis
+			}
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.7.3.1.1
+		icmpFanSpeedIndex	OBJECT-TYPE
+			SYNTAX	Unsigned32 (0..65535)
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"Indentifies the fan speed diagnosis entry."	
+			::= { icmpFanSpeedEntry 1 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.7.3.1.2
+		icmpFanSpeedName	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the current measured fan speed name."
+			::= { icmpFanSpeedEntry 2 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.7.3.1.3
+		icmpFanSpeed	OBJECT-TYPE
+			SYNTAX	FanSpeedValue
+			UNITS	"RPM (rounds per minute)"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the current fan speed."
+			::= { icmpFanSpeedEntry 3 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.7.3.1.4
+		icmpFanSpeedDiagnosis	OBJECT-TYPE
+			SYNTAX	Diagnosis
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"Diagnosis current fanspeed against its limits."
+			::= { icmpFanSpeedEntry 4 }
+
+
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.8
+		icmpInternalRaid	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the general oid for the server's raid array."
+			::= { icmpProp2Monitor 8 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.8.1
+		icmpInternalRaidModel	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the model name of the media server's raid array."
+			::= { icmpInternalRaid 1 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.8.2
+		icmpInternalRaidSerialNumber	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the serial number of the media server's raid array."
+			::= { icmpInternalRaid 2 }
+                                    
+		-- 1.3.6.1.4.1.12612.220.11.5.2.8.3
+		icmpInternalRaidStatus	OBJECT-TYPE
+			SYNTAX INTEGER
+				{
+				raidOptimal(0),
+				degraded(1),
+				rebuild(2),
+				raidMissing(3),
+				unknown(4)
+				}
+			UNITS	"status enumeration"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"The status of of the media server's system hard disk:           
+				
+				raidOptimal: The raid array usage is optimal
+				degraded:    The raid array is degraded
+				rebuild:     The raid array is rebuilding
+				raidMissing: The raid array is missing
+                unknown:     The status of the raid array is unknown
+				"
+			::= { icmpInternalRaid 3 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.8.4
+		icmpInternalRaidRebuildPercentage	OBJECT-TYPE
+			SYNTAX	Unsigned32
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the rebuild percentage of the ICMP raid array."
+			::= { icmpInternalRaid 4 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.8.5
+		icmpInternalRaidHDDTable	OBJECT-TYPE
+			SYNTAX SEQUENCE OF	RaidDiskEntry
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"A table with raid disk entries."
+			::= { icmpInternalRaid 5 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.8.5.1
+		raidDiskEntry	OBJECT-TYPE
+			SYNTAX	RaidDiskEntry
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"A raid disk entry."
+			INDEX	{ raidDiskIndex }
+			::= { icmpInternalRaidHDDTable 1 }
+
+		RaidDiskEntry ::=
+		    SEQUENCE {
+				raidDiskIndex	    	Unsigned32,        
+				raidDiskSerialNumber    DisplayString,   
+				raidDiskSize            Unsigned32,
+				raidDiskStatus			INTEGER,
+				raidDiskCurrentTemperature TemperatureValue,
+				raidDiskHighestTemperature TemperatureValue,
+				raidDiskLowestTemperature  TemperatureValue
+		    }
+
+		--- 1.3.6.1.4.1.12612.220.11.5.2.8.5.1.1
+	    raidDiskIndex	OBJECT-TYPE
+			SYNTAX	Unsigned32 (0..65535)
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"Indentifies the raid array disk list entry."
+			::= { raidDiskEntry 1 }
+
+		--- 1.3.6.1.4.1.12612.220.11.5.2.8.5.1.2
+		raidDiskSerialNumber	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the raid disk serial number."
+			::= { raidDiskEntry 2 }
+
+		--- 1.3.6.1.4.1.12612.220.11.5.2.8.5.1.3
+		raidDiskSize	OBJECT-TYPE
+			SYNTAX	Unsigned32
+			UNITS	"megabytes"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the raid disk total size."
+			::= { raidDiskEntry 3 }
+
+		--- 1.3.6.1.4.1.12612.220.11.5.2.8.5.1.4
+		raidDiskStatus	OBJECT-TYPE
+			SYNTAX INTEGER
+				{
+				unknown(0),
+				optimal(1),
+				failed(2)
+				}
+			UNITS	"status enumeration"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the raid disk status:  
+				                                         
+                unknown:   The status of the raid disk cannot be determined
+				optimal:   The raid disk usage is optimal
+				failed:    The raid disk shows a failure
+				"
+			::= { raidDiskEntry 4 }
+
+		--- 1.3.6.1.4.1.12612.220.11.5.2.8.5.1.5
+		raidDiskCurrentTemperature OBJECT-TYPE
+			SYNTAX	TemperatureValue
+			UNITS	"Degrees Celcius"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the current temperature of the hard drive."
+			::= { raidDiskEntry 5 }
+
+		--- 1.3.6.1.4.1.12612.220.11.5.2.8.5.1.6
+		raidDiskHighestTemperature OBJECT-TYPE
+			SYNTAX	TemperatureValue
+			UNITS	"Degrees Celcius"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the highest recorded temperature of the hard drive."
+			::= { raidDiskEntry 6 }
+
+		--- 1.3.6.1.4.1.12612.220.11.5.2.8.5.1.7
+		raidDiskLowestTemperature OBJECT-TYPE
+			SYNTAX	TemperatureValue
+			UNITS	"Degrees Celcius"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the lowest recorded temperature of the hard drive."
+			::= { raidDiskEntry 7 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.8.6
+		icmpInternalRaidTotalSize OBJECT-TYPE
+			SYNTAX	Unsigned32
+			UNITS	"megabytes"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the total usable size of the ICMP raid array."
+			::= { icmpInternalRaid 6 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.9
+		icmpStorageTable	OBJECT-TYPE
+			SYNTAX SEQUENCE OF	StorageEntry
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"A table with storage entries."
+			::= { icmpProp2Monitor 9 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.9.1
+		storageEntry	OBJECT-TYPE
+			SYNTAX	StorageEntry
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"A storage entry."
+			INDEX	{ storageIndex }
+			::= { icmpStorageTable 1 }
+
+		StorageEntry ::=
+		    SEQUENCE {
+				storageIndex	    	Unsigned32,        
+				storageName             DisplayString,   
+			    storageType             DisplayString,     
+				storageTotalSize    	Unsigned32,        
+				storageFreeSize     	Unsigned32												
+		    }
+
+		--- 1.3.6.1.4.1.12612.220.11.5.2.9.1.1
+	    storageIndex	OBJECT-TYPE
+			SYNTAX	Unsigned32 (0..65535)
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"Indentifies the storage list entry."
+			::= { storageEntry 1 }
+
+		--- 1.3.6.1.4.1.12612.220.11.5.2.9.1.2
+		storageName	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the storage name."
+			::= { storageEntry 2 }           
+			
+		--- 1.3.6.1.4.1.12612.220.11.5.2.9.1.3
+		storageType	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the storage type."
+			::= { storageEntry 3 }
+
+		--- 1.3.6.1.4.1.12612.220.11.5.2.9.1.4
+	    storageTotalSize	OBJECT-TYPE
+			SYNTAX	Unsigned32
+			UNITS	"megabytes"
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"This is the storage total size."
+			::= { storageEntry 4 }
+
+		--- 1.3.6.1.4.1.12612.220.11.5.2.9.1.5
+	    storageFreeSize	OBJECT-TYPE
+			SYNTAX	Unsigned32
+			UNITS	"megabytes"
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"This is the storage available free size."
+			::= { storageEntry 5 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.10
+		icmpContent	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the node that gathers the information about content on the ICMP."
+			::= { icmpProp2Monitor 10 }
+
+		--- 1.3.6.1.4.1.12612.220.11.5.2.10.1
+		icmpIngestCurrentJobStatus	OBJECT-TYPE
+			SYNTAX INTEGER
+				{
+				unknown(0),
+				ingestRunning(1),
+				ingestIdle(2)
+				}
+			UNITS	"ingest status enumeration"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the ingest job status:  
+				                                         
+                unknown:        The status of the ingest cannot be determined
+				ingestRunning:  The ingest job is currently running
+				ingestIdle:     The ingest is in idle state.
+				"
+			::= { icmpContent 1 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.10.2
+		icmpIngestJobsPending	OBJECT-TYPE
+			SYNTAX	Unsigned32 (0..65535)
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"This is the number of ingest jobs pending (in the queue)."	
+			::= { icmpContent 2 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.10.3
+		icmpIngestSource	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the node that gathers the information about the current ingest source."
+			::= { icmpContent 3 }
+
+		--- 1.3.6.1.4.1.12612.220.11.5.2.10.3.1
+		icmpIngestSourceType	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the current ingest source type."
+			::= { icmpIngestSource 1 }
+
+		--- 1.3.6.1.4.1.12612.220.11.5.2.10.3.2
+		icmpIngestSourceName	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the current ingest source name."
+			::= { icmpIngestSource 2 }
+
+		--- 1.3.6.1.4.1.12612.220.11.5.2.10.3.3
+		icmpIngestSourceConnectionStatus	OBJECT-TYPE
+			SYNTAX INTEGER
+				{
+				notConnected(0),
+				connected(1)
+				}
+			UNITS	"ingest source connection enumeration"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the raid disk status:  
+				                                         
+                notConnected:  The ingest source is not connected
+				connected:     The ingest source is connected
+				"
+			::= { icmpIngestSource 3 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.10.3.4
+		icmpIngestProgression	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the node that gathers the information about the ingest job progression."
+			::= { icmpContent 4 }
+
+		--- 1.3.6.1.4.1.12612.220.11.5.2.10.3.4.1
+		icmpIngestStartTime	OBJECT-TYPE
+			SYNTAX	DateAndTime
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the current ingest start time."
+			::= { icmpIngestProgression 1 }
+
+		--- 1.3.6.1.4.1.12612.220.11.5.2.10.3.4.2
+		icmpIngestPercentageCompleted	OBJECT-TYPE
+			SYNTAX	Unsigned32 (0..65535)
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"This is the completion percentage of the current ingest job."	
+			::= { icmpIngestProgression 2 }
+
+		--- 1.3.6.1.4.1.12612.220.11.5.2.10.3.4.3
+		icmpIngestElapsedTime	OBJECT-TYPE
+			SYNTAX	Unsigned32
+			UNITS "seconds"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is elapsed time of the current ingest job."
+			::= { icmpIngestProgression 3 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.11
+		icmpPlayer	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the node that gathers the information about the ICMP Player."
+			::= { icmpProp2Monitor 11 }
+
+		--- 1.3.6.1.4.1.12612.220.11.5.2.11.1
+		icmpPlayMode	OBJECT-TYPE
+			SYNTAX INTEGER
+				{
+				manual(0),
+				scheduled(1)
+				}
+			UNITS	"ICMP play mode enumeration"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the ICMP play mode:  
+				                                         
+                manual:        The player is in manual mode (the scheduler is turned off).
+				scheduled:     The player is using the scheduler.
+				"
+			::= { icmpPlayer 1 }
+
+        --- 1.3.6.1.4.1.12612.220.11.5.2.11.2
+		icmpPlayState	OBJECT-TYPE
+			SYNTAX INTEGER
+				{
+				playing(0),
+				paused(1),
+				stopped(2)
+				}
+			UNITS	"ICMP play state enumeration"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the ICMP play state:  
+				                                         
+                playing:        The player is playing content.
+				paused:         The player is paused.
+                stopped:        The player has been stopped.
+				"
+			::= { icmpPlayer 2 }
+
+   		-- 1.3.6.1.4.1.12612.220.11.5.2.11.3
+		icmpPlaySelection	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the node that gathers the information about the current play selection."
+			::= { icmpPlayer 3 }
+
+   		--- 1.3.6.1.4.1.12612.220.11.5.2.11.3.1
+		icmpPlaySelectContentTitle	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the title of the currently selected show."
+			::= { icmpPlaySelection 1 }
+
+   		--- 1.3.6.1.4.1.12612.220.11.5.2.11.3.2
+		icmpPlaySelectContentDuration	OBJECT-TYPE
+			SYNTAX	Unsigned32 (0..65535)
+			UNITS "seconds"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the duration of the selected play content (in seconds)."
+			::= { icmpPlaySelection 2 }
+
+   		--- 1.3.6.1.4.1.12612.220.11.5.2.11.3.3
+		icmpPlaySelectStartTime	OBJECT-TYPE
+			SYNTAX	DateAndTime
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the scheduled start time of the selected play content."
+			::= { icmpPlaySelection 3 }
+
+   		-- 1.3.6.1.4.1.12612.220.11.5.2.11.3.4
+		icmpPlayProgression	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the node that gathers the information about the progression of the current play selection."
+			::= { icmpPlayer 4 }
+
+   		--- 1.3.6.1.4.1.12612.220.11.5.2.11.4.1
+		icmpPlayCurrentContentTitle	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the title of the currently playing clip."
+			::= { icmpPlayProgression 1 }
+                                                    
+   		--- 1.3.6.1.4.1.12612.220.11.5.2.11.4.2
+		icmpPlayStartTime	OBJECT-TYPE
+			SYNTAX	DateAndTime
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the start time of the play content currently playing."
+			::= { icmpPlayProgression 2 }
+
+   		--- 1.3.6.1.4.1.12612.220.11.5.2.11.4.3
+		icmpPlayPosition	OBJECT-TYPE
+			SYNTAX	Unsigned32 (0..65535)
+			UNITS "seconds"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the play position of the content (in seconds) currently being played."
+			::= { icmpPlayProgression 3 }
+
+        --- 1.3.6.1.4.1.12612.220.11.5.2.11.4.4
+		icmpPlayFromAlternativeSource	OBJECT-TYPE
+			SYNTAX INTEGER
+				{
+				false(0),
+				true(1)
+				}
+			UNITS	"ICMP alternative source selection enumeration"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the ICMP alternative source selection:  
+				                                         
+                false:        The content is not played from alternative content sources.
+				true:         The content is not played from alternative content sources.
+				"
+			::= { icmpPlayProgression 4 }
+
+   		-- 1.3.6.1.4.1.12612.220.11.5.2.11.3.5
+		icmpPlayerNextSchedule	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the node that gathers the information about the next scheduled content."
+			::= { icmpPlayer 5 }
+
+   		--- 1.3.6.1.4.1.12612.220.11.5.2.11.3.5.1
+		icmpPlayNextScheduledContentTitle	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the title of the content scheduled next."
+			::= { icmpPlayerNextSchedule 1 }
+
+   		--- 1.3.6.1.4.1.12612.220.11.5.2.11.3.5.2
+		icmpPlayNextScheduledContentDuration	OBJECT-TYPE
+			SYNTAX	Unsigned32 (0..65535)
+			UNITS "seconds"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the duration of the next scheduled content (in seconds)."
+			::= { icmpPlayerNextSchedule 2 }
+
+   		--- 1.3.6.1.4.1.12612.220.11.5.2.11.3.5.3
+		icmpPlayNextScheduledStartTime	OBJECT-TYPE
+			SYNTAX	DateAndTime
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the start time of the next scheduled content."
+			::= { icmpPlayerNextSchedule 3 }
+
+        --- 1.3.6.1.4.1.12612.220.11.5.2.11.3.5.4
+		icmpPlayNextScheduledValidity	OBJECT-TYPE
+			SYNTAX INTEGER
+				{
+				invalid(0),
+				valid(1)
+				}
+			UNITS	"ICMP next scheduled content validity enumeration"
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the validity status of the content that is scheduled next:  
+				                                         
+                invalid:      The show that is scheduled next is not not valid.
+				valid:        The show that is scheduled next is not not valid.
+				"
+			::= { icmpPlayerNextSchedule 4 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.12
+		icmpScheduler	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the node that gathers the information about the ICMP Player."
+			::= { icmpProp2Monitor 12 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.12.1
+		icmpUnplayableScheduledContentTable	OBJECT-TYPE
+			SYNTAX SEQUENCE OF	UnplayableContentEntry
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"A table with unplayable scheduled content entries."
+			::= { icmpScheduler 1 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.12.1.1
+		icmpUnplayableContentEntry	OBJECT-TYPE
+			SYNTAX	UnplayableContentEntry
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"An unplayable scheduled content entry."
+			INDEX	{ unplayableContentIndex }
+			::= { icmpUnplayableScheduledContentTable 1 }
+
+		UnplayableContentEntry ::=
+		    SEQUENCE {
+				unplayableContentIndex         Unsigned32,           
+				unplayableContentShow          DisplayString,   
+				unplayableContentShowTitle     DisplayString,   
+			    unplayableContentTime          DateAndTime,     
+			    unplayableContentReason        DisplayString
+		    }
+
+		--- 1.3.6.1.4.1.12612.220.11.5.2.12.1.1.1
+	    unplayableContentIndex	OBJECT-TYPE
+			SYNTAX	Unsigned32 (0..65535)
+			MAX-ACCESS	not-accessible
+			STATUS	current
+			DESCRIPTION
+				"Indentifies the unplayable scheduled content list entry."
+			::= { icmpUnplayableContentEntry 1 }
+
+        --- 1.3.6.1.4.1.12612.220.11.5.2.12.1.1.2
+        unplayableContentShow OBJECT-TYPE
+        	SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the list name of the scheduled show that has unplayable content."
+			::= { icmpUnplayableContentEntry 2 }           
+        
+		--- 1.3.6.1.4.1.12612.220.11.5.2.12.1.1.3
+		unplayableContentShowTitle	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the title of the scheduled show that has unplayable content."
+			::= { icmpUnplayableContentEntry 3 }           
+			
+		--- 1.3.6.1.4.1.12612.220.11.5.2.12.1.1.5
+		unplayableContentTime	OBJECT-TYPE
+			SYNTAX	DateAndTime
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the time of the scheduled show that has unplayable content."
+			::= { icmpUnplayableContentEntry 5 }
+
+		--- 1.3.6.1.4.1.12612.220.11.5.2.12.1.1.6
+		unplayableContentReason	OBJECT-TYPE
+			SYNTAX	DisplayString
+			MAX-ACCESS	read-only
+			STATUS	current
+			DESCRIPTION
+				"This is the reason for the scheduled content not to be playable."
+			::= { icmpUnplayableContentEntry 6 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.13
+				icmpMode2D3D	OBJECT-TYPE
+					SYNTAX	DisplayString
+					MAX-ACCESS	read-only
+					STATUS	current
+					DESCRIPTION
+						"This indicates if the media server is currently in 2D or 3D mode.
+						Possible values: 
+						 - '2D'
+						 - '3D'"
+			::= { icmpProp2Monitor 13 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.2.14
+				icmpBackplaneTest	OBJECT-TYPE
+					SYNTAX	DisplayString
+					MAX-ACCESS	read-only
+					STATUS	current
+					DESCRIPTION
+						"This indicates the result of the test on the backplane.
+			::= { icmpProp2Monitor 14 }
+                                           
+
+                                                   
+-- Notifications
+
+		-- 1.3.6.1.4.1.12612.220.11.5.5
+		barcoMeDcMediaServerNotifications	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the general oid for Barco Media Server notifications."
+			::= { rootBmeDcMediaServerMonMIB 5 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.5.5.0
+		icmpNotificationPrefix	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the prefix used to have easy event mapping
+				between notification oid values (SNMPv2 and SNMPv3) and
+				specific trap numbers (SNMPv1)."
+			::= { barcoMeDcMediaServerNotifications 0 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.5.5.0.1
+		icmpTemperatureFail	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription, eventDetail }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a critical severity and is sent the moment of
+				exceeding one of the temperature boundaries.
+				Details could be found by getting the eventDetail object.
+				The trap will be resent every time the projector is switched on."
+			::= { icmpNotificationPrefix 1 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.5.5.0.2
+		icmpVoltageFail	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription, eventDetail }
+			STATUS	current
+			DESCRIPTION
+				"This has a critical severity and is sent the moment of
+				exceeding one of the voltage boundaries.
+				Details could be found by getting the eventDetail object.
+				The trap will be resent every time the projector is switched on."
+			::= { icmpNotificationPrefix 2 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.5.5.0.3
+		icmpFanSpeedFail	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription, eventDetail }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a major severity and is sent the moment of
+				exceeding one of the fan speed boundaries.
+				Details could be found by getting the eventDetail object.
+				The trap will be resent every time the projector is switched on."
+			::= { icmpNotificationPrefix 3 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.5.5.0.4
+		icmpTemperatureWarning	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription, eventDetail }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment of
+				exceeding one of the temperature boundaries.
+				Details could be found by getting the eventDetail object.
+				The trap will be resent every time the projector is switched on."
+			::= { icmpNotificationPrefix 4 }
+
+
+		--- 1.3.6.1.4.1.12612.220.11.5.5.0.5
+		icmpVoltageWarning	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription, eventDetail }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment of
+				exceeding one of the voltage boundaries.
+				Details could be found by getting the eventDetail object.
+				The trap will be resent every time the projector is switched on."
+			::= { icmpNotificationPrefix 5 }
+
+
+		-- 1.3.6.1.4.1.12612.220.11.5.5.0.6
+		icmpFanSpeedWarning	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription, eventDetail }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment of
+				exceeding one of the fanspeed boundaries.
+				Details could be found by getting the eventDetail object.
+				The trap will be resent every time the projector is switched on."
+			::= { icmpNotificationPrefix 6 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.5.0.7
+		icmpRaidError	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription, eventDetail }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment the raid array
+				of the server is not running in optimal conditions (error).
+				Details could be found by getting the eventDetail object.
+				The trap will be resent at a regular period if the problem remains."
+			::= { icmpNotificationPrefix 7 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.5.0.8
+		icmpRaidWarning	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription, eventDetail }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment the raid array
+				of the server is not running in optimal conditions (warning).
+				Details could be found by getting the eventDetail object.
+				The trap will be resent at a regular period if the problem remains."
+			::= { icmpNotificationPrefix 8 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.5.0.9
+		icmpRaidDiskError	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription, eventDetail }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment the system disk
+				of the server is not running in optimal conditions (error).
+				Details could be found by getting the eventDetail object.
+				The trap will be resent at a regular period if the problem remains."
+			::= { icmpNotificationPrefix 9 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.5.0.10
+		icmpRaidDiskWarning	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription, eventDetail }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment the system disk
+				of the server is not running in optimal conditions (warning).
+				Details could be found by getting the eventDetail object.
+				The trap will be resent at a regular period if the problem remains."
+			::= { icmpNotificationPrefix 10 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.5.0.11
+		icmpStorageError	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription, eventDetail }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment the system disk
+				of the server is not running in optimal conditions (error).
+				Details could be found by getting the eventDetail object.
+				The trap will be resent at a regular period if the problem remains."
+			::= { icmpNotificationPrefix 11 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.5.0.12
+		icmpStorageWarning	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription, eventDetail }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment the system disk
+				of the server is not running in optimal conditions (warning).
+				Details could be found by getting the eventDetail object.
+				The trap will be resent at a regular period if the problem remains."
+			::= { icmpNotificationPrefix 12 }
+                                          
+		-- 1.3.6.1.4.1.12612.220.11.5.5.0.13
+		icmpIngestError	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription, eventDetail }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment the system disk
+				of the server is not running in optimal conditions (error).
+				Details could be found by getting the eventDetail object.
+				The trap will be resent at a regular period if the problem remains."
+			::= { icmpNotificationPrefix 13 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.5.0.14
+		icmpIngestWarning	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription, eventDetail }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment the system disk
+				of the server is not running in optimal conditions (warning).
+				Details could be found by getting the eventDetail object.
+				The trap will be resent at a regular period if the problem remains."
+			::= { icmpNotificationPrefix 14 }
+                                                            
+		-- 1.3.6.1.4.1.12612.220.11.5.5.0.15
+		icmpContentDatabaseError	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription, eventDetail }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment the system disk
+				of the server is not running in optimal conditions (error).
+				Details could be found by getting the eventDetail object.
+				The trap will be resent at a regular period if the problem remains."
+			::= { icmpNotificationPrefix 15 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.5.0.16
+		icmpContentDatabaseWarning	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription, eventDetail }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment the system disk
+				of the server is not running in optimal conditions (warning).
+				Details could be found by getting the eventDetail object.
+				The trap will be resent at a regular period if the problem remains."
+			::= { icmpNotificationPrefix 16 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.5.0.17
+		icmpPlayerError	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription, eventDetail }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment the system disk
+				of the server is not running in optimal conditions (error).
+				Details could be found by getting the eventDetail object.
+				The trap will be resent at a regular period if the problem remains."
+			::= { icmpNotificationPrefix 17 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.5.0.18
+		icmpPlayerWarning	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription, eventDetail }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment the system disk
+				of the server is not running in optimal conditions (warning).
+				Details could be found by getting the eventDetail object.
+				The trap will be resent at a regular period if the problem remains."
+			::= { icmpNotificationPrefix 18 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.5.0.19
+		icmpSchedulerError	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription, eventDetail }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment the system disk
+				of the server is not running in optimal conditions (error).
+				Details could be found by getting the eventDetail object.
+				The trap will be resent at a regular period if the problem remains."
+			::= { icmpNotificationPrefix 19 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.5.0.20
+		icmpSchedulerWarning	NOTIFICATION-TYPE
+			OBJECTS	{ eventSeverity, eventDescription, eventDetail }
+			STATUS	current
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment the system disk
+				of the server is not running in optimal conditions (warning).
+				Details could be found by getting the eventDetail object.
+				The trap will be resent at a regular period if the problem remains."
+			::= { icmpNotificationPrefix 20 }
+
+
+                                                            
+
+-- Trap defines
+-- In order to be backwards compatible, also SNMPv1 traps are foreseen.
+
+		trapIcmpTemperatureFail	TRAP-TYPE
+			ENTERPRISE	icmpTemperatureFail
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a critical severity and is sent the moment of
+				exceeding one of the temperature boundaries.
+				Details could be found by getting the eventDetail object.
+				The trap will be resent every time the projector is switched on."
+	        REFERENCE	"[specific-trap]"
+			::= 1
+
+
+		trapIcmpVoltageFail	TRAP-TYPE
+			ENTERPRISE	icmpVoltageFail
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This has a critical severity and is sent the moment of
+				exceeding one of the voltage boundaries.
+				Details could be found by getting the eventDetail object.
+				The trap will be resent every time the projector is switched on."
+			REFERENCE	"[specific-trap]"
+			::= 2
+
+
+		trapIcmpFanSpeedFail	TRAP-TYPE
+			ENTERPRISE	icmpFanSpeedFail
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This has a major severity and is sent the moment of
+				exceeding one of the fan speed boundaries.
+				Details could be found by getting the eventDetail object.
+				The trap will be resent every time the projector is switched on."
+			REFERENCE	"[specific-trap]"
+			::= 3
+
+
+		trapIcmpTemperatureWarning	TRAP-TYPE
+			ENTERPRISE	icmpTemperatureWarning
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment of
+				exceeding one of the temperature warning boundaries.
+				Details could be found by getting the eventDetail object.
+				The trap will be resent every time the projector is switched on."
+	        REFERENCE	"[specific-trap]"
+			::= 4
+
+
+		trapIcmpVoltageWarning	TRAP-TYPE
+			ENTERPRISE	icmpVoltageWarning
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment of
+				exceeding one of the voltage warning boundaries.
+				Details could be found by getting the eventDetail object.
+				The trap will be resent every time the projector is switched on."
+	        REFERENCE	"[specific-trap]"
+			::= 5
+
+
+		trapIcmpFanSpeedWarning	TRAP-TYPE
+			ENTERPRISE	icmpFanSpeedWarning
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment of
+				exceeding one of the fanspeed warning boundaries.
+				Details could be found by getting the eventDetail object.
+				The trap will be resent every time the projector is switched on."
+	        REFERENCE	"[specific-trap]"
+			::= 6
+
+		trapIcmpRaidError	TRAP-TYPE
+			ENTERPRISE	icmpRaidError
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment the raid array
+				of the server is not running in optimal conditions (error).
+				Details could be found by getting the eventDetail object.
+				The trap will be resent at a regular period if the problem remains."
+			REFERENCE	"[specific-trap]"
+			::= 7
+
+		trapIcmpRaidWarning	TRAP-TYPE
+			ENTERPRISE	icmpRaidWarning
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment the raid array
+				of the server is not running in optimal conditions (warning).
+				Details could be found by getting the eventDetail object.
+				The trap will be resent at a regular period if the problem remains."
+			REFERENCE	"[specific-trap]"
+			::= 8
+
+		trapIcmpRaidDiskError	TRAP-TYPE
+			ENTERPRISE	icmpRaidDiskError
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment the system disk
+				of the server is not running in optimal conditions (error).
+				Details could be found by getting the eventDetail object.
+				The trap will be resent at a regular period if the problem remains."
+			REFERENCE	"[specific-trap]"
+			::= 9
+
+		trapIcmpRaidDiskWarning	TRAP-TYPE
+			ENTERPRISE	icmpRaidDiskWarning
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment the system disk
+				of the server is not running in optimal conditions (warning).
+				Details could be found by getting the eventDetail object.
+				The trap will be resent at a regular period if the problem remains."
+			REFERENCE	"[specific-trap]"
+			::= 10
+
+		trapIcmpStorageError	TRAP-TYPE
+			ENTERPRISE	icmpStorageError
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment the system disk
+				of the server is not running in optimal conditions (error).
+				Details could be found by getting the eventDetail object.
+				The trap will be resent at a regular period if the problem remains."
+			REFERENCE	"[specific-trap]"
+			::= 11
+
+		trapIcmpStorageWarning	TRAP-TYPE
+			ENTERPRISE	icmpStorageWarning
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment the system disk
+				of the server is not running in optimal conditions (warning).
+				Details could be found by getting the eventDetail object.
+				The trap will be resent at a regular period if the problem remains."
+			REFERENCE	"[specific-trap]"
+			::= 12
+
+		trapIcmpIngestError	TRAP-TYPE
+			ENTERPRISE	icmpIngestError
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment the system disk
+				of the server is not running in optimal conditions (error).
+				Details could be found by getting the eventDetail object.
+				The trap will be resent at a regular period if the problem remains."
+			REFERENCE	"[specific-trap]"
+			::= 13
+
+		trapIcmpIngestWarning	TRAP-TYPE
+			ENTERPRISE	icmpIngestWarning
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment the system disk
+				of the server is not running in optimal conditions (warning).
+				Details could be found by getting the eventDetail object.
+				The trap will be resent at a regular period if the problem remains."
+			REFERENCE	"[specific-trap]"
+			::= 14
+
+		trapIcmpContentDatabaseError	TRAP-TYPE
+			ENTERPRISE	icmpContentDatabaseError
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment the system disk
+				of the server is not running in optimal conditions (error).
+				Details could be found by getting the eventDetail object.
+				The trap will be resent at a regular period if the problem remains."
+			REFERENCE	"[specific-trap]"
+			::= 15
+                            
+		trapIcmpContentDatabaseWarning	TRAP-TYPE
+			ENTERPRISE	icmpContentDatabaseWarning
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment the system disk
+				of the server is not running in optimal conditions (error).
+				Details could be found by getting the eventDetail object.
+				The trap will be resent at a regular period if the problem remains."
+			REFERENCE	"[specific-trap]"
+			::= 16
+
+		trapIcmpPlayerError	TRAP-TYPE
+			ENTERPRISE	icmpPlayerError
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment the system disk
+				of the server is not running in optimal conditions (error).
+				Details could be found by getting the eventDetail object.
+				The trap will be resent at a regular period if the problem remains."
+			REFERENCE	"[specific-trap]"
+			::= 17
+
+		trapIcmpPlayerWarning	TRAP-TYPE
+			ENTERPRISE	icmpPlayerWarning
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment the system disk
+				of the server is not running in optimal conditions (warning).
+				Details could be found by getting the eventDetail object.
+				The trap will be resent at a regular period if the problem remains."
+			REFERENCE	"[specific-trap]"
+			::= 18
+
+		trapIcmpSchedulerError	TRAP-TYPE
+			ENTERPRISE	icmpSchedulerError
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment the system disk
+				of the server is not running in optimal conditions (error).
+				Details could be found by getting the eventDetail object.
+				The trap will be resent at a regular period if the problem remains."
+			REFERENCE	"[specific-trap]"
+			::= 19
+
+		trapIcmpSchedulerWarning	TRAP-TYPE
+			ENTERPRISE	icmpSchedulerWarning
+			VARIABLES	{ eventSeverity, eventDescription, eventDetail }
+			DESCRIPTION
+				"This trap has a warning severity and is sent the moment the system disk
+				of the server is not running in optimal conditions (warning).
+				Details could be found by getting the eventDetail object.
+				The trap will be resent at a regular period if the problem remains."
+			REFERENCE	"[specific-trap]"
+			::= 20
+
+
+-- Group definitions
+
+		-- 1.3.6.1.4.1.12612.220.11.5.6
+		icmpGroups	OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION 
+				"This is the general oid for the groups."
+			::= { rootBmeDcMediaServerMonMIB 6 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.6.1
+		icmpInfoGroup	OBJECT-GROUP
+			OBJECTS	{ icmpSerialNumber, icmpHostName, icmpState, icmpSoftwareVersion, icmpMediaBlockCertifID,
+			          icmpLicenseName, icmpLicenseNotValidBefore, icmpLicenseNotValidAfter, icmpMode2D3D, icmpBackplaneTest }
+			STATUS	current
+			DESCRIPTION 
+				"A collection of all server general information."
+			::= { icmpGroups 1 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.6.2
+		icmpSensorsGroup	OBJECT-GROUP
+			OBJECTS	{ icmpTemperatureName, icmpTemperature, icmpTemperatureDiagnosis, 
+			          icmpVoltageName,     icmpVoltage,     icmpVoltageDiagnosis, 
+			          icmpFanSpeedName,    icmpFanSpeed,    icmpFanSpeedDiagnosis  }
+			STATUS	current
+			DESCRIPTION
+				"A collection of all ICMP diagnosis properties"
+			::= { icmpGroups 2 }
+
+   		-- 1.3.6.1.4.1.12612.220.11.5.6.3
+		icmpRaidGroup	OBJECT-GROUP
+			OBJECTS	{ icmpInternalRaidModel, icmpInternalRaidSerialNumber, icmpInternalRaidStatus, 
+			          icmpInternalRaidRebuildPercentage, raidDiskSerialNumber, raidDiskSize, raidDiskStatus,
+                      icmpInternalRaidTotalSize }
+			STATUS	current
+			DESCRIPTION 
+				"A collection of all server raid array information."
+			::= { icmpGroups 3 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.6.4
+		icmpStorageGroup	OBJECT-GROUP
+			OBJECTS	{ storageName, storageType, storageTotalSize, storageFreeSize }
+			STATUS	current
+			DESCRIPTION 
+				"A collection of all server storage information."
+			::= { icmpGroups 4 }     
+
+		-- 1.3.6.1.4.1.12612.220.11.5.6.5
+		icmpIngestGroup	OBJECT-GROUP
+			OBJECTS	{ icmpIngestCurrentJobStatus, icmpIngestJobsPending, icmpIngestSourceType,
+			          icmpIngestSourceName, icmpIngestSourceConnectionStatus, icmpIngestStartTime,
+			          icmpIngestPercentageCompleted, icmpIngestElapsedTime }
+			STATUS	current
+			DESCRIPTION 
+				"A collection of all Media Server ingest information."
+			::= { icmpGroups 5 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.6.6
+		icmpPlayerGroup	OBJECT-GROUP
+			OBJECTS	{ icmpPlayMode, icmpPlayState, icmpPlaySelectContentTitle,
+			          icmpPlaySelectContentDuration, icmpPlaySelectStartTime, icmpPlayCurrentContentTitle,
+			          icmpPlayStartTime, icmpPlayPosition, icmpPlayFromAlternativeSource, icmpPlayNextScheduledContentTitle,
+			          icmpPlayNextScheduledContentDuration, icmpPlayNextScheduledStartTime, icmpPlayNextScheduledValidity }
+			STATUS	current
+			DESCRIPTION 
+				"A collection of all Media Server player information."
+			::= { icmpGroups 6 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.6.7
+		icmpSchedulerGroup	OBJECT-GROUP
+			OBJECTS	{ unplayableContentShowTitle, unplayableContentTime, unplayableContentReason }
+			STATUS	current
+			DESCRIPTION 
+				"A collection of all Media Server scheduler information."
+			::= { icmpGroups 7 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.6.8
+		icmpNotificationGroup	NOTIFICATION-GROUP
+			NOTIFICATIONS	{ icmpTemperatureFail, icmpVoltageFail, icmpFanSpeedFail,
+			                  icmpTemperatureWarning, icmpVoltageWarning, icmpFanSpeedWarning,
+			                  icmpRaidError, icmpRaidWarning, icmpRaidDiskError, icmpRaidDiskWarning,
+			                  icmpStorageError, icmpStorageWarning, icmpIngestError, icmpIngestWarning,
+			                  icmpContentDatabaseError, icmpContentDatabaseWarning, icmpPlayerError, 
+			                  icmpPlayerWarning, icmpSchedulerError, icmpSchedulerWarning }
+			STATUS	current
+			DESCRIPTION
+				"The collection of all Media Server notifications."
+			::= { icmpGroups 8 }
+
+		-- 1.3.6.1.4.1.12612.220.11.5.6.9
+		icmpTrapGroup	NOTIFICATION-GROUP
+			NOTIFICATIONS	{ trapIcmpTemperatureFail, trapIcmpVoltageFail, trapIcmpFanSpeedFail,
+			                  trapIcmpTemperatureWarning, trapIcmpVoltageWarning, trapIcmpFanSpeedWarning,
+			                  trapIcmpRaidError, trapIcmpRaidWarning, trapIcmpRaidDiskError, trapIcmpRaidDiskWarning,
+			                  trapIcmpStorageError, trapIcmpStorageWarning, trapIcmpIngestError, trapIcmpIngestWarning,
+			                  trapIcmpContentDatabaseError, trapIcmpContentDatabaseWarning, trapIcmpPlayerError, 
+			                  trapIcmpPlayerWarning, trapIcmpSchedulerError, trapIcmpSchedulerWarning }
+
+			STATUS	current
+			DESCRIPTION
+				"The collection of all Media Server traps."
+			::= { icmpGroups 9 }
+
+-- END OF BARCO-ME-DC-MEDIASERVER-MON-MIB mib
+
+
+-- Conformance information
+
+		-- 1.3.6.1.4.1.12612.220.12.1
+        barcoDp100Compl MODULE-COMPLIANCE
+            STATUS  current
+            DESCRIPTION
+                "The compliance statement for DP90/DP100/DP300 projectors."
+            MODULE  -- this module
+            MANDATORY-GROUPS
+                {
+                comCommonGroup,
+                tiDp100SpecificGroup,
+                tiS1CommonGroup,
+                tiDmdNativeSizeGroup,
+                tiS1ConfigGroup,
+                projDp100SpecificGroup,
+                projCommonGroup,
+                projCommonLampGroup,
+                dp100CommonGroup,
+                dp100DiagnosisGroup
+                }
+                
+			GROUP	tiNotificationGroup
+			DESCRIPTION	"Notifications only available is snmp v2 is selected."
+			GROUP	projNotificationGroup
+			DESCRIPTION	"Notifications only available is snmp v2 is selected.
+            Notifications: lampOffByProjector, lampNoStrike, dowserNotOpen, globalFailure,
+            globalError, globalWarning, globalNotif, communicationWarning are not supported."
+			GROUP	dp100NotificationGroup
+			DESCRIPTION	"Notifications only available is snmp v2 is selected."
+            
+			GROUP	tiTrapGroup
+			DESCRIPTION	"Traps only available is snmp v1 is selected."
+			GROUP	projTrapGroup
+			DESCRIPTION	"Traps only available is snmp v1 is selected.
+            Traps: trapLampOffByProjector, trapLampNoStrike, trapDowserNotOpen, trapGlobalFailure,
+            trapGlobalError, trapGlobalWarning, trapGlobalNotif, trapCommunicationWarning are not supported."
+			GROUP	dp100TrapGroup
+			DESCRIPTION	"Traps only available is snmp v1 is selected."
+            
+            ::= { barcoDcpConfsCompliance 1 }
+
+		-- 1.3.6.1.4.1.12612.220.12.2
+        barcoDpSeries1Compl MODULE-COMPLIANCE
+            STATUS  current
+            DESCRIPTION
+                "The compliance statement for DP1500/DP2000 Series1 projectors."
+            MODULE  -- this module
+            MANDATORY-GROUPS
+                {
+                comCommonGroup,
+                comExtendedGroup,
+                tiS1CommonGroup,
+                tiCommonTestPatternGroup,
+                tiDmdNativeSizeGroup,
+                tiSystemIdentificationGroup,
+                tiS1ConfigGroup,
+                projCommonGroup,
+                projCommonLampGroup,
+                projExtendedLampGroup,
+                projPortRunTimesGroup,
+                projDetailedDiagnosticsGroup,
+                projIdentificationGroup,
+                dpPresetGroup,
+                dpDiagnosisGroup
+                }
+                
+			GROUP	tiNotificationGroup
+			DESCRIPTION	"Notifications only available is snmp v2 is selected."
+			GROUP	projNotificationGroup
+			DESCRIPTION	"Notifications only available is snmp v2 is selected."
+			GROUP	dpNotificationGroup
+			DESCRIPTION	"Notifications only available is snmp v2 is selected."
+            
+			GROUP	tiTrapGroup
+			DESCRIPTION	"Traps only available is snmp v1 is selected."
+			GROUP	projTrapGroup
+			DESCRIPTION	"Traps only available is snmp v1 is selected."
+			GROUP	dpTrapGroup
+			DESCRIPTION	"Traps only available is snmp v1 is selected."
+                
+            ::= { barcoDcpConfsCompliance 2 }
+
+		-- 1.3.6.1.4.1.12612.220.12.3
+        barcoDpSeries2Compl MODULE-COMPLIANCE
+            STATUS  current
+            DESCRIPTION
+                "The compliance statement for DP2K/DP4K Series2 projectors."
+            MODULE  -- this module
+            MANDATORY-GROUPS
+                {
+                comCommonGroup,
+                comExtendedGroup,
+                tiCommonTestPatternGroup,
+                tiDmdNativeSizeGroup,
+                tiSystemIdentificationGroup,
+                tiS2ConfigGroup,
+                projCommonGroup,
+                projS2ProjectorModesGroup,
+                projCommonLampGroup,
+                projExtendedLampGroup,
+                projPortRunTimesGroup,
+                projDetailedDiagnosticsGroup,
+                projIdentificationGroup,
+                projS2HardwareIdentificationGroup,
+                dpPresetGroup,
+                dpS2InputGroup,
+                dpDiagnosisGroup
+                }
+                
+			GROUP	tiNotificationGroup
+			DESCRIPTION	"Notifications only available is snmp v2 is selected."
+			GROUP	projNotificationGroup
+			DESCRIPTION	"Notifications only available is snmp v2 is selected."
+			GROUP	dpNotificationGroup
+			DESCRIPTION	"Notifications only available is snmp v2 is selected."
+            
+			GROUP	tiTrapGroup
+			DESCRIPTION	"Traps only available is snmp v1 is selected."
+			GROUP	projTrapGroup
+			DESCRIPTION	"Traps only available is snmp v1 is selected."
+			GROUP	dpTrapGroup
+			DESCRIPTION	"Traps only available is snmp v1 is selected."
+                
+            ::= { barcoDcpConfsCompliance 3 }
+
+		-- 1.3.6.1.4.1.12612.220.12.4
+        barcoMediaServerCompl MODULE-COMPLIANCE
+            STATUS  current
+            DESCRIPTION
+                "The compliance statement for Barco Media Servers."
+            MODULE  -- this module
+            MANDATORY-GROUPS
+                {
+		        icmpInfoGroup,
+				icmpSensorsGroup,
+				icmpStorageGroup,
+				icmpRaidGroup,
+				icmpIngestGroup,
+				icmpPlayerGroup,
+				icmpSchedulerGroup,
+				icmpNotificationGroup,
+				icmpTrapGroup
+                }
+                
+            ::= { barcoDcpConfsCompliance 4 }
+
+END

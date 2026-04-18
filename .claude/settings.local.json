@@ -4,7 +4,10 @@
       "Bash(ssh *)",
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "WebSearch",
+      "Bash(npx prisma *)",
+      "Bash(DATABASE_URL=\"file:./dev.db\" npx prisma migrate dev --name expand_schema_locations_auditoriums)"
     ]
   }
 }

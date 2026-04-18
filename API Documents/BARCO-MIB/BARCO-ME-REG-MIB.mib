@@ -1,0 +1,58 @@
+	BARCO-ME-REG-MIB DEFINITIONS ::= BEGIN
+
+		IMPORTS
+			enterprises, MODULE-IDENTITY, OBJECT-IDENTITY
+				FROM	SNMPv2-SMI
+			MODULE-COMPLIANCE
+				FROM	SNMPv2-CONF;
+
+		-- 1.3.6.1.4.1.12612
+ 		barcoMERoot	MODULE-IDENTITY
+			LAST-UPDATED "200906140922Z"		-- June 14, 2009 at 09:22 GMT
+			ORGANIZATION
+				"Barco - Media and Entertainment - Digital Cinema"
+			CONTACT-INFO
+				"Contact:		Customer Support
+				Postal:			BARCO MED
+								Noordlaan 5
+								Industriezone
+								B-8520 KUURNE
+								BELGIUM
+				WEB:			http://www.barco.com/corporate/en/eSupport/"
+			DESCRIPTION
+				"This is the MIB where all root OIDs should be registered.
+				That way it is possible to keep track about the already granted OIDs.
+				i.e. Coming BME-DC MIBs must first obtain their root ID from de BARCO-ME-DC-REG."
+			REVISION "200906140922Z"		-- June 14, 2009 at 09:22 GMT
+			DESCRIPTION
+				"Initial version"
+			::= { enterprises 12612 }
+
+
+
+--
+-- Node definitions
+--
+
+		-- 1.3.6.1.4.1.12612.220
+		dcRoot			OBJECT-IDENTITY
+			STATUS	current
+			DESCRIPTION
+				"This is the root for the Barco Digital Cinema (BDC) division,
+				which makes part of the BME department."
+			::= { barcoMERoot 220 }
+
+
+
+-- Conformance information
+
+		-- 1.3.6.1.4.1.12612.220.1.2
+			moduleCompliance MODULE-COMPLIANCE
+			STATUS	current
+			DESCRIPTION
+			"The compliance statement for SNMP entities which have to implement BME-DC mibs."
+			MODULE  -- this module
+			::= { barcoMERoot 2 }
+
+-- END OF BARCO-ME-REG-MIB
+END

@@ -1,0 +1,1995 @@
+OID: SNMPv2-SMI::enterprises.12612.220.11.1.2.3.3.0     | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.1.2.13.1.2.1  | Value: TiWorkingVersion
+OID: SNMPv2-SMI::enterprises.12612.220.11.1.2.13.1.2.2  | Value: ICP_TIsw_MainVersion
+OID: SNMPv2-SMI::enterprises.12612.220.11.1.2.13.1.3.1  | Value: 1.4.4.27.30678
+OID: SNMPv2-SMI::enterprises.12612.220.11.1.2.13.1.3.2  | Value: 1.4.4.27.30678
+OID: SNMPv2-SMI::enterprises.12612.220.11.1.2.15.1.0    | Value: 128
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.1.0       | Value: 2590475871
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.3.0       | Value: 1801
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.4.3.0     | Value: 0x01
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.4.4.0     | Value: 0x01
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.4.6.0     | Value: 100
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.4.8.1.2.1 | Value: 1022
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.4.8.1.2.2 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.4.8.1.2.3 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.4.8.1.2.4 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.4.8.1.2.5 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.4.8.1.3.1 | Value: Runtime
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.4.8.1.3.2 | Value: RuntimeMax
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.4.8.1.3.3 | Value: RuntimeMsg
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.4.8.1.3.4 | Value: RuntimeWarning
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.4.8.1.3.5 | Value: RuntimeAutoShutdown
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.4.9.0     | Value: 109
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.4.13.0    | Value: 98
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.5.0       | Value: 1
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.8.0       | Value: 1.8.13
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.1.0    | Value: 1
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.2.0    | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.3.0    | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.2.1 | Value: W
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.2.2 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.2.3 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.2.4 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.2.5 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.2.6 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.2.7 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.2.8 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.2.9 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.2.10 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.2.11 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.2.12 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.2.13 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.2.14 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.2.15 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.2.16 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.2.17 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.2.18 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.2.19 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.2.20 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.3.1 | Value: L8000a
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.3.2 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.3.3 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.3.4 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.3.5 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.3.6 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.3.7 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.3.8 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.3.9 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.3.10 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.3.11 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.3.12 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.3.13 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.3.14 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.3.15 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.3.16 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.3.17 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.3.18 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.3.19 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.3.20 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.4.1 | Value: Illumination clo unable to maintain desired light output
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.4.2 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.4.3 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.4.4 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.4.5 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.4.6 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.4.7 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.4.8 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.4.9 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.4.10 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.4.11 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.4.12 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.4.13 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.4.14 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.4.15 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.4.16 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.4.17 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.4.18 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.4.19 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.10.4.1.4.20 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.11.0      | Value: 1
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.1.0    | Value: SP4K-25B
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.2.0    | Value: 119
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.1 | Value: R7681215 LDM 1 slot 1 board
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.2 | Value: R7681215 LDM 1 slot 2 board
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.3 | Value: R7681215 LDM 1 slot 3 board
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.4 | Value: R7681215 LDM 1 slot 7 board
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.5 | Value: R76812162 LDM 1
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.6 | Value: R76812162 LDM 2
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.7 | Value: R7681279 FormatterBlue
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.8 | Value: R7681280 FormatterGreen
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.9 | Value: R7681280 FormatterRed
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.10 | Value: R7681284 LDM 2 slot 3 board
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.11 | Value: R7681284 LDM 2 slot 6 board
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.12 | Value: R7681294 LDM 1 slot 4 board
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.13 | Value: R7681294 LDM 1 slot 6 board
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.14 | Value: R7681294 LDM 2 slot 2 board
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.15 | Value: R7681294 LDM 2 slot 7 board
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.16 | Value: R76813095 Light sensor
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.17 | Value: R76813235 CCB
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.18 | Value: R76813245 FMCB
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.19 | Value: R7681325 Signal backplane
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.20 | Value: R76813261 SMPS
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.21 | Value: R7681329 Touch display
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.22 | Value: R76813376 LSB 1
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.23 | Value: R7681349 ICMP
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.24 | Value: R76816315 PCB1CH
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.25 | Value: R76818515 LCB
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.26 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.27 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.28 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.29 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.30 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.31 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.32 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.33 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.34 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.35 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.36 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.37 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.38 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.39 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.40 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.41 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.42 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.43 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.44 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.45 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.46 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.47 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.48 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.49 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.50 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.51 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.52 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.53 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.54 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.55 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.56 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.57 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.58 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.59 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.60 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.61 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.62 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.63 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.64 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.65 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.66 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.67 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.68 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.69 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.70 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.71 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.72 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.73 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.74 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.75 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.76 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.77 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.78 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.79 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.80 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.81 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.82 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.83 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.84 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.85 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.86 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.87 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.88 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.89 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.90 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.91 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.92 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.93 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.94 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.95 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.96 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.97 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.98 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.99 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.100 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.101 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.102 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.103 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.104 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.105 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.106 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.107 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.108 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.109 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.110 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.111 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.112 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.113 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.114 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.115 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.116 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.117 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.118 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.119 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.120 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.121 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.122 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.123 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.124 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.125 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.126 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.127 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.128 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.129 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.130 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.131 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.132 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.133 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.134 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.135 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.136 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.137 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.138 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.139 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.140 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.141 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.142 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.143 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.144 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.145 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.146 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.147 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.148 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.149 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.150 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.151 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.152 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.153 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.154 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.155 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.156 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.157 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.158 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.159 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.160 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.161 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.162 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.163 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.164 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.165 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.166 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.167 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.168 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.169 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.170 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.171 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.172 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.173 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.174 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.175 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.176 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.177 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.178 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.179 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.180 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.181 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.182 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.183 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.184 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.185 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.186 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.187 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.188 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.189 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.190 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.191 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.192 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.193 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.194 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.195 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.196 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.197 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.198 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.199 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.2.200 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.1 | Value: 40
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.2 | Value: 40
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.3 | Value: 40
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.4 | Value: 40
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.5 | Value: 05
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.6 | Value: 05
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.7 | Value: 11
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.8 | Value: 12
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.9 | Value: 12
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.10 | Value: 24
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.11 | Value: 24
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.12 | Value: 12
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.13 | Value: 12
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.14 | Value: 12
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.15 | Value: 12
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.16 | Value: 02
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.17 | Value: 05
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.18 | Value: 04
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.19 | Value: 11
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.20 | Value: 14
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.21 | Value: 02
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.22 | Value: 03
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.23 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.24 | Value: 05
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.25 | Value: 06
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.26 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.27 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.28 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.29 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.30 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.31 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.32 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.33 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.34 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.35 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.36 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.37 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.38 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.39 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.40 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.41 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.42 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.43 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.44 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.45 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.46 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.47 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.48 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.49 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.50 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.51 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.52 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.53 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.54 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.55 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.56 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.57 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.58 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.59 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.60 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.61 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.62 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.63 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.64 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.65 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.66 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.67 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.68 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.69 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.70 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.71 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.72 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.73 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.74 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.75 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.76 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.77 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.78 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.79 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.80 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.81 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.82 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.83 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.84 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.85 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.86 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.87 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.88 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.89 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.90 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.91 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.92 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.93 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.94 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.95 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.96 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.97 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.98 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.99 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.100 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.101 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.102 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.103 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.104 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.105 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.106 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.107 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.108 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.109 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.110 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.111 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.112 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.113 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.114 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.115 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.116 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.117 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.118 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.119 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.120 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.121 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.122 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.123 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.124 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.125 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.126 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.127 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.128 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.129 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.130 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.131 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.132 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.133 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.134 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.135 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.136 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.137 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.138 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.139 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.140 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.141 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.142 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.143 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.144 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.145 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.146 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.147 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.148 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.149 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.150 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.151 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.152 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.153 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.154 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.155 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.156 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.157 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.158 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.159 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.160 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.161 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.162 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.163 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.164 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.165 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.166 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.167 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.168 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.169 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.170 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.171 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.172 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.173 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.174 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.175 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.176 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.177 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.178 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.179 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.180 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.181 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.182 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.183 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.184 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.185 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.186 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.187 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.188 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.189 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.190 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.191 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.192 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.193 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.194 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.195 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.196 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.197 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.198 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.199 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.3.200 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.1 | Value: 9433449243
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.2 | Value: 9433447018
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.3 | Value: 9433447192
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.4 | Value: 9433446466
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.5 | Value: 6822427429
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.6 | Value: 6822415511
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.7 | Value: 9731509647
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.8 | Value: 9731528484
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.9 | Value: 9731528551
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.10 | Value: 9433580884
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.11 | Value: 9433579197
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.12 | Value: 9433593930
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.13 | Value: 9433593945
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.14 | Value: 9433594137
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.15 | Value: 9433593486
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.16 | Value: 9731520177
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.17 | Value: 9433609342
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.18 | Value: 9433602153
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.19 | Value: 9433107254
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.20 | Value: 6822423119
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.21 | Value: 9731496508
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.22 | Value: 9433388065
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.23 | Value: 9731527593
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.24 | Value: 9433588424
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.25 | Value: 1850641523
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.26 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.27 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.28 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.29 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.30 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.31 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.32 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.33 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.34 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.35 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.36 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.37 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.38 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.39 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.40 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.41 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.42 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.43 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.44 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.45 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.46 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.47 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.48 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.49 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.50 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.51 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.52 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.53 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.54 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.55 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.56 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.57 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.58 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.59 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.60 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.61 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.62 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.63 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.64 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.65 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.66 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.67 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.68 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.69 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.70 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.71 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.72 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.73 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.74 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.75 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.76 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.77 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.78 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.79 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.80 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.81 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.82 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.83 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.84 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.85 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.86 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.87 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.88 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.89 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.90 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.91 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.92 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.93 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.94 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.95 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.96 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.97 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.98 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.99 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.100 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.101 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.102 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.103 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.104 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.105 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.106 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.107 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.108 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.109 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.110 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.111 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.112 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.113 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.114 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.115 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.116 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.117 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.118 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.119 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.120 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.121 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.122 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.123 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.124 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.125 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.126 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.127 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.128 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.129 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.130 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.131 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.132 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.133 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.134 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.135 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.136 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.137 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.138 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.139 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.140 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.141 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.142 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.143 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.144 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.145 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.146 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.147 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.148 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.149 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.150 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.151 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.152 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.153 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.154 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.155 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.156 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.157 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.158 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.159 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.160 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.161 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.162 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.163 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.164 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.165 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.166 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.167 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.168 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.169 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.170 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.171 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.172 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.173 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.174 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.175 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.176 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.177 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.178 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.179 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.180 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.181 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.182 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.183 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.184 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.185 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.186 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.187 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.188 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.189 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.190 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.191 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.192 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.193 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.194 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.195 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.196 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.197 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.198 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.199 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.4.200 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.1 | Value: 02AUG2024
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.2 | Value: 01AUG2024
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.3 | Value: 01AUG2024
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.4 | Value: 02AUG2024
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.5 | Value: 28NOV2024
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.6 | Value: 17OCT2024
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.7 | Value: 24OCT2024
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.8 | Value: 20NOV2024
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.9 | Value: 20NOV2024
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.10 | Value: 09DEC2024
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.11 | Value: 09DEC2024
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.12 | Value: 16DEC2024
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.13 | Value: 16DEC2024
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.14 | Value: 16DEC2024
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.15 | Value: 15DEC2024
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.16 | Value: 01NOV2024
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.17 | Value: 13JAN2025
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.18 | Value: 12JAN2025
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.19 | Value: 25NOV2023
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.20 | Value: 04DEC2024
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.21 | Value: 14SEP2024
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.22 | Value: 28MAY2024
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.23 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.24 | Value: 07DEC2024
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.25 | Value: 13DEC2024
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.26 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.27 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.28 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.29 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.30 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.31 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.32 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.33 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.34 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.35 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.36 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.37 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.38 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.39 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.40 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.41 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.42 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.43 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.44 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.45 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.46 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.47 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.48 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.49 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.50 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.51 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.52 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.53 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.54 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.55 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.56 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.57 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.58 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.59 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.60 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.61 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.62 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.63 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.64 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.65 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.66 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.67 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.68 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.69 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.70 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.71 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.72 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.73 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.74 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.75 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.76 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.77 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.78 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.79 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.80 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.81 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.82 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.83 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.84 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.85 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.86 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.87 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.88 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.89 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.90 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.91 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.92 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.93 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.94 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.95 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.96 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.97 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.98 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.99 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.100 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.101 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.102 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.103 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.104 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.105 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.106 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.107 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.108 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.109 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.110 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.111 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.112 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.113 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.114 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.115 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.116 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.117 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.118 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.119 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.120 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.121 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.122 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.123 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.124 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.125 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.126 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.127 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.128 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.129 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.130 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.131 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.132 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.133 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.134 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.135 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.136 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.137 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.138 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.139 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.140 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.141 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.142 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.143 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.144 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.145 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.146 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.147 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.148 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.149 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.150 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.151 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.152 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.153 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.154 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.155 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.156 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.157 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.158 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.159 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.160 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.161 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.162 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.163 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.164 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.165 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.166 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.167 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.168 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.169 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.170 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.171 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.172 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.173 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.174 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.175 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.176 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.177 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.178 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.179 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.180 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.181 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.182 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.183 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.184 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.185 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.186 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.187 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.188 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.189 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.190 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.191 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.192 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.193 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.194 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.195 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.196 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.197 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.198 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.199 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.12.3.1.5.200 | Value: 
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.13.0      | Value: R9856297 - INVISION(R) 1.38\" DC2K 1.61-2.31 DC4K 1.46-2.10
+OID: SNMPv2-SMI::enterprises.12612.220.11.2.2.14.0      | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.1 | Value: 33
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.2 | Value: 30
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.3 | Value: 37
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.4 | Value: 39
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.5 | Value: 28
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.6 | Value: 22
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.7 | Value: 32
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.8 | Value: 30
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.9 | Value: 37
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.10 | Value: 47
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.11 | Value: 49
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.12 | Value: 53
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.13 | Value: 45
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.14 | Value: 55
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.15 | Value: 52
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.16 | Value: 62
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.17 | Value: 47
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.18 | Value: 13
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.19 | Value: 32
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.20 | Value: 33
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.21 | Value: 48
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.22 | Value: 45
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.23 | Value: 28
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.24 | Value: 32
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.25 | Value: 37
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.26 | Value: 38
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.27 | Value: 42
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.28 | Value: 39
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.29 | Value: 42
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.30 | Value: 40
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.31 | Value: 51
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.32 | Value: 42
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.33 | Value: 49
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.34 | Value: 37
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.35 | Value: 41
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.36 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.37 | Value: 36
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.38 | Value: 40
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.39 | Value: 27
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.40 | Value: 37
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.41 | Value: 45
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.42 | Value: 26
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.43 | Value: 29
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.44 | Value: 28
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.45 | Value: 31
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.46 | Value: 36
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.47 | Value: 47
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.48 | Value: 13
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.49 | Value: 36
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.50 | Value: 37
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.51 | Value: 38
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.52 | Value: 38
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.53 | Value: 34
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.54 | Value: 22
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.55 | Value: 28
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.56 | Value: 22
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.57 | Value: 28
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.58 | Value: 37
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.59 | Value: 28
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.60 | Value: 28
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.61 | Value: 30
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.62 | Value: 28
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.63 | Value: 42
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.64 | Value: 15
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.65 | Value: 32
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.66 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.67 | Value: 26
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.68 | Value: 29
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.69 | Value: 34
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.70 | Value: 36
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.71 | Value: 45
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.72 | Value: 42
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.73 | Value: 45
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.2.74 | Value: 35
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.1 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.2 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.3 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.4 | Value: -20
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.5 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.6 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.7 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.8 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.9 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.10 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.11 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.12 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.13 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.14 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.15 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.16 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.17 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.18 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.19 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.20 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.21 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.22 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.23 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.24 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.25 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.26 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.27 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.28 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.29 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.30 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.31 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.32 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.33 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.34 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.35 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.36 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.37 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.38 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.39 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.40 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.41 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.42 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.43 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.44 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.45 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.46 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.47 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.48 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.49 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.50 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.51 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.52 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.53 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.54 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.55 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.56 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.57 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.58 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.59 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.60 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.61 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.62 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.63 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.64 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.65 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.66 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.67 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.68 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.69 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.70 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.71 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.72 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.73 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.3.74 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.1 | Value: 55
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.2 | Value: 65
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.3 | Value: 65
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.4 | Value: 100
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.5 | Value: 85
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.6 | Value: 55
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.7 | Value: 55
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.8 | Value: 65
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.9 | Value: 65
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.10 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.11 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.12 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.13 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.14 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.15 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.16 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.17 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.18 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.19 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.20 | Value: 100
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.21 | Value: 100
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.22 | Value: 100
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.23 | Value: 55
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.24 | Value: 85
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.25 | Value: 85
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.26 | Value: 95
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.27 | Value: 85
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.28 | Value: 95
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.29 | Value: 85
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.30 | Value: 85
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.31 | Value: 85
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.32 | Value: 85
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.33 | Value: 85
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.34 | Value: 95
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.35 | Value: 85
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.36 | Value: 100
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.37 | Value: 100
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.38 | Value: 100
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.39 | Value: 55
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.40 | Value: 85
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.41 | Value: 85
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.42 | Value: 95
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.43 | Value: 100
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.44 | Value: 95
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.45 | Value: 100
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.46 | Value: 85
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.47 | Value: 85
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.48 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.49 | Value: 75
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.50 | Value: 75
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.51 | Value: 75
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.52 | Value: 75
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.53 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.54 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.55 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.56 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.57 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.58 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.59 | Value: 70
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.60 | Value: 70
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.61 | Value: 70
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.62 | Value: 70
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.63 | Value: 80
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.64 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.65 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.66 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.67 | Value: 55
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.68 | Value: 65
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.69 | Value: 75
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.70 | Value: 70
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.71 | Value: 100
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.72 | Value: 100
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.73 | Value: 100
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.4.74 | Value: 100
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.1 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.2 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.3 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.4 | Value: -15
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.5 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.6 | Value: -5
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.7 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.8 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.9 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.10 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.11 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.12 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.13 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.14 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.15 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.16 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.17 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.18 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.19 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.20 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.21 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.22 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.23 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.24 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.25 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.26 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.27 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.28 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.29 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.30 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.31 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.32 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.33 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.34 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.35 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.36 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.37 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.38 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.39 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.40 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.41 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.42 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.43 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.44 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.45 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.46 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.47 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.48 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.49 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.50 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.51 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.52 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.53 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.54 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.55 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.56 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.57 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.58 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.59 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.60 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.61 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.62 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.63 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.64 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.65 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.66 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.67 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.68 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.69 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.70 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.71 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.72 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.73 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.5.74 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.1 | Value: 50
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.2 | Value: 60
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.3 | Value: 60
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.4 | Value: 90
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.5 | Value: 80
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.6 | Value: 45
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.7 | Value: 50
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.8 | Value: 60
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.9 | Value: 60
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.10 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.11 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.12 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.13 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.14 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.15 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.16 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.17 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.18 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.19 | Value: 60
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.20 | Value: 95
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.21 | Value: 95
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.22 | Value: 95
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.23 | Value: 52
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.24 | Value: 75
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.25 | Value: 75
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.26 | Value: 85
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.27 | Value: 75
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.28 | Value: 85
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.29 | Value: 75
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.30 | Value: 75
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.31 | Value: 75
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.32 | Value: 75
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.33 | Value: 75
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.34 | Value: 85
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.35 | Value: 75
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.36 | Value: 95
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.37 | Value: 95
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.38 | Value: 95
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.39 | Value: 52
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.40 | Value: 75
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.41 | Value: 75
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.42 | Value: 80
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.43 | Value: 95
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.44 | Value: 80
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.45 | Value: 95
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.46 | Value: 75
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.47 | Value: 75
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.48 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.49 | Value: 70
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.50 | Value: 70
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.51 | Value: 70
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.52 | Value: 70
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.53 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.54 | Value: 65
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.55 | Value: 65
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.56 | Value: 65
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.57 | Value: 65
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.58 | Value: 80
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.59 | Value: 60
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.60 | Value: 60
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.61 | Value: 60
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.62 | Value: 60
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.63 | Value: 70
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.64 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.65 | Value: 255
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.66 | Value: 3
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.67 | Value: 50
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.68 | Value: 60
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.69 | Value: 70
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.70 | Value: 65
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.71 | Value: 95
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.72 | Value: 95
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.73 | Value: 95
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.6.74 | Value: 95
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.1 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.2 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.3 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.4 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.5 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.6 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.7 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.8 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.9 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.10 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.11 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.12 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.13 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.14 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.15 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.16 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.17 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.18 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.19 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.20 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.21 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.22 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.23 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.24 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.25 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.26 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.27 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.28 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.29 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.30 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.31 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.32 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.33 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.34 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.35 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.36 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.37 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.38 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.39 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.40 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.41 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.42 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.43 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.44 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.45 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.46 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.47 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.48 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.49 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.50 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.51 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.52 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.53 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.54 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.55 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.56 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.57 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.58 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.59 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.60 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.61 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.62 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.63 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.64 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.65 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.66 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.67 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.68 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.69 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.70 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.71 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.72 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.73 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.7.74 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.1 | Value: Blue dmd back temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.2 | Value: Blue dmd block temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.3 | Value: Blue dmd front temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.4 | Value: CCB CPU temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.5 | Value: FMCB board temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.6 | Value: Front air inlet temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.7 | Value: Green dmd back temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.8 | Value: Green dmd block temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.9 | Value: Green dmd front temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.10 | Value: ICMP/ICP-D - Environment temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.11 | Value: ICMP/ICP-D - Formatter FPGA blue temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.12 | Value: ICMP/ICP-D - Formatter FPGA green temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.13 | Value: ICMP/ICP-D - Formatter FPGA red temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.14 | Value: ICMP/ICP-D - ICP FPGA temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.15 | Value: ICMP/ICP-D - IMB FPGA temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.16 | Value: ICMP/ICP-D - PowerPC temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.17 | Value: ICMP/ICP-D - Under enclosure temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.18 | Value: LCB dewpoint
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.19 | Value: LCB temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.20 | Value: LDM 1 auxiliary board heatsink temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.21 | Value: LDM 1 bridge rectifier heatsink temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.22 | Value: LDM 1 main board heatsink temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.23 | Value: LDM 1 main board temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.24 | Value: LDM 1 slot 1 linear stage heatsink temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.25 | Value: LDM 1 slot 1 rectifier heatsink temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.26 | Value: LDM 1 slot 2 linear stage heatsink temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.27 | Value: LDM 1 slot 2 rectifier heatsink temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.28 | Value: LDM 1 slot 3 linear stage heatsink temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.29 | Value: LDM 1 slot 3 rectifier heatsink temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.30 | Value: LDM 1 slot 4 linear stage heatsink temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.31 | Value: LDM 1 slot 4 rectifier heatsink temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.32 | Value: LDM 1 slot 6 linear stage heatsink temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.33 | Value: LDM 1 slot 6 rectifier heatsink temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.34 | Value: LDM 1 slot 7 linear stage heatsink temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.35 | Value: LDM 1 slot 7 rectifier heatsink temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.36 | Value: LDM 2 auxiliary board heatsink temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.37 | Value: LDM 2 bridge rectifier heatsink temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.38 | Value: LDM 2 main board heatsink temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.39 | Value: LDM 2 main board temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.40 | Value: LDM 2 slot 2 linear stage heatsink temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.41 | Value: LDM 2 slot 2 rectifier heatsink temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.42 | Value: LDM 2 slot 3 primary heatsink temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.43 | Value: LDM 2 slot 3 rectifier heatsink temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.44 | Value: LDM 2 slot 6 primary heatsink temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.45 | Value: LDM 2 slot 6 rectifier heatsink temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.46 | Value: LDM 2 slot 7 linear stage heatsink temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.47 | Value: LDM 2 slot 7 rectifier heatsink temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.48 | Value: LSB 1 dewpoint
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.49 | Value: LSB 1 peltier power stage 1 temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.50 | Value: LSB 1 peltier power stage 2 temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.51 | Value: LSB 1 peltier power stage 3 temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.52 | Value: LSB 1 peltier power stage 4 temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.53 | Value: LSB 1 temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.54 | Value: Light source cooling assembly 1 inlet temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.55 | Value: Light source cooling assembly 1 outlet temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.56 | Value: Light source cooling assembly 2 inlet temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.57 | Value: Light source cooling assembly 2 outlet temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.58 | Value: Lightsensor temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.59 | Value: Liquid cold plate 10 temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.60 | Value: Liquid cold plate 7 temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.61 | Value: Liquid cold plate 8 temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.62 | Value: Liquid cold plate 9 temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.63 | Value: Offstate heatsink temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.64 | Value: Peltier control board dewpoint
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.65 | Value: Peltier control board temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.66 | Value: Red DMD back overtemperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.67 | Value: Red DMD back temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.68 | Value: Red DMD block temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.69 | Value: Red DMD peltier power stage temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.70 | Value: Red dmd front temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.71 | Value: SMPS +12V board temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.72 | Value: SMPS +24V board temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.73 | Value: SMPS VTEC board temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.1.1.8.74 | Value: SMPS primary heatsink temperature
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.1 | Value: 1100
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.2 | Value: 2910
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.3 | Value: 11900
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.4 | Value: 23800
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.5 | Value: 5000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.6 | Value: 12900
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.7 | Value: 1700
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.8 | Value: 23800
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.9 | Value: 12000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.10 | Value: 14300
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.11 | Value: 24700
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.12 | Value: 386700
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.13 | Value: 388800
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.14 | Value: 207300
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.15 | Value: 800
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.16 | Value: 800
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.17 | Value: 1300
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.18 | Value: 700
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.19 | Value: 800
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.20 | Value: 1300
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.21 | Value: 800
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.22 | Value: 800
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.23 | Value: 800
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.24 | Value: 900
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.25 | Value: 900
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.26 | Value: 700
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.27 | Value: 800
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.28 | Value: 900
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.29 | Value: 1000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.30 | Value: 800
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.31 | Value: 700
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.32 | Value: 11900
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.33 | Value: 14500
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.34 | Value: 25000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.35 | Value: 384200
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.36 | Value: 385500
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.37 | Value: 202600
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.38 | Value: 800
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.39 | Value: 700
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.40 | Value: 800
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.41 | Value: 23800
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.42 | Value: 23800
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.43 | Value: 800
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.44 | Value: 600
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.45 | Value: 600
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.46 | Value: 23790
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.47 | Value: 23660
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.48 | Value: 23720
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.49 | Value: 23750
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.50 | Value: 23850
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.51 | Value: 23980
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.52 | Value: 23950
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.53 | Value: 4800
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.54 | Value: 12460
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.55 | Value: 11940
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.56 | Value: 24120
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.2.57 | Value: 12920
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.1 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.2 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.3 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.4 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.5 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.6 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.7 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.8 | Value: 18000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.9 | Value: 11000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.10 | Value: 12700
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.11 | Value: 23000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.12 | Value: 360000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.13 | Value: 360000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.14 | Value: 95000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.15 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.16 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.17 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.18 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.19 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.20 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.21 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.22 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.23 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.24 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.25 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.26 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.27 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.28 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.29 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.30 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.31 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.32 | Value: 11000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.33 | Value: 12700
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.34 | Value: 23000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.35 | Value: 360000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.36 | Value: 360000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.37 | Value: 95000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.38 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.39 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.40 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.41 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.42 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.43 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.44 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.45 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.46 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.47 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.48 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.49 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.50 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.51 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.52 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.53 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.54 | Value: 11000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.55 | Value: 11000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.56 | Value: 22800
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.3.57 | Value: 11000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.1 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.2 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.3 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.4 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.5 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.6 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.7 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.8 | Value: 30000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.9 | Value: 13000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.10 | Value: 19000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.11 | Value: 27000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.12 | Value: 425000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.13 | Value: 425000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.14 | Value: 275000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.15 | Value: 6000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.16 | Value: 6000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.17 | Value: 10000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.18 | Value: 6000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.19 | Value: 6000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.20 | Value: 10000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.21 | Value: 6000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.22 | Value: 6000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.23 | Value: 6000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.24 | Value: 6000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.25 | Value: 6000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.26 | Value: 6000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.27 | Value: 6000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.28 | Value: 6000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.29 | Value: 10000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.30 | Value: 6000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.31 | Value: 6000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.32 | Value: 13000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.33 | Value: 19000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.34 | Value: 27000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.35 | Value: 425000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.36 | Value: 425000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.37 | Value: 275000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.38 | Value: 6000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.39 | Value: 6000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.40 | Value: 6000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.41 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.42 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.43 | Value: 6000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.44 | Value: 6000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.45 | Value: 6000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.46 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.47 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.48 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.49 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.50 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.51 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.52 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.53 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.54 | Value: 14000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.55 | Value: 14000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.56 | Value: 28000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.4.57 | Value: 14000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.1 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.2 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.3 | Value: 10000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.4 | Value: 20000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.5 | Value: 4000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.6 | Value: 10000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.7 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.8 | Value: 20000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.9 | Value: 11500
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.10 | Value: 13000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.11 | Value: 23500
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.12 | Value: 365000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.13 | Value: 365000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.14 | Value: 165000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.15 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.16 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.17 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.18 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.19 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.20 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.21 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.22 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.23 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.24 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.25 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.26 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.27 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.28 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.29 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.30 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.31 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.32 | Value: 11500
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.33 | Value: 13000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.34 | Value: 23500
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.35 | Value: 365000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.36 | Value: 365000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.37 | Value: 165000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.38 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.39 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.40 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.41 | Value: 20000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.42 | Value: 20000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.43 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.44 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.45 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.46 | Value: 22000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.47 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.48 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.49 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.50 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.51 | Value: 22000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.52 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.53 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.54 | Value: 11200
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.55 | Value: 11200
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.56 | Value: 23200
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.5.57 | Value: 11200
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.1 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.2 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.3 | Value: 14000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.4 | Value: 26000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.5 | Value: 6000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.6 | Value: 14000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.7 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.8 | Value: 27000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.9 | Value: 12500
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.10 | Value: 18500
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.11 | Value: 26500
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.12 | Value: 420000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.13 | Value: 420000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.14 | Value: 270000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.15 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.16 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.17 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.18 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.19 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.20 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.21 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.22 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.23 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.24 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.25 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.26 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.27 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.28 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.29 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.30 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.31 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.32 | Value: 12500
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.33 | Value: 18500
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.34 | Value: 26500
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.35 | Value: 420000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.36 | Value: 420000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.37 | Value: 270000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.38 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.39 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.40 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.41 | Value: 28000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.42 | Value: 28000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.43 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.44 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.45 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.46 | Value: 26000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.47 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.48 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.49 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.50 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.51 | Value: 26000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.52 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.53 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.54 | Value: 13000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.55 | Value: 12700
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.56 | Value: 27000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.6.57 | Value: 13200
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.1 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.2 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.3 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.4 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.5 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.6 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.7 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.8 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.9 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.10 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.11 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.12 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.13 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.14 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.15 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.16 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.17 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.18 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.19 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.20 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.21 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.22 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.23 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.24 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.25 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.26 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.27 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.28 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.29 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.30 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.31 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.32 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.33 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.34 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.35 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.36 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.37 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.38 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.39 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.40 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.41 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.42 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.43 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.44 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.45 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.46 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.47 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.48 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.49 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.50 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.51 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.52 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.53 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.54 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.55 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.56 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.7.57 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.1 | Value: Blue dmd peltier voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.2 | Value: Differential air pressure sensor 1 voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.3 | Value: FMCB 12V voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.4 | Value: FMCB 24V voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.5 | Value: FMCB 5V voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.6 | Value: FMCB VTEC voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.7 | Value: Green dmd peltier voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.8 | Value: LCB 24V input voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.9 | Value: LDM 1 12V voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.10 | Value: LDM 1 15VM voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.11 | Value: LDM 1 24V voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.12 | Value: LDM 1 380VM voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.13 | Value: LDM 1 380VMA voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.14 | Value: LDM 1 mains voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.15 | Value: LDM 1 slot 1 linear output stage 1 voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.16 | Value: LDM 1 slot 1 linear output stage 2 voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.17 | Value: LDM 1 slot 2 linear output stage 1 voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.18 | Value: LDM 1 slot 2 linear output stage 2 voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.19 | Value: LDM 1 slot 2 linear output stage 3 voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.20 | Value: LDM 1 slot 3 linear output stage 1 voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.21 | Value: LDM 1 slot 3 linear output stage 2 voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.22 | Value: LDM 1 slot 3 linear output stage 3 voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.23 | Value: LDM 1 slot 4 linear output stage 1 voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.24 | Value: LDM 1 slot 4 linear output stage 2 voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.25 | Value: LDM 1 slot 4 linear output stage 3 voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.26 | Value: LDM 1 slot 6 linear output stage 1 voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.27 | Value: LDM 1 slot 6 linear output stage 2 voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.28 | Value: LDM 1 slot 6 linear output stage 3 voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.29 | Value: LDM 1 slot 7 linear output stage 1 voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.30 | Value: LDM 1 slot 7 linear output stage 2 voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.31 | Value: LDM 1 slot 7 linear output stage 3 voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.32 | Value: LDM 2 12V voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.33 | Value: LDM 2 15VM voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.34 | Value: LDM 2 24V voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.35 | Value: LDM 2 380VM voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.36 | Value: LDM 2 380VMA voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.37 | Value: LDM 2 mains voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.38 | Value: LDM 2 slot 2 linear output stage 1 voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.39 | Value: LDM 2 slot 2 linear output stage 2 voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.40 | Value: LDM 2 slot 2 linear output stage 3 voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.41 | Value: LDM 2 slot 3 24V output voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.42 | Value: LDM 2 slot 6 24V output voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.43 | Value: LDM 2 slot 7 linear output stage 1 voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.44 | Value: LDM 2 slot 7 linear output stage 2 voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.45 | Value: LDM 2 slot 7 linear output stage 3 voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.46 | Value: LSB 1 24V input voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.47 | Value: LSB 1 peltier power stage 1 24V input voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.48 | Value: LSB 1 peltier power stage 2 24V input voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.49 | Value: LSB 1 peltier power stage 3 24V input voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.50 | Value: LSB 1 peltier power stage 4 24V input voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.51 | Value: Red DMD peltier 24V input voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.52 | Value: Red DMD peltier power stage 24V input voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.53 | Value: Red DMD peltier voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.54 | Value: SMPS ++12V voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.55 | Value: SMPS +12V voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.56 | Value: SMPS +24V voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.2.1.8.57 | Value: SMPS VTEC voltage
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.2.1 | Value: 6464
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.2.2 | Value: 2539
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.2.3 | Value: 2503
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.2.4 | Value: 2585
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.2.5 | Value: 2507
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.2.6 | Value: 2552
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.2.7 | Value: 2540
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.2.8 | Value: 2548
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.2.9 | Value: 2558
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.2.10 | Value: 6413
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.2.11 | Value: 2461
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.2.12 | Value: 2476
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.2.13 | Value: 2498
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.2.14 | Value: 2429
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.2.15 | Value: 5520
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.2.16 | Value: 2373
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.2.17 | Value: 6262
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.2.18 | Value: 3680
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.2.19 | Value: 3776
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.2.20 | Value: 6528
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.2.21 | Value: 3808
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.2.22 | Value: 3744
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.2.23 | Value: 5664
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.2.24 | Value: 5854
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.2.25 | Value: 6340
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.2.26 | Value: 5660
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.3.1 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.3.2 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.3.3 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.3.4 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.3.5 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.3.6 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.3.7 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.3.8 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.3.9 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.3.10 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.3.11 | Value: 700
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.3.12 | Value: 700
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.3.13 | Value: 700
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.3.14 | Value: 700
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.3.15 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.3.16 | Value: 600
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.3.17 | Value: 1500
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.3.18 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.3.19 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.3.20 | Value: 1500
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.3.21 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.3.22 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.3.23 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.3.24 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.3.25 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.3.26 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.4.1 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.4.2 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.4.3 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.4.4 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.4.5 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.4.6 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.4.7 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.4.8 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.4.9 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.4.10 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.4.11 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.4.12 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.4.13 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.4.14 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.4.15 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.4.16 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.4.17 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.4.18 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.4.19 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.4.20 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.4.21 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.4.22 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.4.23 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.4.24 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.4.25 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.4.26 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.5.1 | Value: 750
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.5.2 | Value: 750
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.5.3 | Value: 750
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.5.4 | Value: 750
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.5.5 | Value: 750
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.5.6 | Value: 750
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.5.7 | Value: 750
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.5.8 | Value: 750
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.5.9 | Value: 750
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.5.10 | Value: 750
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.5.11 | Value: 900
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.5.12 | Value: 900
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.5.13 | Value: 900
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.5.14 | Value: 900
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.5.15 | Value: 1000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.5.16 | Value: 750
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.5.17 | Value: 2000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.5.18 | Value: 1000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.5.19 | Value: 1000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.5.20 | Value: 2000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.5.21 | Value: 1000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.5.22 | Value: 1000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.5.23 | Value: 750
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.5.24 | Value: 750
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.5.25 | Value: 750
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.5.26 | Value: 750
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.6.1 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.6.2 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.6.3 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.6.4 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.6.5 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.6.6 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.6.7 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.6.8 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.6.9 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.6.10 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.6.11 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.6.12 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.6.13 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.6.14 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.6.15 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.6.16 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.6.17 | Value: 7000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.6.18 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.6.19 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.6.20 | Value: 7000
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.6.21 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.6.22 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.6.23 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.6.24 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.6.25 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.6.26 | Value: 65535
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.7.1 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.7.2 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.7.3 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.7.4 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.7.5 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.7.6 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.7.7 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.7.8 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.7.9 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.7.10 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.7.11 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.7.12 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.7.13 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.7.14 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.7.15 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.7.16 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.7.17 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.7.18 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.7.19 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.7.20 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.7.21 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.7.22 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.7.23 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.7.24 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.7.25 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.7.26 | Value: 0
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.8.1 | Value: Blue formatter fan speed
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.8.2 | Value: Card cage inlet fan 1 speed
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.8.3 | Value: Card cage inlet fan 2 speed
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.8.4 | Value: Card cage inlet fan 3 speed
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.8.5 | Value: Card cage inlet fan 4 speed
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.8.6 | Value: Card cage inlet fan 5 speed
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.8.7 | Value: Card cage inlet fan 6 speed
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.8.8 | Value: Card cage outlet fan 1 speed
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.8.9 | Value: Card cage outlet fan 2 speed
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.8.10 | Value: Green formatter fan speed
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.8.11 | Value: LDM 1 fan 1 speed
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.8.12 | Value: LDM 1 fan 2 speed
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.8.13 | Value: LDM 2 fan 1 speed
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.8.14 | Value: LDM 2 fan 2 speed
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.8.15 | Value: LSB 1 fan speed
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.8.16 | Value: Light processor fan speed
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.8.17 | Value: Light processor pump speed
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.8.18 | Value: Light source cooling assembly 1 fan 1 speed
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.8.19 | Value: Light source cooling assembly 1 fan 2 speed
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.8.20 | Value: Light source cooling assembly 1 pump speed
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.8.21 | Value: Light source cooling assembly 2 fan 1 speed
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.8.22 | Value: Light source cooling assembly 2 fan 2 speed
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.8.23 | Value: Offstate heatsink fan 1 speed
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.8.24 | Value: Offstate heatsink fan 2 speed
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.8.25 | Value: Red formatter fan speed
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.1.3.1.8.26 | Value: SMPS fan speed
+OID: SNMPv2-SMI::enterprises.12612.220.11.4.2.3.0       | Value: 2D SCOPE
+OID: SNMPv2-SMI::enterprises.12612.220.11.8.2.2.0       | Value: 100
+OID: SNMPv2-SMI::enterprises.12612.220.11.8.2.3.0       | Value: 0
