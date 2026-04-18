@@ -32,6 +32,7 @@ function seedMockData() {
 function mockProjectors(siteId, count) {
   const MODELS = ["Barco SP4K-25B", "Barco DP4K-32B", "Barco SP4K-15C"];
   const STATES = ["on", "on", "on", "standby"];
+  const now = new Date().toISOString();
   return Array.from({ length: count }, (_, i) => {
     const seed = siteId.charCodeAt(5) * 10 + i;
     const isOn = STATES[seed % STATES.length] === "on";
