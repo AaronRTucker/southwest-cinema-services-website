@@ -75,34 +75,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Who Are We */}
-      <section className="bg-white px-6 py-20">
-        <div className="max-w-3xl mx-auto text-center">
-          <p className="text-gray-400 text-xs font-semibold uppercase tracking-widest mb-3">Who Are We</p>
-          <h2 className="text-2xl font-bold text-gray-900 mb-3">Over 60 Years of Combined Experience</h2>
-          <p className="text-gray-500 mb-14 max-w-xl mx-auto">
-            Southwest Cinema Services is a family business built on decades of hands-on experience with cinema projection and audio systems across Texas and the Southwest.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-12">
-            {[
-              { src: aaronHeadshot, name: "Aaron Tucker", title: "Owner & Lead Technician", bio: "Barco and Christie certified technician specializing in digital cinema projectors, laser systems, and SNMP-based monitoring." },
-              { src: richardHeadshot, name: "Richard Tucker", title: "Senior Technician", bio: "Decades of experience servicing 35mm and digital cinema equipment, with deep expertise in optical alignment and sound systems." },
-            ].map((person) => (
-              <div key={person.name} className="flex flex-col items-center gap-4">
-                <div className="relative w-36 h-36 rounded-full overflow-hidden border-4 border-gray-100 shadow-md">
-                  <Image src={person.src} alt={person.name} fill className="object-cover object-top" placeholder="blur" />
-                </div>
-                <div>
-                  <div className="font-semibold text-gray-900 text-lg">{person.name}</div>
-                  <div className="text-yellow-600 text-sm font-medium mb-2">{person.title}</div>
-                  <p className="text-gray-500 text-sm max-w-xs">{person.bio}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Services */}
       <section id="services" className="bg-white px-6 py-20">
         <div className="max-w-5xl mx-auto">
@@ -140,6 +112,32 @@ export default function Home() {
               <div key={s.title} className="bg-gray-50 rounded-xl p-6 border border-gray-100">
                 <h3 className="font-semibold text-gray-900 mb-2">{s.title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team */}
+      <section className="bg-gray-50 px-6 py-20">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-2xl font-bold text-gray-900 mb-3">Over 60 Years of Combined Experience</h2>
+          <p className="text-gray-500 mb-14 max-w-xl mx-auto">
+            Southwest Cinema Services is a family business built on decades of hands-on experience with cinema projection and audio systems across Texas and the Southwest.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-16">
+            {[
+              { src: aaronHeadshot, name: "Aaron Tucker", bio: "Barco and Christie certified technician specializing in digital cinema projectors, laser systems, and SNMP-based monitoring." },
+              { src: richardHeadshot, name: "Richard Tucker", bio: "Decades of experience servicing 35mm and digital cinema equipment, with deep expertise in optical alignment and sound systems." },
+            ].map((person) => (
+              <div key={person.name} className="flex flex-col items-center gap-4">
+                <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-md">
+                  <Image src={person.src} alt={person.name} fill className="object-cover object-center" placeholder="blur" />
+                </div>
+                <div>
+                  <div className="font-semibold text-gray-900 text-lg">{person.name}</div>
+                  <p className="text-gray-500 text-sm max-w-xs mt-1">{person.bio}</p>
+                </div>
               </div>
             ))}
           </div>
