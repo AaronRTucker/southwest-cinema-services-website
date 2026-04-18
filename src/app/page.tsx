@@ -52,15 +52,18 @@ export default function Home() {
       <section className="bg-gray-950 px-6 py-16">
         <div className="max-w-5xl mx-auto">
           <p className="text-gray-500 text-xs font-semibold uppercase tracking-widest text-center mb-8">In the Field</p>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { src: barcoProjector, alt: "Barco digital cinema projector service" },
-              { src: projectorInternals, alt: "Projector internal electronics repair" },
-              { src: projectionBooth, alt: "35mm projection booth" },
-              { src: speakerWall, alt: "Dolby Atmos cinema speaker wall installation" },
+              { src: barcoProjector, alt: "Barco digital cinema projector service", label: "Training" },
+              { src: projectorInternals, alt: "Projector internal electronics repair", label: "Troubleshooting" },
+              { src: projectionBooth, alt: "35mm projection booth", label: "Film" },
+              { src: speakerWall, alt: "Dolby Atmos cinema speaker wall installation", label: "Audio" },
             ].map((photo) => (
-              <div key={photo.alt} className="relative rounded-xl overflow-hidden h-52 sm:h-64">
-                <Image src={photo.src} alt={photo.alt} fill className="object-cover" placeholder="blur" />
+              <div key={photo.alt} className="flex flex-col gap-2">
+                <p className="text-xs font-semibold uppercase tracking-widest text-gray-400">{photo.label}</p>
+                <div className="relative rounded-xl overflow-hidden h-52 sm:h-64">
+                  <Image src={photo.src} alt={photo.alt} fill className="object-cover" placeholder="blur" />
+                </div>
               </div>
             ))}
           </div>
