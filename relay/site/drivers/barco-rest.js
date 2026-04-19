@@ -1,47 +1,30 @@
 "use strict";
 
 // Barco Series 4 REST API driver (SP4K-25B, DP4K-32B, SP4K-15C, etc.)
-// Auth: POST /rest with Basic credentials → JWT Bearer token for all requests.
+// Auth: GET /rest with Basic Auth → JWT Bearer token.
+// Most endpoints are flat single-value GETs returning { result: <value> }.
 
 // ── Authentication ────────────────────────────────────────────────────────────
 
-// ip → { token, expiresAt }
-const tokenCache = new Map();
+const tokenCache = new Map(); // ip → { token, expiresAt }
 
 async function getToken(ip, user, password) {
   const cached = tokenCache.get(ip);
   if (cached && cached.expiresAt > Date.now()) return cached.token;
 
   const res = await fetch(`http://${ip}/rest`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Basic " + Buffer.from(`${user}:${password}`).toString("base64"),
-    },
-    body: JSON.stringify({ username: user, password }),
+    headers: { Authorization: "Basic " + Buffer.from(`${user}:${password}`).toString("base64") },
     signal: AbortSignal.timeout(8000),
   });
-
-  // Some firmware issues token on GET /rest with Basic — fall back if POST fails
-  if (!res.ok) {
-    const res2 = await fetch(`http://${ip}/rest`, {
-      headers: { Authorization: "Basic " + Buffer.from(`${user}:${password}`).toString("base64") },
-      signal: AbortSignal.timeout(8000),
-    });
-    if (!res2.ok) throw new Error(`Auth failed: HTTP ${res2.status}`);
-    const data2 = await res2.json();
-    const token2 = data2.access_token;
-    if (!token2) throw new Error("No access_token returned");
-    tokenCache.set(ip, { token: token2, expiresAt: Date.now() + 55 * 60 * 1000 });
-    return token2;
-  }
-
+  if (!res.ok) throw new Error(`Auth failed: HTTP ${res.status}`);
   const data = await res.json();
   const token = data.access_token;
-  if (!token) throw new Error("No access_token returned");
+  if (!token) throw new Error("No access_token in auth response");
   tokenCache.set(ip, { token, expiresAt: Date.now() + 55 * 60 * 1000 });
   return token;
 }
+
+// ── HTTP helpers ──────────────────────────────────────────────────────────────
 
 async function get(ip, path, token) {
   const res = await fetch(`http://${ip}${path}`, {
@@ -52,80 +35,54 @@ async function get(ip, path, token) {
   return res.json();
 }
 
+async function post(ip, path, token, body = {}) {
+  const res = await fetch(`http://${ip}${path}`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+    signal: AbortSignal.timeout(6000),
+  });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.json();
+}
+
 async function tryGet(ip, path, token, fallback = null) {
   try { return await get(ip, path, token); } catch { return fallback; }
 }
 
+async function tryPost(ip, path, token, body = {}, fallback = null) {
+  try { return await post(ip, path, token, body); } catch { return fallback; }
+}
+
+// Try a list of GET paths; return first that succeeds
 async function tryPaths(ip, paths, token, fallback = null) {
   for (const path of paths) {
-    const result = await tryGet(ip, path, token);
-    if (result !== null) {
-      console.log(`[${ip}] resolved ${path}:`, JSON.stringify(result).slice(0, 300));
-      return result;
-    }
+    const r = await tryGet(ip, path, token);
+    if (r !== null) return r;
   }
-  console.log(`[${ip}] all failed:`, paths.join(", "));
   return fallback;
 }
 
-// ── API discovery (runs once per projector) ───────────────────────────────────
-
-const discovered = new Set();
-
-async function discoverApi(ip, token) {
-  if (discovered.has(ip)) return;
-  discovered.add(ip);
-  const probes = [
-    "/rest/system",
-    "/rest/system/status",
-    "/rest/system/state",
-    "/rest/system/information",
-    "/rest/system/productioninfo",
-    "/rest/system/deviceinfo",
-    "/rest/system/getidentifications",
-    "/rest/system/health",
-    "/rest/illumination",
-    "/rest/illumination/sources",
-    "/rest/illumination/sources/laser",
-    "/rest/illumination/sources/laser/runtime",
-    "/rest/illumination/sources/laser/runtimeminutes",
-    "/rest/illumination/sources/laser/hourmeter",
-    "/rest/illumination/sources/laser/dowser",
-    "/rest/illumination/dowser",
-    "/rest/diagnostics",
-    "/rest/diagnostics/temperatures",
-    "/rest/diagnostics/fans",
-    "/rest/diagnostics/voltages",
-    "/rest/environment/temperatures",
-    "/rest/environment/fans",
-    "/rest/environment/voltages",
-  ];
-  console.log(`\n[${ip}] === API DISCOVERY (Bearer) ===`);
-  for (const path of probes) {
-    const result = await tryGet(ip, path, token);
-    if (result !== null) {
-      console.log(`[${ip}] OK ${path}:`, JSON.stringify(result).slice(0, 400));
-    }
+// Extract value from { result: x } or { value: x }
+function val(obj, ...keys) {
+  if (!obj) return undefined;
+  // Check result/value first, then named keys
+  for (const k of ["result", "value", ...keys]) {
+    if (obj[k] !== undefined && obj[k] !== null) return obj[k];
   }
-  console.log(`[${ip}] === END DISCOVERY ===\n`);
+  return undefined;
 }
 
 // ── Normalizers ───────────────────────────────────────────────────────────────
 
-function r(obj, ...keys) {
-  if (!obj) return undefined;
-  for (const k of keys) if (obj[k] !== undefined && obj[k] !== null) return obj[k];
-  return undefined;
-}
-
 function normalizeTemperatures(data) {
-  if (!Array.isArray(data)) return [];
-  return data.map((t) => {
-    const value    = parseFloat(r(t, "result", "value", "Value") ?? 0);
-    const warning  = parseFloat(r(t, "warningLevel", "warning", "Warning") ?? 255);
-    const critical = parseFloat(r(t, "criticalLevel", "critical", "Critical") ?? 255);
+  const arr = Array.isArray(data) ? data : (data?.result ?? []);
+  return arr.map((t) => {
+    const value    = parseFloat(val(t) ?? 0);
+    const warning  = parseFloat(t.warningLevel ?? t.warning ?? 255);
+    const critical = parseFloat(t.criticalLevel ?? t.critical ?? 255);
     return {
-      name: r(t, "name", "Name") ?? "Unknown",
+      name: t.name ?? t.Name ?? "Unknown",
       value, warning, critical, unit: "°C",
       status: value >= critical ? "critical" : value >= warning ? "warning" : "ok",
     };
@@ -133,12 +90,12 @@ function normalizeTemperatures(data) {
 }
 
 function normalizeFans(data) {
-  if (!Array.isArray(data)) return [];
-  return data.map((f) => {
-    const value   = Math.round(parseFloat(r(f, "result", "value", "Value") ?? 0));
-    const warning = parseFloat(r(f, "warningLevel", "warning", "Warning") ?? 0);
+  const arr = Array.isArray(data) ? data : (data?.result ?? []);
+  return arr.map((f) => {
+    const value   = Math.round(parseFloat(val(f) ?? 0));
+    const warning = parseFloat(f.warningLevel ?? f.warning ?? 0);
     return {
-      name: r(f, "name", "Name") ?? "Unknown",
+      name: f.name ?? f.Name ?? "Unknown",
       value, warning, unit: "RPM",
       status: warning > 0 && value < warning ? "warning" : "ok",
     };
@@ -146,13 +103,13 @@ function normalizeFans(data) {
 }
 
 function normalizeVoltages(data) {
-  if (!Array.isArray(data)) return [];
-  return data.map((v) => {
-    const value     = parseFloat(r(v, "result", "value", "Value") ?? 0);
-    const nominal   = parseFloat(r(v, "nominalValue", "nominal", "Nominal") ?? value);
-    const tolerance = parseFloat(r(v, "tolerance", "Tolerance") ?? nominal * 0.05);
+  const arr = Array.isArray(data) ? data : (data?.result ?? []);
+  return arr.map((v) => {
+    const value     = parseFloat(val(v) ?? 0);
+    const nominal   = parseFloat(v.nominalValue ?? v.nominal ?? value);
+    const tolerance = parseFloat(v.tolerance ?? nominal * 0.05);
     return {
-      name: r(v, "name", "Name") ?? "Unknown",
+      name: v.name ?? v.Name ?? "Unknown",
       value, nominal, tolerance, unit: "V",
       status: Math.abs(value - nominal) > tolerance ? "warning" : "ok",
     };
@@ -165,9 +122,9 @@ function normalizeAlerts(data) {
   const items = Array.isArray(data) ? data : (data.alerts ?? data.items ?? data.result ?? []);
   if (!Array.isArray(items)) return { errors, warnings };
   for (const item of items) {
-    const severity = item.type ?? item.severity ?? "W";
+    const type = item.type ?? item.severity ?? "W";
     const alert = {
-      type: severity === "E" || severity === "error" ? "E" : "W",
+      type: type === "E" || type === "error" ? "E" : "W",
       uid: item.uid ?? item.id ?? item.code ?? "",
       description: item.description ?? item.message ?? item.text ?? "",
     };
@@ -181,7 +138,6 @@ function normalizeAlerts(data) {
 async function pollOne(proj) {
   const { ip, restUser: user = "admin", restPassword: password = "Admin1234" } = proj;
 
-  // Invalidate cached token on auth error
   let token;
   try {
     token = await getToken(ip, user, password);
@@ -189,73 +145,57 @@ async function pollOne(proj) {
     throw new Error(`Auth: ${err.message}`);
   }
 
-  await discoverApi(ip, token);
-
   const [
-    state, ident, laserPower, laserRuntime,
+    state, serial, laserPower,
+    model, firmware, lampHours,
     temps, fans, voltages, alerts, dowser,
   ] = await Promise.all([
-    tryGet(ip, "/rest/system/state", token),
-    tryPaths(ip, [
-      "/rest/system/productioninfo",
-      "/rest/system/deviceinfo",
-      "/rest/system/information",
-      "/rest/system/getidentifications",
-      "/rest/system/overview",
-      "/rest/system/status",
-    ], token),
+    tryGet(ip, "/rest/system/state",                           token),
+    tryGet(ip, "/rest/system/serialnumber",                    token),
     tryGet(ip, "/rest/illumination/sources/laser/actualpower", token),
+    // Model — try flat GET paths, then POST variants
     tryPaths(ip, [
+      "/rest/system/productname", "/rest/system/model",
+      "/rest/system/producttype", "/rest/system/type",
+    ], token).then((r) => r ?? tryPost(ip, "/rest/system/type", token)),
+    // Firmware
+    tryPaths(ip, [
+      "/rest/system/softwareversion", "/rest/system/firmware",
+      "/rest/system/firmwareversion", "/rest/system/version",
+    ], token),
+    // Lamp/laser hours
+    tryPaths(ip, [
+      "/rest/illumination/sources/laser/operatinghours",
       "/rest/illumination/sources/laser/runtime",
       "/rest/illumination/sources/laser/runtimeminutes",
       "/rest/illumination/sources/laser/hourmeter",
       "/rest/system/runtime",
     ], token),
-    tryPaths(ip, [
-      "/rest/diagnostics/temperatures",
-      "/rest/environment/temperatures",
-      "/rest/system/temperatures",
-    ], token, []),
-    tryPaths(ip, [
-      "/rest/diagnostics/fans",
-      "/rest/environment/fans",
-      "/rest/system/fans",
-    ], token, []),
-    tryPaths(ip, [
-      "/rest/diagnostics/voltages",
-      "/rest/environment/voltages",
-      "/rest/system/voltages",
-    ], token, []),
-    tryPaths(ip, [
-      "/rest/system/health",
-      "/rest/diagnostics/alerts",
-      "/rest/system/alerts",
-      "/rest/diagnostics/health",
-    ], token),
+    // Health sensors — try POST since GET returns 400
+    tryPost(ip, "/rest/diagnostics/temperatures", token).then((r) => r ?? tryPost(ip, "/rest/environment/temperatures", token)),
+    tryPost(ip, "/rest/diagnostics/fans",         token).then((r) => r ?? tryPost(ip, "/rest/environment/fans", token)),
+    tryPost(ip, "/rest/diagnostics/voltages",     token).then((r) => r ?? tryPost(ip, "/rest/environment/voltages", token)),
+    tryPost(ip, "/rest/system/health",            token).then((r) => r ?? tryPost(ip, "/rest/diagnostics/alerts", token)),
     tryPaths(ip, [
       "/rest/illumination/sources/laser/dowser",
       "/rest/illumination/dowser",
-      "/rest/system/dowser",
     ], token),
   ]);
 
-  const stateVal  = r(state,        "result", "value") ?? "unknown";
-  const isOn      = stateVal === "on";
-  const lampMins  = r(laserRuntime, "result", "value") ?? 0;
-  const lampHours = Math.round(lampMins / 60);
+  const stateVal   = val(state)   ?? "unknown";
+  const isOn       = stateVal === "on";
+  const serialVal  = val(serial)  ?? "";
+  const modelVal   = val(model)   ?? "Barco";
+  const fwVal      = val(firmware) ?? "";
+  const lampVal    = val(lampHours) ?? 0;
+  // If runtime in minutes convert to hours, otherwise assume hours
+  const lampHoursNum = lampVal > 50000 ? Math.round(lampVal / 60) : Math.round(lampVal);
 
-  const identObj  = Array.isArray(ident) ? ident[0] : ident;
-  const model     = r(identObj, "ProductLine", "productLine", "model", "Model", "product", "type") ?? "Barco";
-  const serial    = r(identObj, "SerialNumber", "serialNumber", "serial", "Serial") ?? "";
-  const firmware  = r(identObj, "version", "Version", "firmware", "FirmwareVersion") ?? "";
-
-  const dowserVal  = r(dowser, "result", "value");
-  const dowserOpen = dowserVal === "open" || dowserVal === true || dowserVal === 1;
-
+  const dowserVal  = val(dowser);
   const health = {
-    temperatures: normalizeTemperatures(Array.isArray(temps)    ? temps    : (temps?.result    ?? [])),
-    voltages:     normalizeVoltages(Array.isArray(voltages) ? voltages : (voltages?.result ?? [])),
-    fans:         normalizeFans(Array.isArray(fans)      ? fans      : (fans?.result      ?? [])),
+    temperatures: normalizeTemperatures(temps),
+    voltages:     normalizeVoltages(voltages),
+    fans:         normalizeFans(fans),
     ...normalizeAlerts(alerts),
   };
 
@@ -268,11 +208,11 @@ async function pollOne(proj) {
 
   return {
     id: proj.id, name: proj.name, ip,
-    model, serial, firmware,
+    model: modelVal, serial: serialVal, firmware: fwVal,
     state: stateVal,
-    laserPower: isOn ? parseFloat(r(laserPower, "result", "value") ?? 0) : 0,
-    lampHours, lampHoursWarning: 10000, lampHoursEol: 15000,
-    dowserOpen,
+    laserPower: isOn ? parseFloat(val(laserPower) ?? 0) : 0,
+    lampHours: lampHoursNum, lampHoursWarning: 10000, lampHoursEol: 15000,
+    dowserOpen: dowserVal === "open" || dowserVal === true || dowserVal === 1,
     health,
     status: overallStatus,
     polledAt: new Date().toISOString(),
