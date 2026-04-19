@@ -5,6 +5,25 @@ const path = require("path");
 const { exec } = require("child_process");
 const WebSocket = require("ws");
 
+// ── SNMP walk mode — check BEFORE config loading so it always works ───────────
+
+console.log("args:", process.argv.slice(2).join(" ") || "(none)");
+const walkIdx = process.argv.indexOf("--snmp-walk");
+if (walkIdx !== -1) {
+  const walkIp = process.argv[walkIdx + 1];
+  if (!walkIp) {
+    console.error("Usage: scs-site-relay.exe --snmp-walk <ip> [community]");
+    process.exit(1);
+  }
+  const walkCommunity = process.argv[walkIdx + 2] ?? "public";
+  console.log(`Starting SNMP walk on ${walkIp} (community: ${walkCommunity})...`);
+  require("./snmp-walk").run(walkIp, walkCommunity).catch((err) => {
+    console.error("Walk failed:", err.message);
+    process.exit(1);
+  });
+  // Stop here — do not load config or start relay
+} else {
+
 // ── Config ────────────────────────────────────────────────────────────────────
 
 // When packaged as an exe, __dirname is inside the bundle.
@@ -152,30 +171,14 @@ function connect() {
   });
 }
 
-// ── Start ─────────────────────────────────────────────────────────────────────
+// ── Normal relay start ────────────────────────────────────────────────────────
 
-// ── SNMP walk mode ────────────────────────────────────────────────────────────
-// Usage: scs-site-relay.exe --snmp-walk <ip> [community]
+console.log(`SCS Site Relay v${VERSION}`);
+console.log(`Site:          ${config.siteName} (${config.siteId})`);
+console.log(`Driver:        ${config.driver ?? "mock"}`);
+console.log(`Heartbeat:     ${config.heartbeatSeconds ?? 30}s`);
+console.log(`Poll interval: ${config.pollIntervalSeconds ?? 30}s`);
+console.log(`Central relay: ${config.centralRelayUrl}`);
+connect();
 
-const walkIdx = process.argv.indexOf("--snmp-walk");
-if (walkIdx !== -1) {
-  const walkIp = process.argv[walkIdx + 1];
-  if (!walkIp) {
-    console.error("Usage: scs-site-relay.exe --snmp-walk <ip> [community]");
-    process.exit(1);
-  }
-  const walkCommunity =
-    process.argv[walkIdx + 2] ??
-    config.projectors?.find((p) => p.ip === walkIp)?.snmpCommunity ??
-    "public";
-  require("./snmp-walk").run(walkIp, walkCommunity);
-} else {
-  // ── Normal relay mode ───────────────────────────────────────────────────────
-  console.log(`SCS Site Relay v${VERSION}`);
-  console.log(`Site:          ${config.siteName} (${config.siteId})`);
-  console.log(`Driver:        ${config.driver ?? "mock"}`);
-  console.log(`Heartbeat:     ${config.heartbeatSeconds ?? 30}s`);
-  console.log(`Poll interval: ${config.pollIntervalSeconds ?? 30}s`);
-  console.log(`Central relay: ${config.centralRelayUrl}`);
-  connect();
-}
+} // end else (normal mode)

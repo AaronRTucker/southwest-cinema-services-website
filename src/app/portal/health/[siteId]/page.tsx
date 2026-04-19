@@ -96,7 +96,7 @@ function ProjectorCard({ proj }: { proj: Projector }) {
           <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Temperatures</div>
           <div className="divide-y divide-gray-50">
             {proj.health.temperatures.map((t: TemperatureSensor) => (
-              <SensorRow key={t.name} label={t.name} value={`${t.value}${t.unit}`} status={t.status} />
+              <SensorRow key={t.name} label={t.name} value={`${Number(t.value ?? 0)}${t.unit}`} status={t.status} />
             ))}
           </div>
         </div>
@@ -104,7 +104,7 @@ function ProjectorCard({ proj }: { proj: Projector }) {
           <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Voltages</div>
           <div className="divide-y divide-gray-50">
             {proj.health.voltages.map((v: VoltageSensor) => (
-              <SensorRow key={v.name} label={v.name} value={`${v.value}${v.unit}`} status={v.status} />
+              <SensorRow key={v.name} label={v.name} value={`${Number(v.value ?? 0).toFixed(2)}${v.unit}`} status={v.status} />
             ))}
           </div>
         </div>
@@ -112,7 +112,7 @@ function ProjectorCard({ proj }: { proj: Projector }) {
           <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Fans</div>
           <div className="divide-y divide-gray-50">
             {proj.health.fans.map((f: FanSensor) => (
-              <SensorRow key={f.name} label={f.name} value={`${f.value.toLocaleString()} ${f.unit}`} status={f.status} />
+              <SensorRow key={f.name} label={f.name} value={`${Number(f.value ?? 0).toLocaleString()} ${f.unit}`} status={f.status} />
             ))}
           </div>
         </div>
