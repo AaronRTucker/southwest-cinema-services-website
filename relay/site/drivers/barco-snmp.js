@@ -14,6 +14,7 @@ const OIDS = {
   powerState:   `${B}.2.2.5.0`,               // 1=on, 0=off/standby
   laserPower:   `${B}.2.2.4.6.0`,             // %
   runtime:      `${B}.2.2.4.8.1.2.1`,         // minutes
+  lens:         `${B}.2.2.13.0`,              // "R9855934 - FUJINON..."
   format:       `${B}.4.2.3.0`,               // "2D FLAT"
   icmpModule:   `${B}.5.2.1.0`,               // "icmp"
   showId:       `${B}.5.2.2.0`,               // content/show ID
@@ -228,6 +229,7 @@ async function pollOne(proj) {
       state: isOn ? "on" : "standby",
       laserPower: isOn ? parseFloat(identity[OIDS.laserPower] ?? 0) : 0,
       laserHours,
+      lens: String(identity[OIDS.lens] ?? "").trim(),
       dowserOpen: false,
       playback,
       health: { temperatures, voltages, fans, drives, errors, warnings },

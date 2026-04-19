@@ -44,6 +44,7 @@ function ProjectorCard({ proj }: { proj: Projector }) {
           <div>
             <h3 className="font-semibold text-gray-900">{proj.name}</h3>
             <p className="text-xs text-gray-500 mt-0.5">{proj.model} · S/N {proj.serial} · FW {proj.firmware}{proj.playback?.icmpVersion ? ` · ICMP ${proj.playback.icmpVersion}` : ""}</p>
+          {proj.lens && <p className="text-xs text-gray-400 mt-0.5">{proj.lens}</p>}
           </div>
           <div className="text-right">
             <div className="text-sm font-medium capitalize text-gray-700">{proj.state}</div>

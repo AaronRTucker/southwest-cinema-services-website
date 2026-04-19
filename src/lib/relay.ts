@@ -64,6 +64,7 @@ export interface Projector {
   state: string;
   laserPower: number;
   laserHours: number;
+  lens?: string;
   dowserOpen: boolean;
   playback?: ProjectorPlayback;
   health: ProjectorHealth;
