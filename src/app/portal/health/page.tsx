@@ -92,10 +92,10 @@ export default async function HealthPage() {
                             <div className="text-xs text-gray-400">Laser</div>
                           </div>
                           <div className="text-center">
-                            <div className={`font-semibold ${proj.lampHours > proj.lampHoursWarning ? "text-yellow-600" : "text-gray-900"}`}>
-                              {proj.lampHours.toLocaleString()}h
+                            <div className="font-semibold text-gray-900">
+                              {(proj.laserHours ?? 0).toLocaleString()}h
                             </div>
-                            <div className="text-xs text-gray-400">Lamp hrs</div>
+                            <div className="text-xs text-gray-400">Laser hrs</div>
                           </div>
                           <div className="text-center">
                             <div className="font-semibold text-gray-900">

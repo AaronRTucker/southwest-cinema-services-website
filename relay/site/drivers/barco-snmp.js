@@ -7,13 +7,19 @@ const snmp = require("net-snmp");
 const B = "1.3.6.1.4.1.12612.220.11";
 
 const OIDS = {
-  sysName:    "1.3.6.1.2.1.1.5.0",          // "SP4K-12C-2590413587"
-  serial:     `${B}.2.2.1.0`,
-  firmware:   `${B}.2.2.8.0`,
-  model:      `${B}.2.2.12.1.0`,             // "SP4K-12C"
-  powerState: `${B}.2.2.5.0`,               // 1=on, 0=off/standby
-  laserPower: `${B}.2.2.4.6.0`,             // %
-  runtime:    `${B}.2.2.4.8.1.2.1`,         // minutes
+  sysName:      "1.3.6.1.2.1.1.5.0",          // "SP4K-12C-2590413587"
+  serial:       `${B}.2.2.1.0`,
+  firmware:     `${B}.2.2.8.0`,
+  model:        `${B}.2.2.12.1.0`,             // "SP4K-12C"
+  powerState:   `${B}.2.2.5.0`,               // 1=on, 0=off/standby
+  laserPower:   `${B}.2.2.4.6.0`,             // %
+  runtime:      `${B}.2.2.4.8.1.2.1`,         // minutes
+  format:       `${B}.4.2.3.0`,               // "2D FLAT"
+  icmpModule:   `${B}.5.2.1.0`,               // "icmp"
+  showId:       `${B}.5.2.2.0`,               // content/show ID
+  showStatus:   `${B}.5.2.3.0`,               // "running"
+  showTitle:    `${B}.5.2.4.0`,               // show title or "None"
+  icmpVersion:  `${B}.5.2.5.0`,               // ICMP software version
 };
 
 const TEMP_BASE    = `${B}.4.2.1.1.1`;
@@ -189,8 +195,17 @@ async function pollOne(proj) {
       modelVal = sysName.split("-").slice(0, 2).join("-") || "Barco";
     }
 
-    const runtimeMin = parseFloat(identity[OIDS.runtime] ?? 0);
-    const lampHoursNum = runtimeMin > 1000 ? Math.round(runtimeMin / 60) : Math.round(runtimeMin);
+    const runtimeMin  = parseFloat(identity[OIDS.runtime] ?? 0);
+    const laserHours  = runtimeMin > 1000 ? Math.round(runtimeMin / 60) : Math.round(runtimeMin);
+
+    const showTitle   = String(identity[OIDS.showTitle]  ?? "").trim();
+    const playback = {
+      format:      String(identity[OIDS.format]      ?? "").trim(),
+      status:      String(identity[OIDS.showStatus]  ?? "").trim(),
+      showTitle:   showTitle === "None" ? "" : showTitle,
+      showId:      String(identity[OIDS.showId]      ?? "").trim(),
+      icmpVersion: String(identity[OIDS.icmpVersion] ?? "").trim(),
+    };
 
     const temperatures = buildTemperatures(tempRows);
     const voltages     = buildVoltages(voltRows);
@@ -212,8 +227,9 @@ async function pollOne(proj) {
       firmware: String(identity[OIDS.firmware] ?? "").trim(),
       state: isOn ? "on" : "standby",
       laserPower: isOn ? parseFloat(identity[OIDS.laserPower] ?? 0) : 0,
-      lampHours: lampHoursNum, lampHoursWarning: 10000, lampHoursEol: 15000,
+      laserHours,
       dowserOpen: false,
+      playback,
       health: { temperatures, voltages, fans, drives, errors, warnings },
       status: overallStatus,
       polledAt: new Date().toISOString(),
@@ -231,8 +247,7 @@ async function poll(projectors) {
       pollOne(p).catch((err) => ({
         id: p.id, name: p.name, ip: p.ip,
         model: "Barco", serial: "", firmware: "",
-        state: "unreachable", laserPower: 0,
-        lampHours: 0, lampHoursWarning: 10000, lampHoursEol: 15000,
+        state: "unreachable", laserPower: 0, laserHours: 0,
         dowserOpen: false,
         health: { temperatures: [], voltages: [], fans: [], drives: [], errors: [], warnings: [] },
         status: "error", error: err.message,

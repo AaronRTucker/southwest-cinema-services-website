@@ -46,6 +46,14 @@ export interface ProjectorHealth {
   warnings: ProjectorAlert[];
 }
 
+export interface ProjectorPlayback {
+  format: string;
+  status: string;
+  showTitle: string;
+  showId: string;
+  icmpVersion: string;
+}
+
 export interface Projector {
   id: string;
   name: string;
@@ -55,10 +63,9 @@ export interface Projector {
   firmware: string;
   state: string;
   laserPower: number;
-  lampHours: number;
-  lampHoursWarning: number;
-  lampHoursEol: number;
+  laserHours: number;
   dowserOpen: boolean;
+  playback?: ProjectorPlayback;
   health: ProjectorHealth;
   status: "ok" | "warning" | "error";
   polledAt: string;

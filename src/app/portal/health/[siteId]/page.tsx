@@ -1,7 +1,7 @@
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import { getSite } from "@/lib/relay";
-import type { Projector, TemperatureSensor, VoltageSensor, FanSensor, DriveSensor } from "@/lib/relay";
+import type { Projector, TemperatureSensor, VoltageSensor, FanSensor, DriveSensor, ProjectorPlayback } from "@/lib/relay";
 import Link from "next/link";
 import SignOutButton from "@/components/SignOutButton";
 
@@ -43,7 +43,7 @@ function ProjectorCard({ proj }: { proj: Projector }) {
         <div className="flex items-center justify-between">
           <div>
             <h3 className="font-semibold text-gray-900">{proj.name}</h3>
-            <p className="text-xs text-gray-500 mt-0.5">{proj.model} · S/N {proj.serial} · FW {proj.firmware}</p>
+            <p className="text-xs text-gray-500 mt-0.5">{proj.model} · S/N {proj.serial} · FW {proj.firmware}{proj.playback?.icmpVersion ? ` · ICMP ${proj.playback.icmpVersion}` : ""}</p>
           </div>
           <div className="text-right">
             <div className="text-sm font-medium capitalize text-gray-700">{proj.state}</div>
@@ -73,10 +73,9 @@ function ProjectorCard({ proj }: { proj: Projector }) {
           <div className="text-xl font-bold text-gray-900">{proj.laserPower}%</div>
         </div>
         <div>
-          <div className="text-xs text-gray-400 mb-0.5">Lamp Hours</div>
-          <div className={`text-xl font-bold ${proj.lampHours > proj.lampHoursWarning ? "text-yellow-600" : "text-gray-900"}`}>
-            {proj.lampHours.toLocaleString()}
-            <span className="text-sm font-normal text-gray-400"> / {proj.lampHoursEol.toLocaleString()}</span>
+          <div className="text-xs text-gray-400 mb-0.5">Laser Hours</div>
+          <div className="text-xl font-bold text-gray-900">
+            {(proj.laserHours ?? 0).toLocaleString()}
           </div>
         </div>
         <div>
@@ -90,6 +89,23 @@ function ProjectorCard({ proj }: { proj: Projector }) {
           <div className="text-sm font-mono text-gray-700 mt-1">{proj.ip}</div>
         </div>
       </div>
+
+      {proj.playback && (
+        <div className="px-6 py-3 border-t border-gray-100 flex flex-wrap gap-6 text-sm">
+          {proj.playback.format && (
+            <div><span className="text-gray-400">Format </span><span className="font-medium text-gray-900">{proj.playback.format}</span></div>
+          )}
+          {proj.playback.status && (
+            <div><span className="text-gray-400">Playback </span><span className="font-medium text-gray-900 capitalize">{proj.playback.status}</span></div>
+          )}
+          {proj.playback.showTitle && (
+            <div><span className="text-gray-400">Show </span><span className="font-medium text-gray-900">{proj.playback.showTitle}</span></div>
+          )}
+          {proj.playback.showId && (
+            <div><span className="text-gray-400">ID </span><span className="font-mono text-gray-700 text-xs">{proj.playback.showId}</span></div>
+          )}
+        </div>
+      )}
 
       <div className="px-6 py-4 grid grid-cols-1 sm:grid-cols-3 gap-6">
         <div>
