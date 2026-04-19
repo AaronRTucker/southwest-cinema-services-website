@@ -1,7 +1,7 @@
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import { getSite } from "@/lib/relay";
-import type { Projector, TemperatureSensor, VoltageSensor, FanSensor } from "@/lib/relay";
+import type { Projector, TemperatureSensor, VoltageSensor, FanSensor, DriveSensor } from "@/lib/relay";
 import Link from "next/link";
 import SignOutButton from "@/components/SignOutButton";
 
@@ -117,6 +117,32 @@ function ProjectorCard({ proj }: { proj: Projector }) {
           </div>
         </div>
       </div>
+
+      {proj.health.drives?.length > 0 && (
+        <div className="px-6 py-4 border-t border-gray-100">
+          <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Drives</div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {proj.health.drives.map((d: DriveSensor) => (
+              <div key={d.serial} className={`rounded-lg border px-4 py-3 ${d.status === "ok" ? "border-gray-200 bg-gray-50" : "border-yellow-200 bg-yellow-50"}`}>
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-xs font-mono text-gray-600">{d.serial}</span>
+                  <StatusDot status={d.status} />
+                </div>
+                <div className="flex gap-4 text-sm">
+                  <div>
+                    <span className="text-gray-900 font-medium">{d.temperature}°C</span>
+                    <span className="text-xs text-gray-400 ml-1">temp</span>
+                  </div>
+                  <div>
+                    <span className="text-gray-900 font-medium">{d.powerOnHours.toLocaleString()}h</span>
+                    <span className="text-xs text-gray-400 ml-1">on-time</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -19,6 +19,7 @@ const OIDS = {
 const TEMP_BASE    = `${B}.4.2.1.1.1`;
 const VOLTAGE_BASE = `${B}.4.2.1.2.1`;
 const FAN_BASE     = `${B}.4.2.1.3.1`;
+const DRIVE_BASE   = `${B}.5.2.8.5.1`; // col2=serial, col3=power-on min, col4=health(1=ok), col5=temp°C, col6/7=alarms
 
 // ── SNMP helpers ──────────────────────────────────────────────────────────────
 
@@ -45,9 +46,11 @@ function snmpGet(session, oids) {
 function walkTable(session, base) {
   return new Promise((resolve) => {
     const rows = {};
+    const prefix = base + ".";
     session.walk(base, 20, (varbinds) => {
       for (const vb of varbinds) {
         if (snmp.isVarbindError(vb)) continue;
+        if (!vb.oid.startsWith(prefix)) continue; // discard GETBULK overshoot
         const suffix = vb.oid.slice(base.length + 1);
         const dot = suffix.indexOf(".");
         if (dot === -1) continue;
@@ -117,7 +120,26 @@ function buildFans(rows) {
     });
 }
 
-function buildAlerts(temps, voltages, fans) {
+function buildDrives(rows) {
+  return Object.entries(rows)
+    .filter(([, cols]) => cols["2"])
+    .map(([, cols]) => {
+      const health      = parseInt(cols["4"] ?? 1);
+      const alarm6      = parseInt(cols["6"] ?? 0);
+      const alarm7      = parseInt(cols["7"] ?? 0);
+      const temperature = parseFloat(cols["5"] ?? 0);
+      const powerOnMin  = parseFloat(cols["3"] ?? 0);
+      const status      = health !== 1 || alarm6 !== 0 || alarm7 !== 0 ? "warning" : "ok";
+      return {
+        serial: String(cols["2"]).trim(),
+        temperature,
+        powerOnHours: Math.round(powerOnMin / 60),
+        status,
+      };
+    });
+}
+
+function buildAlerts(temps, voltages, fans, drives) {
   const warnings = [];
   for (const t of temps) {
     if (t.status === "critical") warnings.push({ type: "E", uid: "", description: `${t.name}: ${t.value}°C (critical)` });
@@ -128,6 +150,9 @@ function buildAlerts(temps, voltages, fans) {
   }
   for (const f of fans) {
     if (f.status !== "ok") warnings.push({ type: "W", uid: "", description: `${f.name}: ${f.value} RPM (low)` });
+  }
+  for (const d of drives) {
+    if (d.status !== "ok") warnings.push({ type: "W", uid: "", description: `Drive ${d.serial}: health alarm` });
   }
   return {
     errors:   warnings.filter((a) => a.type === "E"),
@@ -148,10 +173,11 @@ async function pollOne(proj) {
 
   try {
     // Run sequentially — concurrent walks on one session cross-contaminate responses
-    const identity = await snmpGet(session, Object.values(OIDS));
-    const tempRows = await walkTable(session, TEMP_BASE);
-    const voltRows = await walkTable(session, VOLTAGE_BASE);
-    const fanRows  = await walkTable(session, FAN_BASE);
+    const identity   = await snmpGet(session, Object.values(OIDS));
+    const tempRows   = await walkTable(session, TEMP_BASE);
+    const voltRows   = await walkTable(session, VOLTAGE_BASE);
+    const fanRows    = await walkTable(session, FAN_BASE);
+    const driveRows  = await walkTable(session, DRIVE_BASE);
 
     const powerState = parseInt(identity[OIDS.powerState] ?? 0);
     const isOn = powerState === 1;
@@ -169,7 +195,8 @@ async function pollOne(proj) {
     const temperatures = buildTemperatures(tempRows);
     const voltages     = buildVoltages(voltRows);
     const fans         = buildFans(fanRows);
-    const { errors, warnings } = buildAlerts(temperatures, voltages, fans);
+    const drives       = buildDrives(driveRows);
+    const { errors, warnings } = buildAlerts(temperatures, voltages, fans, drives);
 
     const overallStatus =
       errors.length > 0 ? "error"
@@ -187,7 +214,7 @@ async function pollOne(proj) {
       laserPower: isOn ? parseFloat(identity[OIDS.laserPower] ?? 0) : 0,
       lampHours: lampHoursNum, lampHoursWarning: 10000, lampHoursEol: 15000,
       dowserOpen: false,
-      health: { temperatures, voltages, fans, errors, warnings },
+      health: { temperatures, voltages, fans, drives, errors, warnings },
       status: overallStatus,
       polledAt: new Date().toISOString(),
     };
@@ -207,7 +234,7 @@ async function poll(projectors) {
         state: "unreachable", laserPower: 0,
         lampHours: 0, lampHoursWarning: 10000, lampHoursEol: 15000,
         dowserOpen: false,
-        health: { temperatures: [], voltages: [], fans: [], errors: [], warnings: [] },
+        health: { temperatures: [], voltages: [], fans: [], drives: [], errors: [], warnings: [] },
         status: "error", error: err.message,
         polledAt: new Date().toISOString(),
       }))

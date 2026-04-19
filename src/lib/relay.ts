@@ -30,10 +30,18 @@ export interface ProjectorAlert {
   description: string;
 }
 
+export interface DriveSensor {
+  serial: string;
+  temperature: number;
+  powerOnHours: number;
+  status: "ok" | "warning" | "error";
+}
+
 export interface ProjectorHealth {
   temperatures: TemperatureSensor[];
   voltages: VoltageSensor[];
   fans: FanSensor[];
+  drives: DriveSensor[];
   errors: ProjectorAlert[];
   warnings: ProjectorAlert[];
 }
