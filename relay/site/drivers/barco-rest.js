@@ -109,6 +109,17 @@ async function pollOne(proj) {
     tryGet(ip, "/rest/illumination/dowser",                        user, password),
   ]);
 
+  // Log raw responses so field names can be verified against the actual firmware
+  console.log(`[${ip}] state:`, JSON.stringify(state));
+  console.log(`[${ip}] ident:`, JSON.stringify(ident));
+  console.log(`[${ip}] laserPower:`, JSON.stringify(laserPower));
+  console.log(`[${ip}] laserRuntime:`, JSON.stringify(laserRuntime));
+  console.log(`[${ip}] dowser:`, JSON.stringify(dowser));
+  if (temps?.length)    console.log(`[${ip}] temps[0]:`, JSON.stringify(temps[0]));
+  if (fans?.length)     console.log(`[${ip}] fans[0]:`, JSON.stringify(fans[0]));
+  if (voltages?.length) console.log(`[${ip}] voltages[0]:`, JSON.stringify(voltages[0]));
+  if (alerts)           console.log(`[${ip}] alerts:`, JSON.stringify(alerts));
+
   const stateVal   = state?.value ?? "unknown";
   const isOn       = stateVal === "on";
   const lampHours  = Math.round((laserRuntime?.value ?? 0) / 60); // minutes → hours

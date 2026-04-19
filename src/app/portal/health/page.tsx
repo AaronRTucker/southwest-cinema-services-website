@@ -63,9 +63,9 @@ export default async function HealthPage() {
                     </div>
                     <p className="text-xs text-gray-400 mt-0.5">
                       {site.lastHeartbeat
-                        ? `Last heartbeat: ${new Date(site.lastHeartbeat).toLocaleString()}`
+                        ? `Last heartbeat: ${new Date(site.lastHeartbeat).toLocaleString("en-US", { timeZone: "America/Chicago", month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZoneName: "short" })}`
                         : site.reportedAt
-                        ? `Last report: ${new Date(site.reportedAt).toLocaleString()}`
+                        ? `Last report: ${new Date(site.reportedAt).toLocaleString("en-US", { timeZone: "America/Chicago", month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZoneName: "short" })}`
                         : "No data received yet"}
                     </p>
                   </div>
