@@ -1,48 +1,122 @@
 "use strict";
 
 // Barco Series 4 REST API driver (SP4K-25B, DP4K-32B, SP4K-15C, etc.)
-// Uses built-in fetch (Node 18+).
+// Auth: POST /rest with Basic credentials → JWT Bearer token for all requests.
 
-function authHeader(user, password) {
-  return "Basic " + Buffer.from(`${user}:${password}`).toString("base64");
+// ── Authentication ────────────────────────────────────────────────────────────
+
+// ip → { token, expiresAt }
+const tokenCache = new Map();
+
+async function getToken(ip, user, password) {
+  const cached = tokenCache.get(ip);
+  if (cached && cached.expiresAt > Date.now()) return cached.token;
+
+  const res = await fetch(`http://${ip}/rest`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Basic " + Buffer.from(`${user}:${password}`).toString("base64"),
+    },
+    body: JSON.stringify({ username: user, password }),
+    signal: AbortSignal.timeout(8000),
+  });
+
+  // Some firmware issues token on GET /rest with Basic — fall back if POST fails
+  if (!res.ok) {
+    const res2 = await fetch(`http://${ip}/rest`, {
+      headers: { Authorization: "Basic " + Buffer.from(`${user}:${password}`).toString("base64") },
+      signal: AbortSignal.timeout(8000),
+    });
+    if (!res2.ok) throw new Error(`Auth failed: HTTP ${res2.status}`);
+    const data2 = await res2.json();
+    const token2 = data2.access_token;
+    if (!token2) throw new Error("No access_token returned");
+    tokenCache.set(ip, { token: token2, expiresAt: Date.now() + 55 * 60 * 1000 });
+    return token2;
+  }
+
+  const data = await res.json();
+  const token = data.access_token;
+  if (!token) throw new Error("No access_token returned");
+  tokenCache.set(ip, { token, expiresAt: Date.now() + 55 * 60 * 1000 });
+  return token;
 }
 
-async function get(ip, path, user, password) {
+async function get(ip, path, token) {
   const res = await fetch(`http://${ip}${path}`, {
-    headers: { Authorization: authHeader(user, password) },
+    headers: { Authorization: `Bearer ${token}` },
     signal: AbortSignal.timeout(6000),
   });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return res.json();
 }
 
-async function tryGet(ip, path, user, password, fallback = null) {
-  try { return await get(ip, path, user, password); } catch { return fallback; }
+async function tryGet(ip, path, token, fallback = null) {
+  try { return await get(ip, path, token); } catch { return fallback; }
 }
 
-// Try multiple candidate paths, return first that succeeds (not null)
-async function tryPaths(ip, paths, user, password) {
+async function tryPaths(ip, paths, token, fallback = null) {
   for (const path of paths) {
-    const result = await tryGet(ip, path, user, password);
+    const result = await tryGet(ip, path, token);
     if (result !== null) {
-      console.log(`[${ip}] resolved ${path}:`, JSON.stringify(result).slice(0, 200));
+      console.log(`[${ip}] resolved ${path}:`, JSON.stringify(result).slice(0, 300));
       return result;
     }
   }
-  console.log(`[${ip}] all paths failed:`, paths.join(", "));
-  return null;
+  console.log(`[${ip}] all failed:`, paths.join(", "));
+  return fallback;
 }
 
-// Barco returns { result: <value> } — handle both result and value
-function r(obj, ...keys) {
-  if (!obj) return undefined;
-  for (const k of keys) {
-    if (obj[k] !== undefined && obj[k] !== null) return obj[k];
+// ── API discovery (runs once per projector) ───────────────────────────────────
+
+const discovered = new Set();
+
+async function discoverApi(ip, token) {
+  if (discovered.has(ip)) return;
+  discovered.add(ip);
+  const probes = [
+    "/rest/system",
+    "/rest/system/status",
+    "/rest/system/state",
+    "/rest/system/information",
+    "/rest/system/productioninfo",
+    "/rest/system/deviceinfo",
+    "/rest/system/getidentifications",
+    "/rest/system/health",
+    "/rest/illumination",
+    "/rest/illumination/sources",
+    "/rest/illumination/sources/laser",
+    "/rest/illumination/sources/laser/runtime",
+    "/rest/illumination/sources/laser/runtimeminutes",
+    "/rest/illumination/sources/laser/hourmeter",
+    "/rest/illumination/sources/laser/dowser",
+    "/rest/illumination/dowser",
+    "/rest/diagnostics",
+    "/rest/diagnostics/temperatures",
+    "/rest/diagnostics/fans",
+    "/rest/diagnostics/voltages",
+    "/rest/environment/temperatures",
+    "/rest/environment/fans",
+    "/rest/environment/voltages",
+  ];
+  console.log(`\n[${ip}] === API DISCOVERY (Bearer) ===`);
+  for (const path of probes) {
+    const result = await tryGet(ip, path, token);
+    if (result !== null) {
+      console.log(`[${ip}] OK ${path}:`, JSON.stringify(result).slice(0, 400));
+    }
   }
-  return undefined;
+  console.log(`[${ip}] === END DISCOVERY ===\n`);
 }
 
 // ── Normalizers ───────────────────────────────────────────────────────────────
+
+function r(obj, ...keys) {
+  if (!obj) return undefined;
+  for (const k of keys) if (obj[k] !== undefined && obj[k] !== null) return obj[k];
+  return undefined;
+}
 
 function normalizeTemperatures(data) {
   if (!Array.isArray(data)) return [];
@@ -107,71 +181,81 @@ function normalizeAlerts(data) {
 async function pollOne(proj) {
   const { ip, restUser: user = "admin", restPassword: password = "Admin1234" } = proj;
 
+  // Invalidate cached token on auth error
+  let token;
+  try {
+    token = await getToken(ip, user, password);
+  } catch (err) {
+    throw new Error(`Auth: ${err.message}`);
+  }
+
+  await discoverApi(ip, token);
+
   const [
     state, ident, laserPower, laserRuntime,
     temps, fans, voltages, alerts, dowser,
   ] = await Promise.all([
-    tryGet(ip, "/rest/system/state", user, password),
+    tryGet(ip, "/rest/system/state", token),
     tryPaths(ip, [
       "/rest/system/productioninfo",
       "/rest/system/deviceinfo",
       "/rest/system/information",
       "/rest/system/getidentifications",
       "/rest/system/overview",
-    ], user, password),
-    tryGet(ip, "/rest/illumination/sources/laser/actualpower", user, password),
+      "/rest/system/status",
+    ], token),
+    tryGet(ip, "/rest/illumination/sources/laser/actualpower", token),
     tryPaths(ip, [
       "/rest/illumination/sources/laser/runtime",
       "/rest/illumination/sources/laser/runtimeminutes",
       "/rest/illumination/sources/laser/hourmeter",
       "/rest/system/runtime",
-    ], user, password),
+    ], token),
     tryPaths(ip, [
       "/rest/diagnostics/temperatures",
       "/rest/environment/temperatures",
       "/rest/system/temperatures",
-    ], user, password, []),
+    ], token, []),
     tryPaths(ip, [
       "/rest/diagnostics/fans",
       "/rest/environment/fans",
       "/rest/system/fans",
-    ], user, password, []),
+    ], token, []),
     tryPaths(ip, [
       "/rest/diagnostics/voltages",
       "/rest/environment/voltages",
       "/rest/system/voltages",
-    ], user, password, []),
+    ], token, []),
     tryPaths(ip, [
       "/rest/system/health",
       "/rest/diagnostics/alerts",
       "/rest/system/alerts",
       "/rest/diagnostics/health",
-    ], user, password),
+    ], token),
     tryPaths(ip, [
       "/rest/illumination/sources/laser/dowser",
       "/rest/illumination/dowser",
       "/rest/system/dowser",
-    ], user, password),
+    ], token),
   ]);
 
-  const stateVal  = r(state, "result", "value") ?? "unknown";
+  const stateVal  = r(state,        "result", "value") ?? "unknown";
   const isOn      = stateVal === "on";
   const lampMins  = r(laserRuntime, "result", "value") ?? 0;
   const lampHours = Math.round(lampMins / 60);
 
-  // ident may be an object or array — handle both shapes
   const identObj  = Array.isArray(ident) ? ident[0] : ident;
-  const model     = r(identObj, "ProductLine", "productLine", "model", "Model", "product") ?? "Barco";
+  const model     = r(identObj, "ProductLine", "productLine", "model", "Model", "product", "type") ?? "Barco";
   const serial    = r(identObj, "SerialNumber", "serialNumber", "serial", "Serial") ?? "";
   const firmware  = r(identObj, "version", "Version", "firmware", "FirmwareVersion") ?? "";
 
-  const dowserVal = r(dowser, "result", "value");
+  const dowserVal  = r(dowser, "result", "value");
   const dowserOpen = dowserVal === "open" || dowserVal === true || dowserVal === 1;
 
   const health = {
-    temperatures: normalizeTemperatures(Array.isArray(temps) ? temps : (temps?.result ?? [])),
+    temperatures: normalizeTemperatures(Array.isArray(temps)    ? temps    : (temps?.result    ?? [])),
     voltages:     normalizeVoltages(Array.isArray(voltages) ? voltages : (voltages?.result ?? [])),
-    fans:         normalizeFans(Array.isArray(fans) ? fans : (fans?.result ?? [])),
+    fans:         normalizeFans(Array.isArray(fans)      ? fans      : (fans?.result      ?? [])),
     ...normalizeAlerts(alerts),
   };
 
